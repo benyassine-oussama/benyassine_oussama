@@ -160,7 +160,7 @@
 
         .showcase-card:hover,
         .gallery-card:hover,
-        .glass-card:hover, 
+        .glass-card:hover,
         .section-shell:hover {
             transform: translateY(-2px);
             box-shadow: 0 24px 50px rgba(0, 0, 0, 0.28);
@@ -225,35 +225,217 @@
             transition: none;
         }
 
-        .hero-background {
+        .hero-bg-blur {
             position: absolute;
             inset: 0;
-            overflow: hidden;
-            pointer-events: none;
+            background: url('hero-bg.jpg') center/cover no-repeat;
+            filter: blur(8px) brightness(0.35) saturate(0.9);
+            transform: scale(1.08);
+            opacity: 0.78;
             z-index: 0;
         }
 
-        .hero-slide {
+        .hero-content-shell {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 22px;
+        }
+
+        .hero-name-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 26px;
+            margin-bottom: 18px;
+        }
+
+        .hero-name-text {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.2rem, 4vw, 4.6rem);
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #edf5ff;
+            line-height: 1;
+            text-align: center;
+        }
+
+        .hero-green-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 18px rgba(34, 197, 94, 0.9);
+            animation: blinkCursor 0.8s step-end infinite;
+            flex-shrink: 0;
+        }
+
+        .booking-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.7rem 1.2rem;
+            border-radius: 999px;
+            border: 1px solid rgba(126, 165, 255, 0.25);
+            background: rgba(14, 20, 35, 0.72);
+            color: var(--text);
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            font-size: 10px;
+            margin-bottom: 1.4rem;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-stage {
+            position: relative;
+            margin-top: 25px;
+            height: 470px;
+            perspective: 1500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stage-rail {
+            position: relative;
+            width: min(820px, 80vw);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-card {
             position: absolute;
-            inset: 0;
+            overflow: hidden;
+            border-radius: 26px;
+            border: 1px solid rgba(126, 165, 255, 0.22);
+            box-shadow: 0 30px 70px rgba(0,0,0,0.48);
+            background: rgba(11, 18, 32, 0.9);
+            transition: transform 0.9s cubic-bezier(.22,1,.36,1), opacity 0.9s ease, filter 0.9s ease, box-shadow 0.9s ease;
+            user-select: none;
+        }
+
+        .hero-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0;
-            transform: scale(1.08);
-            transition: opacity 1.3s ease, transform 1.8s ease;
-            filter: grayscale(0.25) contrast(1.05) brightness(0.75);
+            display: block;
         }
 
-        .hero-slide.active {
-            opacity: 0.35;
-            transform: scale(1.02);
+        .hero-card.left {
+            width: 32%;
+            height: 62%;
+            left: 2%;
+            transform: translateX(-14%) rotateY(38deg) translateZ(20px) scale(0.9);
+            opacity: 0.8;
+            filter: saturate(0.8) brightness(0.86);
+            z-index: 1;
         }
 
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(90deg, rgba(0,0,0,0.75), rgba(5,11,19,0.65), rgba(7,17,29,0.7));
+        .hero-card.center {
+            width: 62%;
+            height: 100%;
+            transform: translateZ(80px) scale(1.02);
+            opacity: 1;
+            z-index: 3;
+        }
+
+        .hero-card.right {
+            width: 32%;
+            height: 62%;
+            right: 2%;
+            transform: translateX(14%) rotateY(-38deg) translateZ(20px) scale(0.9);
+            opacity: 0.8;
+            filter: saturate(0.8) brightness(0.86);
+            z-index: 1;
+        }
+
+        .hero-card.left.swipe {
+            transform: translateX(-30%) rotateY(38deg) translateZ(0) scale(0.82);
+            opacity: 0.4;
+        }
+
+        .hero-card.center.swipe {
+            transform: translateZ(100px) scale(1.08);
+        }
+
+        .hero-card.right.swipe {
+            transform: translateX(30%) rotateY(-38deg) translateZ(0) scale(0.82);
+            opacity: 0.4;
+        }
+
+        .hero-cta-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 28px;
+        }
+
+        .cta-main {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2.25rem;
+            border-radius: 999px;
+            min-width: 260px;
+            letter-spacing: 0.26em;
+            text-transform: uppercase;
+            font-size: 12px;
+            background: linear-gradient(135deg, rgba(126,165,255,0.9), rgba(201,217,255,0.9));
+            color: #07111d;
+            box-shadow: 0 16px 40px rgba(126, 165, 255, 0.28);
+        }
+
+        .cta-alt {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2.25rem;
+            border-radius: 999px;
+            min-width: 260px;
+            letter-spacing: 0.26em;
+            text-transform: uppercase;
+            font-size: 12px;
+            color: var(--text);
+            border: 1px solid rgba(126,165,255,0.5);
+            background: rgba(13, 22, 40, 0.45);
+            box-shadow: inset 0 0 0 1px rgba(126,165,255,0.09);
+        }
+
+        .stats-grid {
+            margin-top: 22px;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.9rem;
+        }
+
+        .stat {
+            border-radius: 1.15rem;
+            border: 1px solid rgba(126,165,255,0.22);
+            background: rgba(255,255,255,0.02);
+            padding: 1.25rem 0.8rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: clamp(1.5rem, 3vw, 2.1rem);
+            font-family: 'Cinzel', serif;
+            color: var(--accent-soft);
+            letter-spacing: 0.08em;
+            line-height: 1.1;
+        }
+
+        .stat-label {
+            margin-top: 0.5rem;
+            font-size: 10px;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: #c6cfdf;
         }
 
         @media (max-width: 640px) {
@@ -268,6 +450,16 @@
             .hero-name-cursor {
                 width: 8px;
                 height: 0.95em;
+            }
+
+            .hero-stage {
+                height: 315px;
+            }
+
+            .cta-main,
+            .cta-alt {
+                min-width: 220px;
+                letter-spacing: 0.16em;
             }
         }
     </style>
@@ -308,61 +500,54 @@
         </header>
 
         <main id="top">
-            <section class="relative pt-32 pb-20 px-4 sm:px-6">
-                <div class="hero-background" aria-label="Auto rotating background image">
-                    <img class="hero-slide active" src="hero-bg.jpg" alt="BENYASSINE OUSSAMA background 1" onerror="this.onerror=null; this.src='showcase1.jpg'">
-                    <img class="hero-slide" src="showcase1.jpg" alt="BENYASSINE OUSSAMA background 2" onerror="this.onerror=null; this.src='hero-bg.jpg'">
-                    <img class="hero-slide" src="showcase2.jpg" alt="BENYASSINE OUSSAMA background 3" onerror="this.onerror=null; this.src='showcase3.jpg'">
-                    <img class="hero-slide" src="showcase3.jpg" alt="BENYASSINE OUSSAMA background 4" onerror="this.onerror=null; this.src='hero-bg.jpg'">
-                    <div class="hero-overlay"></div>
-                </div>
+            <section class="relative pt-32 pb-20 px-4 sm:px-6 min-h-[100vh] overflow-hidden">
+                <div class="hero-bg-blur"></div>
 
-                <div class="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-[1.25fr_0.75fr] gap-10 items-center py-10">
-                    <div class="hero-copy reveal text-center lg:text-left">
-                        <div class="inline-flex items-center gap-2 px-4 py-2 border border-[#7ea5ff]/30 rounded-full bg-[#7ea5ff]/5 text-[10px] tracking-[0.28em] uppercase text-[#c9d9ff]">
-                            <span class="relative flex h-2 w-2 mr-1">
-                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#22c55e] opacity-75"></span>
-                                <span class="relative inline-flex rounded-full h-2 w-2 bg-[#22c55e]"></span>
-                            </span>
-                            Available for bookings
-                        </div>
+                <div class="hero-content-shell reveal">
+                    <div class="booking-pill">
+                        <span class="relative flex h-2.5 w-2.5">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#22c55e] opacity-70"></span>
+                            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#22c55e]"></span>
+                        </span>
+                        Available for bookings
+                    </div>
 
-                        <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl uppercase mt-6 leading-none tracking-[0.08em] hero-name-wrap">
-                            <span class="block">BENYASSINE</span>
-                            <span class="blue-text block">OUSSAMA</span>
-                            <span class="hero-name-cursor" aria-hidden="true"></span>
-                        </h1>
+                    <div class="hero-name-row">
+                        <span class="hero-name-text">BENYASSINE OUSSAMA</span>
+                        <span class="hero-green-dot" aria-hidden="true"></span>
+                    </div>
 
-                        <div class="blue-line my-6"></div>
+                    <div class="hero-cta-row">
+                        <a href="#gallery" class="cta-main">View Portfolio</a>
+                        <a href="#contact" class="cta-alt">Book a Session</a>
+                    </div>
 
-                        <p class="max-w-xl mx-auto lg:mx-0 text-sm sm:text-base text-[#d8e2f7] tracking-[0.2em] uppercase leading-relaxed">
-                            Visual Artist — Turning decisive moments into timeless imagery.
-                        </p>
-
-                        <div class="mt-8 flex flex-wrap gap-4 justify-center lg:justify-start">
-                            <a href="#gallery" class="cta-primary inline-flex items-center justify-center px-6 py-3 rounded-full text-[10px] tracking-[0.24em] uppercase font-medium">View portfolio</a>
-                            <a href="#contact" class="cta-secondary inline-flex items-center justify-center px-6 py-3 rounded-full text-[10px] tracking-[0.24em] uppercase font-medium">Book a session</a>
+                    <div class="hero-stage" aria-label="Portfolio image carousel">
+                        <div class="stage-rail" id="heroStage">
+                            <div class="hero-card left" data-index="0">
+                                <img src="showcase2.jpg" alt="Image 1">
+                            </div>
+                            <div class="hero-card center" data-index="1">
+                                <img src="showcase1.jpg" alt="Image 2">
+                            </div>
+                            <div class="hero-card right" data-index="2">
+                                <img src="showcase3.jpg" alt="Image 3">
+                            </div>
                         </div>
                     </div>
 
-                    <div class="glass-card rounded-[28px] p-5 sm:p-6 border border-[#7ea5ff]/20 shadow-2xl reveal">
-                        <div class="rounded-[22px] overflow-hidden border border-[#7ea5ff]/20 bg-black/40">
-                            <img src="showcase1.jpg" alt="Featured artwork" class="w-full h-[420px] sm:h-[480px] object-cover object-center">
+                    <div class="stats-grid">
+                        <div class="stat">
+                            <div class="stat-number">03</div>
+                            <div class="stat-label">Years</div>
                         </div>
-
-                        <div class="mt-5 grid grid-cols-3 gap-3 text-center">
-                            <div class="border border-[#7ea5ff]/20 bg-white/5 rounded-2xl p-3">
-                                <div class="text-xl font-serif blue-text">03</div>
-                                <div class="mt-1 text-[9px] uppercase tracking-[0.22em] text-[#c6cfdf]">Years</div>
-                            </div>
-                            <div class="border border-[#7ea5ff]/20 bg-white/5 rounded-2xl p-3">
-                                <div class="text-xl font-serif blue-text">10+</div>
-                                <div class="mt-1 text-[9px] uppercase tracking-[0.22em] text-[#c6cfdf]">Events</div>
-                            </div>
-                            <div class="border border-[#7ea5ff]/20 bg-white/5 rounded-2xl p-3">
-                                <div class="text-xl font-serif blue-text">Rabat</div>
-                                <div class="mt-1 text-[9px] uppercase tracking-[0.22em] text-[#c6cfdf]">Based</div>
-                            </div>
+                        <div class="stat">
+                            <div class="stat-number">10+</div>
+                            <div class="stat-label">Events</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">Rabat</div>
+                            <div class="stat-label">Based</div>
                         </div>
                     </div>
                 </div>
@@ -570,6 +755,7 @@
 
         let currentLightboxIndex = 0;
         let currentLightboxList = [];
+        let heroIndex = 1;
 
         function initApp() {
             initAmbientCanvas();
@@ -582,15 +768,40 @@
         }
 
         function initHeroSlider() {
-            const slides = Array.from(document.querySelectorAll('.hero-slide'));
-            if (!slides.length) return;
+            const cards = [
+                document.querySelector('.hero-card.left'),
+                document.querySelector('.hero-card.center'),
+                document.querySelector('.hero-card.right')
+            ];
 
-            let slideIndex = 0;
+            if (!cards[0] || !cards[1] || !cards[2]) return;
+
+            const images = ['showcase2.jpg', 'showcase1.jpg', 'showcase3.jpg'];
+            const setCardOrder = (index) => {
+                const order = [
+                    { key: 'left', src: images[(index + 0) % 3] },
+                    { key: 'center', src: images[(index + 1) % 3] },
+                    { key: 'right', src: images[(index + 2) % 3] }
+                ];
+
+                cards[0].querySelector('img').src = order[0].src;
+                cards[1].querySelector('img').src = order[1].src;
+                cards[2].querySelector('img').src = order[2].src;
+
+                cards.forEach((card) => card.classList.remove('swipe'));
+                cards[0].classList.add('swipe');
+                cards[1].classList.add('swipe');
+                cards[2].classList.add('swipe');
+
+                setTimeout(() => {
+                    cards.forEach((card) => card.classList.remove('swipe'));
+                }, 250);
+            };
+
+            setCardOrder(heroIndex);
             setInterval(() => {
-                slides.forEach((slide, i) => {
-                    slide.classList.toggle('active', i === slideIndex);
-                });
-                slideIndex = (slideIndex + 1) % slides.length;
+                heroIndex = (heroIndex + 1) % 3;
+                setCardOrder(heroIndex);
             }, 1500);
         }
 
