@@ -36,12 +36,12 @@
             --bg-strong: #02070e;
             --panel: #0b1220;
             --panel-soft: rgba(13, 22, 40, 0.92);
-            --accent: #9f1d1d;
-            --accent-soft: #d75d5d;
-            --accent-glow: rgba(200, 67, 67, 0.42);
-            --text: #f4f3f3;
-            --muted: #d7c7c7;
-            --line: rgba(182, 75, 75, 0.42);
+            --accent: #7ea5ff;
+            --accent-soft: #c9d9ff;
+            --accent-strong: #9db9ff;
+            --text: #edf5ff;
+            --muted: #a7b5cf;
+            --line: rgba(126, 165, 255, 0.24);
             --shadow: rgba(0, 0, 0, 0.48);
             --green: #22c55e;
         }
@@ -50,8 +50,8 @@
 
         body {
             background:
-                radial-gradient(circle at 18% 8%, rgba(180, 40, 40, 0.2), transparent 20%),
-                radial-gradient(circle at 76% 16%, rgba(115, 18, 18, 0.14), transparent 24%),
+                radial-gradient(circle at 18% 8%, rgba(126, 165, 255, 0.22), transparent 20%),
+                radial-gradient(circle at 76% 16%, rgba(91, 120, 255, 0.12), transparent 24%),
                 radial-gradient(circle at 50% 80%, rgba(8, 13, 29, 0.9), transparent 42%),
                 linear-gradient(180deg, var(--bg-strong) 0%, #050b15 100%);
             color: var(--text);
@@ -59,7 +59,7 @@
             overflow-x: hidden;
         }
 
-        .blue-text { color: var(--muted); }
+        .blue-text { color: var(--accent-soft); }
 
         #ambientCanvas {
             position: fixed;
@@ -99,24 +99,24 @@
 
         .cta-primary {
             background: linear-gradient(135deg, var(--accent) 0%, var(--accent-soft) 100%);
-            color: #f8f2f2;
-            box-shadow: 0 12px 30px rgba(180, 45, 45, 0.28);
+            color: #07111d;
+            box-shadow: 0 12px 30px rgba(126, 165, 255, 0.28);
         }
 
         .cta-primary:hover {
             transform: translateY(-1px);
-            box-shadow: 0 14px 36px rgba(180, 45, 45, 0.34);
+            box-shadow: 0 14px 36px rgba(126, 165, 255, 0.34);
         }
 
         .cta-secondary {
-            border: 1px solid rgba(180, 45, 45, 0.6);
+            border: 1px solid rgba(126, 165, 255, 0.5);
             color: var(--text);
             background: rgba(255,255,255,0.02);
         }
 
         .glass-card {
             background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(180, 45, 45, 0.18);
+            border: 1px solid rgba(126,165,255,0.18);
             backdrop-filter: blur(10px);
         }
 
@@ -154,7 +154,7 @@
 
         .filter-btn.active {
             background: linear-gradient(135deg, var(--accent), var(--accent-soft));
-            color: #f7f5f5;
+            color: #07111d;
             border-color: transparent;
         }
 
@@ -162,15 +162,15 @@
         .form-textarea,
         .form-select {
             background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(180, 45, 45, 0.18);
+            border: 1px solid rgba(126,165,255,0.18);
             color: white;
         }
 
         .form-input:focus,
         .form-textarea:focus,
         .form-select:focus {
-            border-color: rgba(219, 115, 115, 0.8);
-            box-shadow: 0 0 0 1px rgba(219, 115, 115, 0.4);
+            border-color: rgba(201, 217, 255, 0.8);
+            box-shadow: 0 0 0 1px rgba(201, 217, 255, 0.4);
             outline: none;
         }
 
@@ -200,7 +200,7 @@
             position: absolute;
             inset: 0;
             background: url('hero-bg.jpg') center/cover no-repeat;
-            filter: blur(9px) brightness(0.32) saturate(0.7);
+            filter: blur(9px) brightness(0.32) saturate(0.8);
             transform: scale(1.08);
             opacity: 0.9;
             z-index: 0;
@@ -244,7 +244,7 @@
             gap: 0.7rem;
             padding: 0.8rem 1.5rem;
             border-radius: 999px;
-            border: 1px solid rgba(180, 45, 45, 0.4);
+            border: 1px solid rgba(126,165,255,0.4);
             background: rgba(13, 16, 24, 0.72);
             color: var(--text);
             letter-spacing: 0.2em;
@@ -264,8 +264,8 @@
         }
 
         @keyframes bookingBlink {
-            0%, 100% { box-shadow: 0 0 0 rgba(180,45,45,0), 0 14px 32px rgba(0,0,0,0.18); opacity: 1; }
-            50% { box-shadow: 0 0 18px rgba(180,45,45,0.36), 0 14px 32px rgba(0,0,0,0.18); opacity: 0.9; }
+            0%, 100% { box-shadow: 0 0 0 rgba(126,165,255,0), 0 14px 32px rgba(0,0,0,0.18); opacity: 1; }
+            50% { box-shadow: 0 0 18px rgba(126,165,255,0.32), 0 14px 32px rgba(0,0,0,0.18); opacity: 0.9; }
         }
 
         .hero-stage {
@@ -292,7 +292,7 @@
             position: absolute;
             overflow: hidden;
             border-radius: 26px;
-            border: 1px solid rgba(180, 45, 45, 0.2);
+            border: 1px solid rgba(126,165,255,0.2);
             box-shadow: 0 30px 70px rgba(0,0,0,0.5);
             background: rgba(11, 18, 32, 0.9);
             transition: transform 1s cubic-bezier(.22,1,.36,1), opacity 1s ease, filter 1s ease, box-shadow 1s ease;
@@ -300,12 +300,7 @@
             transform-style: preserve-3d;
         }
 
-        .hero-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
+        .hero-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
         .hero-card.left {
             width: 28%;
@@ -382,7 +377,7 @@
 
         .stat {
             border-radius: 1.15rem;
-            border: 1px solid rgba(180,45,45,0.2);
+            border: 1px solid rgba(126,165,255,0.2);
             background: rgba(255,255,255,0.02);
             padding: 1.25rem 0.8rem;
             text-align: center;
@@ -391,7 +386,7 @@
         .stat-number {
             font-size: clamp(1.3rem, 3vw, 2.1rem);
             font-family: 'Cinzel', serif;
-            color: var(--muted);
+            color: var(--accent-soft);
             letter-spacing: 0.08em;
             line-height: 1.1;
         }
@@ -951,7 +946,7 @@
                     if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
                     ctx.beginPath();
                     ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(180, 45, 45, ${p.a})`;
+                    ctx.fillStyle = `rgba(126,165,255,${p.a})`;
                     ctx.fill();
                 });
                 requestAnimationFrame(draw);
