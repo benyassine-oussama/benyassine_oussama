@@ -168,9 +168,9 @@
             </div>
         </header>
 
-        <!-- Hero Section with 50% Blurry Background Image -->
+        <!-- Hero Section with 20% Blurry Background Image -->
         <section class="relative pt-36 pb-16 px-6 text-center max-w-7xl mx-auto overflow-hidden">
-            <!-- Background Image (40% Opacity + Blurry + Seamless Gradient Fade) -->
+            <!-- Background Image (20% Opacity + Blurry + Seamless Gradient Fade) -->
             <div class="absolute inset-0 z-0 pointer-events-none">
                 <img src="./hero-bg.jpg" alt="BENYASSINE OUSSAMA" class="w-full h-full object-cover object-top opacity-20 blur-md filter grayscale">
                 <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-[#080808]"></div>
@@ -206,12 +206,12 @@
             </div>
         </section>
 
-        <!-- 3D Swipable Exhibition Showcase (6 Images) -->
+        <!-- 3D Swipable Exhibition Showcase (Auto-swiping every 2 seconds) -->
         <section id="showcase" class="py-12 border-y border-white/5 bg-black/30 backdrop-blur-sm">
             <div class="max-w-7xl mx-auto px-6 mb-4 flex items-center justify-between">
                 <div>
                     <h2 class="font-serif text-xl md:text-2xl tracking-wider uppercase">3D Exhibition Showcase</h2>
-                    <p class="text-xs text-gray-500 uppercase tracking-widest mt-1">Swipe or click to navigate center frame</p>
+                    <p class="text-xs text-gray-500 uppercase tracking-widest mt-1">Auto-swiping • Click or swipe to jump</p>
                 </div>
                 <div class="flex items-center space-x-2">
                     <button onclick="prevCover()" class="p-3 border border-white/10 rounded-full hover:bg-white hover:text-black transition-all">
@@ -223,7 +223,7 @@
                 </div>
             </div>
 
-            <div class="coverflow-wrapper">
+            <div class="coverflow-wrapper" onmouseenter="stopAutoSwipe()" onmouseleave="startAutoSwipe()">
                 <div id="coverflowTrack" class="coverflow-track">
                     <!-- 6 Featured Items rendered dynamically -->
                 </div>
@@ -347,11 +347,16 @@
 
     <!-- Site Scripts -->
     <script>
-        // Sample Portfolio Data (6 Showcase + 15 Gallery Photos)
+        // Local Image Path Placeholders for 3D Showcase (Upload showcase1.jpg through showcase6.jpg to GitHub)
         const showcaseData = [
-            { id: 's1', title: 'State Arrival Motorcade', category: 'embassy', location: 'Rabat, Morocco', img: 'https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1000&q=80' },
-            { id: 's2', title: 'Royal Architecture', category: 'embassy', location: 'Rabat, Morocco', img: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1000&q=80' },
-            { id: 's3', title: 'Ministerial Summit', category: 'conference', location: 'Rabat, Morocco', img: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=1000&q=80' },
-            { id: 's4', title: 'Stage Spotlight Solo', category: 'concert', location: 'Rabat, Morocco', img: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1000&q=80' },
-            { id: 's5', title: 'Monochrome Editorial', category: 'portrait', location: 'Rabat, Morocco', img: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=80' },
-            { id: 's6', title: 'Diplomatic Delegation', category: 'embassy', location: 'Rabat, Morocco', img: 'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop
+            { id: 's1', title: 'Diplomatic Gala', category: 'embassy', location: 'Rabat, Morocco', img: './showcase1.jpg' },
+            { id: 's2', title: 'Royal Summit', category: 'embassy', location: 'Rabat, Morocco', img: './showcase2.jpg' },
+            { id: 's3', title: 'Keynote Address', category: 'conference', location: 'Rabat, Morocco', img: './showcase3.jpg' },
+            { id: 's4', title: 'Stage Spotlight', category: 'concert', location: 'Rabat, Morocco', img: './showcase4.jpg' },
+            { id: 's5', title: 'Monochrome Portrait', category: 'portrait', location: 'Rabat, Morocco', img: './showcase5.jpg' },
+            { id: 's6', title: 'Bilateral Delegation', category: 'embassy', location: 'Rabat, Morocco', img: './showcase6.jpg' }
+        ];
+
+        const galleryData = [
+            { id: 1, title: 'Embassy Gala Keynote', category: 'embassy', location: 'Rabat, Morocco', img: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80' },
+            { id: 2, title: 'Royal Escort Detail', category: 'embassy', location: 'Rabat, Morocco', 
