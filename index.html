@@ -400,6 +400,142 @@
             </div>
         </section>
 
+        <!-- Contact Form Section (Connected to Gmail) -->
+        <section id="contact" class="py-20 max-w-3xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="font-serif text-2xl md:text-3xl tracking-wider uppercase">Inquire / Bookings</h2>
+                <p class="text-xs text-gray-500 uppercase tracking-widest mt-2">Available for projects across Rabat & Morocco</p>
+            </div>
+
+            <form action="https://formsubmit.co/Benyassineoussama1@gmail.com" method="POST" class="space-y-6">
+                <!-- Anti-Spam & Configuration -->
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_subject" value="New Portfolio Inquiry - BENYASSINE OUSSAMA">
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs uppercase tracking-widest text-gray-400 mb-2">Name</label>
+                        <input type="text" name="Name" required class="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-sm focus:outline-none focus:border-white text-white">
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-widest text-gray-400 mb-2">Email</label>
+                        <input type="email" name="Email" required class="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-sm focus:outline-none focus:border-white text-white">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs uppercase tracking-widest text-gray-400 mb-2">Event Type</label>
+                    <select name="Event Type" class="w-full bg-black border border-white/10 rounded px-4 py-3 text-sm focus:outline-none focus:border-white text-white">
+                        <option>Diplomatic / Embassy Event</option>
+                        <option>Corporate Summit / Conference</option>
+                        <option>Concert / Stage Performance</option>
+                        <option>Editorial Portrait Session</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs uppercase tracking-widest text-gray-400 mb-2">Message</label>
+                    <textarea name="Message" rows="5" required class="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-sm focus:outline-none focus:border-white text-white" placeholder="Provide details regarding date, location in Morocco, and scope..."></textarea>
+                </div>
+                <button type="submit" class="w-full py-4 bg-white text-black font-semibold text-xs tracking-widest uppercase hover:bg-gray-200 transition-colors rounded">
+                    Send Inquiry
+                </button>
+            </form>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-8 border-t border-white/10 text-center text-xs text-gray-500 uppercase tracking-widest">
+            <p>© 2026 BENYASSINE OUSSAMA. All rights reserved. • Rabat, Morocco</p>
+        </footer>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 z-50 bg-black/95 hidden backdrop-blur-xl flex items-center justify-center p-4 sm:p-8">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white text-2xl p-2 hover:opacity-70 transition-opacity z-10">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="max-w-5xl w-full flex flex-col md:flex-row gap-8 items-center">
+            <div class="w-full md:w-3/4 flex justify-center">
+                <img id="lightboxImg" src="" alt="" class="max-h-[80vh] w-auto object-contain rounded border border-white/10 shadow-2xl">
+            </div>
+            <div class="w-full md:w-1/4 text-left space-y-4">
+                <span id="lightboxTag" class="inline-block px-3 py-1 border border-white/20 text-[10px] uppercase tracking-widest rounded text-gray-300"></span>
+                <h3 id="lightboxTitle" class="font-serif text-2xl tracking-wider uppercase text-white"></h3>
+                <div class="pt-4 border-t border-white/10">
+                    <p class="text-xs uppercase tracking-widest text-gray-400">Location</p>
+                    <p id="lightboxLocation" class="text-sm font-medium text-white mt-1"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Live Customizer Side Panel -->
+    <div id="customizerPanel" class="fixed top-0 right-0 h-full w-full sm:w-96 bg-cardBg z-50 border-l border-white/10 p-6 transform translate-x-full transition-transform duration-300 overflow-y-auto shadow-2xl">
+        <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
+            <h3 class="font-serif text-lg tracking-wider uppercase">Customize Site</h3>
+            <button onclick="toggleCustomizer()" class="text-gray-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+        </div>
+
+        <div class="space-y-6 text-xs uppercase tracking-wider">
+            <div>
+                <label class="block text-gray-400 mb-2">Artist Name</label>
+                <input id="inputName" type="text" value="BENYASSINE OUSSAMA" class="w-full bg-white/5 border border-white/10 p-2.5 rounded text-white">
+            </div>
+            <div>
+                <label class="block text-gray-400 mb-2">Tagline / Subtitle</label>
+                <input id="inputSubtitle" type="text" value="Visual Artist — Turning moments into timeless visuals" class="w-full bg-white/5 border border-white/10 p-2.5 rounded text-white">
+            </div>
+            <div>
+                <label class="block text-gray-400 mb-2">About Text</label>
+                <textarea id="inputAbout" rows="4" class="w-full bg-white/5 border border-white/10 p-2.5 rounded text-white font-normal lowercase">Based in Rabat, Morocco, BENYASSINE OUSSAMA specializes in high-stakes visual storytelling. From diplomatic embassy engagements to concerts and editorial portraiture, every frame is crafted with luxury monochrome precision.</textarea>
+            </div>
+            <div>
+                <label class="block text-gray-400 mb-2">Email Address</label>
+                <input id="inputEmail" type="text" value="Benyassineoussama1@gmail.com" class="w-full bg-white/5 border border-white/10 p-2.5 rounded text-white lowercase">
+            </div>
+
+            <button onclick="applyCustomizations()" class="w-full py-3 bg-white text-black font-semibold rounded hover:bg-gray-200 transition-colors">
+                Apply Changes
+            </button>
+
+            <button onclick="exportSingleFonclick="filterGallery('all')" class="filter-btn active px-4 py-2 border border-white text-xs tracking-widest uppercase bg-white text-black transition-all">All Works</button>
+                    <button onclick="filterGallery('embassy')" class="filter-btn px-4 py-2 border border-white/10 text-xs tracking-widest uppercase text-gray-400 hover:border-white hover:text-white transition-all">Embassies & State</button>
+                    <button onclick="filterGallery('conference')" class="filter-btn px-4 py-2 border border-white/10 text-xs tracking-widest uppercase text-gray-400 hover:border-white hover:text-white transition-all">Conferences</button>
+                    <button onclick="filterGallery('concert')" class="filter-btn px-4 py-2 border border-white/10 text-xs tracking-widest uppercase text-gray-400 hover:border-white hover:text-white transition-all">Concerts & Stage</button>
+                    <button onclick="filterGallery('portrait')" class="filter-btn px-4 py-2 border border-white/10 text-xs tracking-widest uppercase text-gray-400 hover:border-white hover:text-white transition-all">Portraits</button>
+                </div>
+            </div>
+
+            <!-- Gallery Grid (15 Images) -->
+            <div id="galleryGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                <!-- 15 Portfolio Cards loaded dynamically -->
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 border-t border-white/10 bg-black/40">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h2 class="font-serif text-2xl md:text-3xl tracking-wider uppercase mb-6">About The Artist</h2>
+                <p id="aboutText" class="text-gray-300 font-light text-base md:text-lg leading-relaxed mb-10 max-w-3xl mx-auto">
+                    Based in Rabat, Morocco, BENYASSINE OUSSAMA specializes in high-stakes visual storytelling. From diplomatic embassy engagements and royal summits to keynotes, stage performances, and editorial portraiture, every frame is designed with a timeless luxury monochrome aesthetic.
+                </p>
+
+                <!-- Social Links -->
+                <div class="flex flex-wrap justify-center gap-6 text-xs tracking-widest uppercase">
+                    <a id="emailLink" href="mailto:Benyassineoussama1@gmail.com" class="px-6 py-3 border border-white/20 rounded hover:bg-white hover:text-black transition-all">
+                        <i class="fa-regular fa-envelope mr-2"></i>Benyassineoussama1@gmail.com
+                    </a>
+                    <a id="igLink" href="https://instagram.com/benyassine_oussama" target="_blank" class="px-6 py-3 border border-white/20 rounded hover:bg-white hover:text-black transition-all">
+                        <i class="fa-brands fa-instagram mr-2"></i>@benyassine_oussama
+                    </a>
+                    <a id="linktreeLink" href="https://linktr.ee/benyassineoussama" target="_blank" class="px-6 py-3 border border-white/20 rounded hover:bg-white hover:text-black transition-all">
+                        <i class="fa-solid fa-link mr-2"></i>Linktree
+                    </a>
+                </div>
+            </div>
+        </section>
+
         <!-- Contact Form Section -->
         <section id="contact" class="py-20 max-w-3xl mx-auto px-6">
             <div class="text-center mb-12">
