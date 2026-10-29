@@ -168,12 +168,12 @@
             </div>
         </header>
 
-        <!-- Hero Section with 20% Blurry Background Image -->
+        <!-- Hero Section with Blurry Background Image -->
         <section class="relative pt-36 pb-16 px-6 text-center max-w-7xl mx-auto overflow-hidden">
-            <!-- Background Image (20% Opacity + Blurry + Seamless Gradient Fade) -->
+            <!-- Background Image (hero-bg.jpg at 50% opacity) -->
             <div class="absolute inset-0 z-0 pointer-events-none">
-                <img src="./hero-bg.jpg" alt="BENYASSINE OUSSAMA" class="w-full h-full object-cover object-top opacity-20 blur-md filter grayscale">
-                <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-[#080808]"></div>
+                <img src="hero-bg.jpg" alt="BENYASSINE OUSSAMA" class="w-full h-full object-cover object-top opacity-50 blur-sm filter grayscale">
+                <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-[#080808]"></div>
             </div>
 
             <div class="relative z-10 max-w-4xl mx-auto">
@@ -347,16 +347,16 @@
 
     <!-- Site Scripts -->
     <script>
-        // Local Image Path Placeholders for 3D Showcase (Upload showcase1.jpg through showcase6.jpg to GitHub)
+        // Exact uploaded filenames in your GitHub repository
         const showcaseData = [
-            { id: 's1', title: 'Diplomatic Gala', category: 'embassy', location: 'Rabat, Morocco', img: './showcase1.jpg' },
-            { id: 's2', title: 'Royal Summit', category: 'embassy', location: 'Rabat, Morocco', img: './showcase2.jpg' },
-            { id: 's3', title: 'Keynote Address', category: 'conference', location: 'Rabat, Morocco', img: './showcase3.jpg' },
-            { id: 's4', title: 'Stage Spotlight', category: 'concert', location: 'Rabat, Morocco', img: './showcase4.jpg' },
-            { id: 's5', title: 'Monochrome Portrait', category: 'portrait', location: 'Rabat, Morocco', img: './showcase5.jpg' },
-            { id: 's6', title: 'Bilateral Delegation', category: 'embassy', location: 'Rabat, Morocco', img: './showcase6.jpg' }
+            { id: 's1', title: 'Diplomatic Gala', category: 'embassy', location: 'Rabat, Morocco', img: 'showcase1.jpg' },
+            { id: 's2', title: 'Royal Summit', category: 'embassy', location: 'Rabat, Morocco', img: 'showcase2.jpg' },
+            { id: 's3', title: 'Keynote Address', category: 'conference', location: 'Rabat, Morocco', img: 'showcase3.jpg' },
+            { id: 's4', title: 'Stage Spotlight', category: 'concert', location: 'Rabat, Morocco', img: 'showcase4.jpg' },
+            { id: 's5', title: 'Monochrome Portrait', category: 'portrait', location: 'Rabat, Morocco', img: 'showcase5.jpg' },
+            { id: 's6', title: 'Bilateral Delegation', category: 'embassy', location: 'Rabat, Morocco', img: 'showcase6.jpg' }
         ];
 
         const galleryData = [
             { id: 1, title: 'Embassy Gala Keynote', category: 'embassy', location: 'Rabat, Morocco', img: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80' },
-            { id: 2, title: 'Royal Escort Detail', category: 'embassy', location: 'Rabat, Morocco', 
+            { id: 2, title: 'Royal Escort Detail', category: 'embassy', location: 'Rabat, Morocco', img: 'https://images.unsplash.com/photo-1508847154043-be5407fcaa5a?auto=format&fit=crop&w=
