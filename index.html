@@ -168,33 +168,41 @@
             </div>
         </header>
 
-        <!-- Hero Section -->
-        <section class="pt-36 pb-12 px-6 text-center max-w-4xl mx-auto">
-            <!-- Blinking Green Status Dot & Location Badge -->
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 border border-emerald-500/20 rounded-full bg-emerald-500/10 backdrop-blur-sm text-[11px] tracking-widest uppercase text-gray-200">
-                <span class="relative flex h-2 w-2 mr-0.5">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                </span>
-                <span class="text-emerald-400 font-medium">Available for Bookings</span>
-                <span class="text-gray-600">•</span>
-                <span class="text-gray-400"><i class="fa-solid fa-location-dot text-red-500 mr-1"></i>Rabat, Morocco</span>
+        <!-- Hero Section with 20% Blurry Background Image -->
+        <section class="relative pt-36 pb-16 px-6 text-center max-w-7xl mx-auto overflow-hidden">
+            <!-- Background Image (20% Opacity + Blurry + Seamless Gradient Fade) -->
+            <div class="absolute inset-0 z-0 pointer-events-none">
+                <img src="./hero-bg.jpg" alt="BENYASSINE OUSSAMA" class="w-full h-full object-cover object-top opacity-20 blur-md filter grayscale">
+                <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-[#080808]"></div>
             </div>
 
-            <h1 id="heroTitle" class="font-serif text-3xl sm:text-5xl md:text-6xl font-bold tracking-wider uppercase mb-4 leading-tight">
-                BENYASSINE OUSSAMA
-            </h1>
-            <p id="heroSubtitle" class="text-gray-400 text-sm sm:text-base font-light tracking-widest max-w-2xl mx-auto uppercase">
-                Visual Artist — Turning moments into timeless visuals
-            </p>
-            <div class="mt-6 flex justify-center space-x-6 text-xs tracking-widest uppercase text-gray-500">
-                <span>Embassies</span>
-                <span>•</span>
-                <span>Conferences</span>
-                <span>•</span>
-                <span>Concerts</span>
-                <span>•</span>
-                <span>Portraits</span>
+            <div class="relative z-10 max-w-4xl mx-auto">
+                <!-- Blinking Green Status Dot & Location Badge -->
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 border border-emerald-500/20 rounded-full bg-emerald-500/10 backdrop-blur-sm text-[11px] tracking-widest uppercase text-gray-200">
+                    <span class="relative flex h-2 w-2 mr-0.5">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    </span>
+                    <span class="text-emerald-400 font-medium">Available for Bookings</span>
+                    <span class="text-gray-600">•</span>
+                    <span class="text-gray-400"><i class="fa-solid fa-location-dot text-red-500 mr-1"></i>Rabat, Morocco</span>
+                </div>
+
+                <h1 id="heroTitle" class="font-serif text-3xl sm:text-5xl md:text-6xl font-bold tracking-wider uppercase mb-4 leading-tight">
+                    BENYASSINE OUSSAMA
+                </h1>
+                <p id="heroSubtitle" class="text-gray-400 text-sm sm:text-base font-light tracking-widest max-w-2xl mx-auto uppercase">
+                    Visual Artist — Turning moments into timeless visuals
+                </p>
+                <div class="mt-6 flex justify-center space-x-6 text-xs tracking-widest uppercase text-gray-500">
+                    <span>Embassies</span>
+                    <span>•</span>
+                    <span>Conferences</span>
+                    <span>•</span>
+                    <span>Concerts</span>
+                    <span>•</span>
+                    <span>Portraits</span>
+                </div>
             </div>
         </section>
 
@@ -346,10 +354,4 @@
             { id: 's3', title: 'Ministerial Summit', category: 'conference', location: 'Rabat, Morocco', img: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=1000&q=80' },
             { id: 's4', title: 'Stage Spotlight Solo', category: 'concert', location: 'Rabat, Morocco', img: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1000&q=80' },
             { id: 's5', title: 'Monochrome Editorial', category: 'portrait', location: 'Rabat, Morocco', img: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=80' },
-            { id: 's6', title: 'Diplomatic Delegation', category: 'embassy', location: 'Rabat, Morocco', img: 'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=1000&q=80' }
-        ];
-
-        const galleryData = [
-            { id: 1, title: 'Embassy Gala Keynote', category: 'embassy', location: 'Rabat, Morocco', img: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80' },
-            { id: 2, title: 'Royal Escort Detail', category: 'embassy', location: 'Rabat, Morocco', img: 'https://images.unsplash.com/photo-1508847154043-be5407fcaa5a?auto=format&fit=crop&w=800&q=80' },
-            { id: 3, title: 'Bilateral Press Briefing', category: 'embassy', location: 'Rabat, Morocco', img: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=800&q=80' 
+            { id: 's6', title: 'Diplomatic Delegation', category: 'embassy', location: 'Rabat, Morocco', img: 'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop
