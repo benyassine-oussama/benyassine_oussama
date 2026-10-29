@@ -90,6 +90,13 @@
             margin: 0.8rem auto 0;
         }
 
+        .luxury-kicker {
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            font-size: 10px;
+            color: var(--accent-soft);
+        }
+
         .hero-copy h1 {
             text-shadow: 0 10px 30px rgba(0,0,0,0.38);
         }
@@ -98,6 +105,11 @@
             background: linear-gradient(135deg, var(--accent) 0%, var(--accent-soft) 100%);
             color: #07111d;
             box-shadow: 0 12px 30px rgba(126, 165, 255, 0.28);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 14px 36px rgba(126, 165, 255, 0.34);
         }
 
         .cta-secondary {
@@ -110,6 +122,23 @@
             background: rgba(255,255,255,0.02);
             border: 1px solid rgba(126, 165, 255, 0.2);
             backdrop-filter: blur(10px);
+        }
+
+        .showcase-card,
+        .gallery-card,
+        .glass-card,
+        .section-shell,
+        .cta-primary,
+        .cta-secondary {
+            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+        }
+
+        .showcase-card:hover,
+        .gallery-card:hover,
+        .glass-card:hover, 
+        .section-shell:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 24px 50px rgba(0, 0, 0, 0.28);
         }
 
         .showcase-card img,
@@ -169,6 +198,12 @@
 
         .lightbox-image-wrap.swiping {
             transition: none;
+        }
+
+        @media (max-width: 640px) {
+            .luxury-kicker {
+                letter-spacing: 0.22em;
+            }
         }
     </style>
 </head>
@@ -267,7 +302,7 @@
             <section id="showcase" class="max-w-7xl mx-auto px-4 sm:px-6 py-20 reveal">
                 <div class="mb-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
                     <div>
-                        <p class="text-[10px] uppercase tracking-[0.28em] text-[#7ea5ff]">Exhibition</p>
+                        <p class="luxury-kicker">Exhibition</p>
                         <h2 class="font-serif text-3xl md:text-4xl uppercase mt-2">Showcase</h2>
                     </div>
                     <div class="flex items-center space-x-2">
@@ -289,7 +324,7 @@
                 <div class="section-shell rounded-[30px] p-5 sm:p-8">
                     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-8">
                         <div>
-                            <p class="text-[10px] uppercase tracking-[0.28em] text-[#7ea5ff]">Selected Works</p>
+                            <p class="luxury-kicker">Selected Works</p>
                             <h2 class="font-serif text-3xl md:text-4xl uppercase mt-2">Portfolio</h2>
                         </div>
 
@@ -315,7 +350,7 @@
                     </div>
 
                     <div class="section-shell rounded-[30px] p-6 sm:p-8">
-                        <p class="text-[10px] uppercase tracking-[0.28em] text-[#7ea5ff]">About</p>
+                        <p class="luxury-kicker">About</p>
                         <h2 class="font-serif text-3xl md:text-4xl uppercase mt-2">The artist behind the lens</h2>
                         <div class="blue-line my-5"></div>
                         <p class="text-[#d8e2f7] text-base md:text-lg leading-relaxed">
@@ -342,7 +377,7 @@
             <section id="contact" class="max-w-5xl mx-auto px-4 sm:px-6 py-20 reveal">
                 <div class="section-shell rounded-[30px] p-6 sm:p-8 md:p-10">
                     <div class="text-center mb-8">
-                        <p class="text-[10px] uppercase tracking-[0.28em] text-[#7ea5ff]">Inquire</p>
+                        <p class="luxury-kicker">Inquire</p>
                         <h2 class="font-serif text-3xl md:text-4xl uppercase mt-2">Book a session</h2>
                     </div>
 
