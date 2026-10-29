@@ -170,9 +170,17 @@
 
         <!-- Hero Section -->
         <section class="pt-36 pb-12 px-6 text-center max-w-4xl mx-auto">
-            <div class="inline-block px-3 py-1 mb-6 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm text-[11px] tracking-widest uppercase text-gray-400">
-                <i class="fa-solid fa-location-dot text-red-500 mr-2"></i>Rabat, Morocco
+            <!-- Blinking Green Status Dot & Location Badge -->
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 border border-emerald-500/20 rounded-full bg-emerald-500/10 backdrop-blur-sm text-[11px] tracking-widest uppercase text-gray-200">
+                <span class="relative flex h-2 w-2 mr-0.5">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <span class="text-emerald-400 font-medium">Available for Bookings</span>
+                <span class="text-gray-600">•</span>
+                <span class="text-gray-400"><i class="fa-solid fa-location-dot text-red-500 mr-1"></i>Rabat, Morocco</span>
             </div>
+
             <h1 id="heroTitle" class="font-serif text-3xl sm:text-5xl md:text-6xl font-bold tracking-wider uppercase mb-4 leading-tight">
                 BENYASSINE OUSSAMA
             </h1>
@@ -344,7 +352,4 @@
         const galleryData = [
             { id: 1, title: 'Embassy Gala Keynote', category: 'embassy', location: 'Rabat, Morocco', img: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80' },
             { id: 2, title: 'Royal Escort Detail', category: 'embassy', location: 'Rabat, Morocco', img: 'https://images.unsplash.com/photo-1508847154043-be5407fcaa5a?auto=format&fit=crop&w=800&q=80' },
-            { id: 3, title: 'Bilateral Press Briefing', category: 'embassy', location: 'Rabat, Morocco', img: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=800&q=80' },
-            { id: 4, title: 'Global Tech Forum', category: 'conference', location: 'Rabat, Morocco', img: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80' },
-            { id: 5, title: 'Economic Summit Panel', category: 'conference', location: 'Rabat, Morocco', img: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=800&q=80' },
-            { id: 6, title: 'Closing Plenary Address', category: 'conference', location: 'Rabat, Morocco', img: 'https://images.unsplash.com/photo-1431540015161-0bf868a2d407?
+            { id: 3, title: 'Bilateral Press Briefing', category: 'embassy', location: 'Rabat, Morocco', img: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=800&q=80' 
