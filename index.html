@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BENYASSINE OUSSAMA — Visual Artist</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -12,9 +11,12 @@
             theme: {
                 extend: {
                     colors: {
-                        darkroom: '#080808',
-                        cardBg: '#121212',
-                        accent: '#E5E5E5'
+                        noir: '#070707',
+                        panel: '#111111',
+                        gold: '#d4af67',
+                        goldSoft: '#f5d79a',
+                        soft: '#f3efe7',
+                        stone: '#b8b0a2'
                     },
                     fontFamily: {
                         sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -24,18 +26,42 @@
             }
         }
     </script>
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <!-- FontAwesome icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --bg: #070707;
+            --panel: #111111;
+            --panel-soft: rgba(20, 20, 20, 0.9);
+            --gold: #d4af67;
+            --gold-soft: #f5d79a;
+            --text: #f5f2ea;
+            --muted: #b9b2a8;
+            --line: rgba(212, 175, 103, 0.25);
+            --shadow: rgba(0, 0, 0, 0.4);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background-color: #080808;
-            color: #f3f4f6;
+            background:
+                radial-gradient(circle at top, rgba(212, 175, 103, 0.14), transparent 30%),
+                linear-gradient(180deg, #070707 0%, #0d0d0d 100%);
+            color: var(--text);
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
+        }
+
+        .gold-text {
+            color: var(--gold-soft);
+        }
+
+        .gold-border {
+            border-color: var(--line);
         }
 
         #ambientCanvas {
@@ -46,252 +72,326 @@
             height: 100vh;
             z-index: 0;
             pointer-events: none;
-            opacity: 0.35;
+            opacity: 0.25;
+            filter: blur(1px);
         }
 
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+        .section-shell {
+            background: linear-gradient(180deg, rgba(17, 17, 17, 0.78), rgba(8, 8, 8, 0.78));
+            border: 1px solid var(--line);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.25);
         }
 
-        ::-webkit-scrollbar {
-            width: 6px;
+        .gold-line {
+            height: 1px;
+            width: 80px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            display: block;
+            margin: 0.75rem auto 0;
         }
-        ::-webkit-scrollbar-track {
-            background: #080808;
+
+        .hero-copy h1 {
+            text-shadow: 0 10px 30px rgba(0,0,0,0.35);
         }
-        ::-webkit-scrollbar-thumb {
-            background: #262626;
-            border-radius: 3px;
+
+        .cta-primary {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-soft) 100%);
+            color: #0a0a0a;
+            box-shadow: 0 10px 30px rgba(212,175,103,0.3);
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #404040;
+
+        .cta-secondary {
+            border: 1px solid rgba(212,175,103,0.4);
+            color: var(--text);
+            background: rgba(255,255,255,0.02);
         }
+
+        .glass-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(212,175,103,0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .showcase-card img,
+        .gallery-card img {
+            transition: transform 0.6s ease, filter 0.5s ease;
+        }
+
+        .showcase-card:hover img,
+        .gallery-card:hover img {
+            transform: scale(1.06);
+            filter: saturate(1.15);
+        }
+
+        .filter-btn {
+            transition: all 0.25s ease;
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--gold), var(--gold-soft));
+            color: #0c0c0c;
+            border-color: transparent;
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(212,175,103,0.18);
+            color: white;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            border-color: rgba(245,215,154,0.8);
+            box-shadow: 0 0 0 1px rgba(245,215,154,0.4);
+            outline: none;
+        }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body class="relative min-h-screen selection:bg-white selection:text-black">
-
-    <!-- Ambient Interactive Background Canvas -->
+<body class="relative min-h-screen selection:bg-[#d4af67] selection:text-black">
     <canvas id="ambientCanvas"></canvas>
 
     <div class="relative z-10">
-
-        <!-- Navigation Bar -->
-        <header class="fixed top-0 left-0 right-0 z-40 backdrop-blur-md bg-black/60 border-b border-white/10 transition-all duration-300">
-            <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-                <a href="#" class="font-serif tracking-widest text-lg md:text-xl font-semibold uppercase hover:text-gray-300 transition-colors">
+        <header class="fixed top-0 left-0 right-0 z-40 backdrop-blur-md bg-black/60 border-b border-[#d4af67]/20 transition-all duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+                <a href="#top" class="font-serif tracking-[0.38em] text-[0.7rem] md:text-[0.8rem] uppercase text-[#f5f2ea] hover:text-[#f5d79a] transition-colors">
                     BENYASSINE OUSSAMA
                 </a>
 
-                <!-- Desktop Navigation -->
-                <nav class="hidden md:flex items-center space-x-8 text-xs tracking-widest uppercase text-gray-400 font-medium">
-                    <a href="#showcase" class="hover:text-white transition-colors">Showcase</a>
-                    <a href="#gallery" class="hover:text-white transition-colors">Portfolio</a>
-                    <a href="#about" class="hover:text-white transition-colors">About</a>
-                    <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+                <nav class="hidden md:flex items-center space-x-8 text-[10px] tracking-[0.28em] uppercase text-[#d3cbc0] font-medium">
+                    <a href="#showcase" class="hover:text-[#f5d79a] transition-colors">Showcase</a>
+                    <a href="#gallery" class="hover:text-[#f5d79a] transition-colors">Portfolio</a>
+                    <a href="#about" class="hover:text-[#f5d79a] transition-colors">About</a>
+                    <a href="#contact" class="hover:text-[#f5d79a] transition-colors">Contact</a>
                 </nav>
 
-                <!-- Actions -->
-                <div class="flex items-center space-x-4">
-                    <a href="#contact" class="px-4 py-2 bg-white text-black font-medium text-xs tracking-wider uppercase rounded hover:bg-gray-200 transition-colors">
+                <div class="flex items-center space-x-3">
+                    <a href="#contact" class="hidden sm:inline-flex px-4 py-2 border border-[#d4af67]/40 bg-[#d4af67]/10 text-[#f5d79a] text-[10px] tracking-[0.22em] uppercase rounded-full hover:bg-[#d4af67] hover:text-black transition-all">
                         Book Event
                     </a>
-                    <!-- Mobile Hamburger -->
-                    <button id="menuBtn" onclick="toggleMobileMenu()" class="md:hidden text-white p-2">
+                    <button id="menuBtn" onclick="toggleMobileMenu()" class="md:hidden text-white p-2 rounded-full border border-white/10 bg-white/5">
                         <i class="fa-solid fa-bars text-lg"></i>
                     </button>
                 </div>
             </div>
 
-            <!-- Mobile Dropdown Menu -->
-            <div id="mobileMenu" class="hidden md:hidden bg-black/95 border-b border-white/10 px-6 py-6 space-y-4 text-xs tracking-widest uppercase text-gray-300">
-                <a href="#showcase" onclick="toggleMobileMenu()" class="block py-2 hover:text-white">Showcase</a>
-                <a href="#gallery" onclick="toggleMobileMenu()" class="block py-2 hover:text-white">Portfolio</a>
-                <a href="#about" onclick="toggleMobileMenu()" class="block py-2 hover:text-white">About</a>
-                <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 hover:text-white">Contact</a>
+            <div id="mobileMenu" class="hidden md:hidden bg-black/95 border-b border-[#d4af67]/20 px-6 py-6 space-y-4 text-[10px] tracking-[0.24em] uppercase text-[#d3cbc0]">
+                <a href="#showcase" onclick="toggleMobileMenu()" class="block py-2 hover:text-[#f5d79a]">Showcase</a>
+                <a href="#gallery" onclick="toggleMobileMenu()" class="block py-2 hover:text-[#f5d79a]">Portfolio</a>
+                <a href="#about" onclick="toggleMobileMenu()" class="block py-2 hover:text-[#f5d79a]">About</a>
+                <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 hover:text-[#f5d79a]">Contact</a>
             </div>
         </header>
 
-        <!-- Hero Section with Blurry Background Image -->
-        <section class="relative pt-36 pb-16 px-6 text-center max-w-7xl mx-auto overflow-hidden">
-            <div class="absolute inset-0 z-0 pointer-events-none">
-                <img src="hero-bg.jpg" alt="BENYASSINE OUSSAMA" class="w-full h-full object-cover object-top opacity-50 blur-sm filter grayscale" onerror="this.onerror=null; this.src='showcase1.jpg'">
-                <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-[#080808]"></div>
-            </div>
-
-            <div class="relative z-10 max-w-4xl mx-auto">
-                <!-- Blinking Green Status Dot & Location Badge -->
-                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 border border-emerald-500/20 rounded-full bg-emerald-500/10 backdrop-blur-sm text-[11px] tracking-widest uppercase text-gray-300">
-                    <span class="relative flex h-2 w-2 mr-0.5">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                    </span>
-                    <span class="text-emerald-400 font-medium">Available for Bookings</span>
-                    <span class="text-gray-600">•</span>
-                    <span class="text-gray-400"><i class="fa-solid fa-location-dot text-red-500 mr-1"></i>Rabat, Morocco</span>
+        <main id="top">
+            <section class="relative pt-32 pb-20 px-4 sm:px-6">
+                <div class="absolute inset-0 z-0 pointer-events-none">
+                    <img src="hero-bg.jpg" alt="BENYASSINE OUSSAMA" class="w-full h-full object-cover opacity-35 grayscale" onerror="this.onerror=null; this.src='showcase1.jpg'">
+                    <div class="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-black/60"></div>
                 </div>
 
-                <h1 id="heroTitle" class="font-serif text-3xl sm:text-5xl md:text-6xl font-bold tracking-wider uppercase mb-4 leading-tight">
-                    BENYASSINE OUSSAMA
-                </h1>
-                <p id="heroSubtitle" class="text-gray-400 text-sm sm:text-base font-light tracking-widest max-w-2xl mx-auto uppercase">
-                    Visual Artist — Turning moments into timeless visuals
-                </p>
-                <div class="mt-6 flex justify-center space-x-6 text-xs tracking-widest uppercase text-gray-500">
-                    <span>Embassies</span>
-                    <span>•</span>
-                    <span>Conferences</span>
-                    <span>•</span>
-                    <span>Concerts</span>
-                    <span>•</span>
-                    <span>Portraits</span>
-                </div>
-            </div>
-        </section>
+                <div class="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-[1.25fr_0.75fr] gap-10 items-center">
+                    <div class="hero-copy">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 border border-[#d4af67]/30 rounded-full bg-[#d4af67]/5 text-[10px] tracking-[0.28em] uppercase text-[#f5d79a]">
+                            <span class="relative flex h-2 w-2 mr-1">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#d4af67] opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-[#d4af67]"></span>
+                            </span>
+                            Available for bookings
+                        </div>
 
-        <!-- Horizontal Swipable Exhibition Showcase -->
-        <section id="showcase" class="py-12 border-y border-white/5 bg-black/30 backdrop-blur-sm">
-            <div class="max-w-7xl mx-auto px-6 mb-6 flex items-center justify-between">
-                <div>
-                    <h2 class="font-serif text-xl md:text-2xl tracking-wider uppercase">Exhibition Showcase</h2>
-                    <p class="text-xs text-gray-500 uppercase tracking-widest mt-1">Swipe horizontally or use arrows to navigate</p>
-                </div>
-                <div class="flex items-center space-x-2">
-                    <button onclick="scrollShowcase('left')" class="p-3 border border-white/10 rounded-full hover:bg-white hover:text-black transition-all">
-                        <i class="fa-solid fa-chevron-left text-xs"></i>
-                    </button>
-                    <button onclick="scrollShowcase('right')" class="p-3 border border-white/10 rounded-full hover:bg-white hover:text-black transition-all">
-                        <i class="fa-solid fa-chevron-right text-xs"></i>
-                    </button>
-                </div>
-            </div>
+                        <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl uppercase mt-6 leading-none tracking-[0.08em]">
+                            BENYASSINE<br>
+                            <span class="gold-text">OUSSAMA</span>
+                        </h1>
 
-            <!-- Single Horizontal Swipable Row -->
-            <div id="showcaseTrack" class="flex overflow-x-auto snap-x snap-mandatory gap-6 px-6 no-scrollbar scroll-smooth pb-4 min-h-[300px]">
-                <!-- Swipable Showcase Items Rendered Dynamically -->
-            </div>
-        </section>
+                        <div class="gold-line my-6"></div>
 
-        <!-- Compact Portfolio Gallery Section -->
-        <section id="gallery" class="py-16 max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 border-b border-white/10 pb-6">
-                <div>
-                    <h2 class="font-serif text-2xl md:text-3xl tracking-wider uppercase">Portfolio Gallery</h2>
-                    <p class="text-xs text-gray-400 uppercase tracking-widest mt-2">Selected Works • Rabat & Morocco</p>
-                </div>
+                        <p class="max-w-xl text-sm sm:text-base text-[#d6d0c8] tracking-[0.2em] uppercase leading-relaxed">
+                            Visual Artist — Turning decisive moments into timeless imagery.
+                        </p>
 
-                <!-- Filter Tabs -->
-                <div class="flex flex-wrap gap-2 mt-6 md:mt-0" id="filterContainer">
-                    <button onclick="filterGallery('all', this)" class="filter-btn active px-3.5 py-1.5 border border-white text-xs tracking-widest uppercase bg-white text-black transition-all">All</button>
-                    <button onclick="filterGallery('embassy', this)" class="filter-btn px-3.5 py-1.5 border border-white/10 text-xs tracking-widest uppercase text-gray-400 hover:border-white hover:text-white transition-all">Embassy</button>
-                    <button onclick="filterGallery('conference', this)" class="filter-btn px-3.5 py-1.5 border border-white/10 text-xs tracking-widest uppercase text-gray-400 hover:border-white hover:text-white transition-all">Conference</button>
-                    <button onclick="filterGallery('concert', this)" class="filter-btn px-3.5 py-1.5 border border-white/10 text-xs tracking-widest uppercase text-gray-400 hover:border-white hover:text-white transition-all">Concert</button>
-                    <button onclick="filterGallery('portrait', this)" class="filter-btn px-3.5 py-1.5 border border-white/10 text-xs tracking-widest uppercase text-gray-400 hover:border-white hover:text-white transition-all">Portrait</button>
-                </div>
-            </div>
-
-            <!-- High-Density Compact Grid -->
-            <div id="galleryGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 min-h-[200px]">
-                <!-- Gallery Cards loaded dynamically -->
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="py-20 border-t border-white/10 bg-black/40">
-            <div class="max-w-4xl mx-auto px-6 text-center">
-                <h2 class="font-serif text-2xl md:text-3xl tracking-wider uppercase mb-6">About The Artist</h2>
-                <p id="aboutText" class="text-gray-300 font-light text-base md:text-lg leading-relaxed mb-10 max-w-3xl mx-auto">
-                    Based in Rabat, Morocco, BENYASSINE OUSSAMA specializes in high-stakes visual storytelling. From diplomatic embassy engagements and royal summits to keynotes, stage performances, and intimate portraits, his work turns emotion, atmosphere, and presence into compelling imagery.
-                </p>
-
-                <!-- Social Links -->
-                <div class="flex flex-wrap justify-center gap-6 text-xs tracking-widest uppercase">
-                    <a id="emailLink" href="mailto:Benyassineoussama1@gmail.com" class="px-6 py-3 border border-white/20 rounded hover:bg-white hover:text-black transition-all">
-                        <i class="fa-regular fa-envelope mr-2"></i>Benyassineoussama1@gmail.com
-                    </a>
-                    <a id="igLink" href="https://instagram.com/benyassine_oussama" target="_blank" class="px-6 py-3 border border-white/20 rounded hover:bg-white hover:text-black transition-all">
-                        <i class="fa-brands fa-instagram mr-2"></i>@benyassine_oussama
-                    </a>
-                    <a id="linktreeLink" href="https://linktr.ee/benyassineoussama" target="_blank" class="px-6 py-3 border border-white/20 rounded hover:bg-white hover:text-black transition-all">
-                        <i class="fa-solid fa-link mr-2"></i>Linktree
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Form Section -->
-        <section id="contact" class="py-20 max-w-3xl mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="font-serif text-2xl md:text-3xl tracking-wider uppercase">Inquire / Bookings</h2>
-                <p class="text-xs text-gray-500 uppercase tracking-widest mt-2">Available for projects across Rabat & Morocco</p>
-            </div>
-
-            <form action="https://formsubmit.co/Benyassineoussama1@gmail.com" method="POST" class="space-y-6">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_subject" value="New Portfolio Inquiry - BENYASSINE OUSSAMA">
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-xs uppercase tracking-widest text-gray-400 mb-2">Name</label>
-                        <input type="text" name="Name" required class="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-sm focus:outline-none focus:border-white text-white">
+                        <div class="mt-8 flex flex-wrap gap-4">
+                            <a href="#gallery" class="cta-primary inline-flex items-center justify-center px-6 py-3 rounded-full text-[10px] tracking-[0.24em] uppercase font-medium">View portfolio</a>
+                            <a href="#contact" class="cta-secondary inline-flex items-center justify-center px-6 py-3 rounded-full text-[10px] tracking-[0.24em] uppercase font-medium">Book a session</a>
+                        </div>
                     </div>
-                    <div>
-                        <label class="block text-xs uppercase tracking-widest text-gray-400 mb-2">Email</label>
-                        <input type="email" name="Email" required class="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-sm focus:outline-none focus:border-white text-white">
+
+                    <div class="glass-card rounded-[28px] p-5 sm:p-6 border border-[#d4af67]/20 shadow-2xl">
+                        <div class="rounded-[22px] overflow-hidden border border-[#d4af67]/20 bg-black/40">
+                            <img src="showcase1.jpg" alt="Featured artwork" class="w-full h-[420px] sm:h-[480px] object-cover object-center">
+                        </div>
+
+                        <div class="mt-5 grid grid-cols-3 gap-3 text-center">
+                            <div class="border border-[#d4af67]/20 bg-white/5 rounded-2xl p-3">
+                                <div class="text-xl font-serif gold-text">06</div>
+                                <div class="mt-1 text-[9px] uppercase tracking-[0.22em] text-[#c6bfb8]">Featured works</div>
+                            </div>
+                            <div class="border border-[#d4af67]/20 bg-white/5 rounded-2xl p-3">
+                                <div class="text-xl font-serif gold-text">10+</div>
+                                <div class="mt-1 text-[9px] uppercase tracking-[0.22em] text-[#c6bfb8]">Events covered</div>
+                            </div>
+                            <div class="border border-[#d4af67]/20 bg-white/5 rounded-2xl p-3">
+                                <div class="text-xl font-serif gold-text">Rabat</div>
+                                <div class="mt-1 text-[9px] uppercase tracking-[0.22em] text-[#c6bfb8]">Based in</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div>
-                    <label class="block text-xs uppercase tracking-widest text-gray-400 mb-2">Event Type</label>
-                    <select name="Event Type" class="w-full bg-black border border-white/10 rounded px-4 py-3 text-sm focus:outline-none focus:border-white text-white">
-                        <option>Diplomatic / Embassy Event</option>
-                        <option>Corporate Summit / Conference</option>
-                        <option>Concert / Stage Performance</option>
-                        <option>Editorial Portrait Session</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-xs uppercase tracking-widest text-gray-400 mb-2">Message</label>
-                    <textarea name="Message" rows="5" required class="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-sm focus:outline-none focus:border-white text-white" placeholder="Tell me about your event, vision, or project."></textarea>
-                </div>
-                <button type="submit" class="w-full py-4 bg-white text-black font-semibold text-xs tracking-widest uppercase hover:bg-gray-200 transition-colors rounded">
-                    Send Inquiry
-                </button>
-            </form>
-        </section>
+            </section>
 
-        <!-- Footer -->
-        <footer class="py-8 border-t border-white/10 text-center text-xs text-gray-500 uppercase tracking-widest">
-            <p>© 2026 BENYASSINE OUSSAMA. All rights reserved. • Rabat, Morocco</p>
+            <section id="showcase" class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+                <div class="mb-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+                    <div>
+                        <p class="text-[10px] uppercase tracking-[0.28em] text-[#d4af67]">Exhibition</p>
+                        <h2 class="font-serif text-3xl md:text-4xl uppercase mt-2">Showcase</h2>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <button onclick="scrollShowcase('left')" class="p-3 border border-[#d4af67]/20 rounded-full hover:bg-[#d4af67] hover:text-black transition-all text-[#f5d79a]">
+                            <i class="fa-solid fa-chevron-left text-xs"></i>
+                        </button>
+                        <button onclick="scrollShowcase('right')" class="p-3 border border-[#d4af67]/20 rounded-full hover:bg-[#d4af67] hover:text-black transition-all text-[#f5d79a]">
+                            <i class="fa-solid fa-chevron-right text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="showcaseTrack" class="flex overflow-x-auto no-scrollbar gap-6 pb-4 scroll-smooth">
+                    <!-- Showcase items populated by JS -->
+                </div>
+            </section>
+
+            <section id="gallery" class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+                <div class="section-shell rounded-[30px] p-5 sm:p-8">
+                    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-8">
+                        <div>
+                            <p class="text-[10px] uppercase tracking-[0.28em] text-[#d4af67]">Selected Works</p>
+                            <h2 class="font-serif text-3xl md:text-4xl uppercase mt-2">Portfolio</h2>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2" id="filterContainer">
+                            <button onclick="filterGallery('all', this)" class="filter-btn active px-3.5 py-2 border border-[#d4af67]/35 rounded-full text-[10px] tracking-[0.2em] uppercase">All</button>
+                            <button onclick="filterGallery('embassy', this)" class="filter-btn px-3.5 py-2 border border-white/10 rounded-full text-[10px] tracking-[0.2em] uppercase text-[#c8c3bb] hover:border-[#d4af67]/30 hover:text-[#f5d79a]">Embassy</button>
+                            <button onclick="filterGallery('conference', this)" class="filter-btn px-3.5 py-2 border border-white/10 rounded-full text-[10px] tracking-[0.2em] uppercase text-[#c8c3bb] hover:border-[#d4af67]/30 hover:text-[#f5d79a]">Conference</button>
+                            <button onclick="filterGallery('concert', this)" class="filter-btn px-3.5 py-2 border border-white/10 rounded-full text-[10px] tracking-[0.2em] uppercase text-[#c8c3bb] hover:border-[#d4af67]/30 hover:text-[#f5d79a]">Concert</button>
+                            <button onclick="filterGallery('portrait', this)" class="filter-btn px-3.5 py-2 border border-white/10 rounded-full text-[10px] tracking-[0.2em] uppercase text-[#c8c3bb] hover:border-[#d4af67]/30 hover:text-[#f5d79a]">Portrait</button>
+                        </div>
+                    </div>
+
+                    <div id="galleryGrid" class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 min-h-[240px]">
+                        <!-- Gallery cards loaded dynamically -->
+                    </div>
+                </div>
+            </section>
+
+            <section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+                <div class="grid lg:grid-cols-[0.8fr_1.2fr] gap-8 items-center">
+                    <div class="rounded-[30px] overflow-hidden border border-[#d4af67]/20 bg-black/30 shadow-2xl">
+                        <img src="showcase5.jpg" alt="Portrait" class="w-full h-full object-cover min-h-[420px]">
+                    </div>
+
+                    <div class="section-shell rounded-[30px] p-6 sm:p-8">
+                        <p class="text-[10px] uppercase tracking-[0.28em] text-[#d4af67]">About</p>
+                        <h2 class="font-serif text-3xl md:text-4xl uppercase mt-2">The artist behind the lens</h2>
+                        <div class="gold-line my-5"></div>
+                        <p class="text-[#d8d1c9] text-base md:text-lg leading-relaxed">
+                            Based in Rabat, Morocco, BENYASSINE OUSSAMA specializes in visual storytelling for high-stakes environments — from diplomatic ceremonies and royal engagements to concerts, keynotes, and editorial portraiture. Each frame is designed to carry atmosphere, emotion, and intention.
+                        </p>
+                        <div class="mt-6 grid sm:grid-cols-3 gap-3">
+                            <div class="glass-card rounded-2xl p-4 text-center border border-[#d4af67]/15">
+                                <div class="text-xl font-serif gold-text">8 yrs</div>
+                                <div class="mt-2 text-[9px] uppercase tracking-[0.22em] text-[#c8c3bb]">Experience</div>
+                            </div>
+                            <div class="glass-card rounded-2xl p-4 text-center border border-[#d4af67]/15">
+                                <div class="text-xl font-serif gold-text">Elite</div>
+                                <div class="mt-2 text-[9px] uppercase tracking-[0.22em] text-[#c8c3bb]">Events</div>
+                            </div>
+                            <div class="glass-card rounded-2xl p-4 text-center border border-[#d4af67]/15">
+                                <div class="text-xl font-serif gold-text">Global</div>
+                                <div class="mt-2 text-[9px] uppercase tracking-[0.22em] text-[#c8c3bb]">Storytelling</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="max-w-5xl mx-auto px-4 sm:px-6 py-16">
+                <div class="section-shell rounded-[30px] p-6 sm:p-8 md:p-10">
+                    <div class="text-center mb-8">
+                        <p class="text-[10px] uppercase tracking-[0.28em] text-[#d4af67]">Inquire</p>
+                        <h2 class="font-serif text-3xl md:text-4xl uppercase mt-2">Book a session</h2>
+                    </div>
+
+                    <form action="https://formsubmit.co/Benyassineoussama1@gmail.com" method="POST" class="space-y-6">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_subject" value="New Portfolio Inquiry - BENYASSINE OUSSAMA">
+
+                        <div class="grid md:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block mb-2 text-[10px] uppercase tracking-[0.22em] text-[#d9d1c4]">Name</label>
+                                <input type="text" name="Name" required class="form-input w-full rounded-2xl px-4 py-3">
+                            </div>
+                            <div>
+                                <label class="block mb-2 text-[10px] uppercase tracking-[0.22em] text-[#d9d1c4]">Email</label>
+                                <input type="email" name="Email" required class="form-input w-full rounded-2xl px-4 py-3">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block mb-2 text-[10px] uppercase tracking-[0.22em] text-[#d9d1c4]">Event Type</label>
+                            <select name="Event Type" class="form-select w-full rounded-2xl px-4 py-3">
+                                <option>Diplomatic / Embassy Event</option>
+                                <option>Corporate Summit / Conference</option>
+                                <option>Concert / Stage Performance</option>
+                                <option>Editorial Portrait Session</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block mb-2 text-[10px] uppercase tracking-[0.22em] text-[#d9d1c4]">Message</label>
+                            <textarea name="Message" rows="5" required class="form-textarea w-full rounded-2xl px-4 py-3" placeholder="Tell me about your event, vision, or project."></textarea>
+                        </div>
+
+                        <button type="submit" class="cta-primary w-full py-4 rounded-full text-[10px] tracking-[0.24em] uppercase font-semibold">
+                            Send inquiry
+                        </button>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <footer class="border-t border-[#d4af67]/15 py-8 text-center text-[10px] uppercase tracking-[0.22em] text-[#bcb2a5]">
+            © 2026 BENYASSINE OUSSAMA — Rabat, Morocco
         </footer>
     </div>
 
-    <!-- Semi-Transparent Lightbox Modal -->
-    <div id="lightbox" onclick="handleBackdropClick(event)" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-md hidden flex flex-col items-center justify-center p-4 sm:p-8 transition-all duration-300">
+    <div id="lightbox" onclick="handleBackdropClick(event)" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex flex-col items-center justify-center p-4 sm:p-8 transition-all duration-300">
         <button onclick="closeLightbox()" class="absolute top-5 right-5 text-white/80 hover:text-white text-2xl p-3 z-50 bg-black/40 rounded-full border border-white/10 backdrop-blur-sm">
             <i class="fa-solid fa-xmark"></i>
         </button>
 
         <div class="relative max-w-5xl w-full flex flex-col items-center justify-center">
-            <div class="relative max-h-[80vh] flex justify-center items-center overflow-hidden rounded-lg border border-white/20 shadow-2xl">
+            <div class="relative max-h-[80vh] flex justify-center items-center overflow-hidden rounded-2xl border border-[#d4af67]/20 shadow-[0_30px_80px_rgba(0,0,0,0.7)]">
                 <img id="lightboxImg" src="" alt="" class="max-h-[80vh] w-auto object-contain">
             </div>
 
-            <div class="w-full max-w-xl mt-4 bg-black/60 backdrop-blur-lg border border-white/10 rounded-lg p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+            <div class="w-full max-w-xl mt-4 bg-black/60 backdrop-blur-lg border border-[#d4af67]/15 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
                 <div class="flex items-center gap-3">
-                    <span id="lightboxTag" class="px-2.5 py-1 border border-white/20 text-[10px] uppercase tracking-widest rounded text-gray-300 bg-white/5"></span>
+                    <span id="lightboxTag" class="px-2.5 py-1 border border-[#d4af67]/20 text-[10px] uppercase tracking-widest rounded text-[#f5d79a] bg-[#d4af67]/5"></span>
                     <h3 id="lightboxTitle" class="font-serif text-lg tracking-wider uppercase text-white font-medium"></h3>
                 </div>
-                <p id="lightboxLocation" class="text-xs uppercase tracking-widest text-gray-400 flex items-center gap-1">
-                    <i class="fa-solid fa-location-dot text-red-500"></i><span id="lightboxLocText"></span>
+                <p id="lightboxLocation" class="text-[10px] uppercase tracking-[0.2em] text-[#d3cbc0] flex items-center gap-1">
+                    <i class="fa-solid fa-location-dot text-[#d4af67]"></i><span id="lightboxLocText"></span>
                 </p>
             </div>
         </div>
     </div>
 
-    <!-- Site Scripts -->
     <script>
         const showcaseData = [
             { id: 's1', title: 'Royal Procession Detail', category: 'embassy', location: 'Rabat, Morocco', img: 'showcase1.jpg' },
@@ -325,15 +425,17 @@
 
             showcaseData.forEach((item) => {
                 const el = document.createElement('div');
-                el.className = 'flex-none w-64 sm:w-72 md:w-80 snap-center aspect-[3/4] relative rounded-lg overflow-hidden border border-white/10 group cursor-pointer shadow-2xl bg-cardBg';
+                el.className = 'showcase-card flex-none w-72 sm:w-80 md:w-[24rem] snap-center rounded-[24px] overflow-hidden border border-[#d4af67]/20 bg-[#0f0f0f] shadow-[0_25px_60px_rgba(0,0,0,0.35)] cursor-pointer';
                 el.onclick = () => openLightbox(item.img, item.title, item.category, item.location);
 
                 el.innerHTML = `
-                    <img src="${item.img}" class="w-full h-full object-cover filter grayscale group-hover:scale-105 transition-transform duration-500" alt="${item.title}">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 right-0 p-4">
-                        <p class="text-[10px] uppercase tracking-[0.25em] text-gray-300">${item.category}</p>
-                        <h3 class="font-serif text-lg uppercase mt-2">${item.title}</h3>
+                    <div class="relative">
+                        <img src="${item.img}" class="w-full h-[420px] object-cover" alt="${item.title}">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-5">
+                            <p class="text-[9px] uppercase tracking-[0.22em] text-[#f5d79a]">${item.category}</p>
+                            <h3 class="font-serif text-xl uppercase mt-2 text-white">${item.title}</h3>
+                        </div>
                     </div>
                 `;
                 track.appendChild(el);
@@ -344,16 +446,17 @@
             const grid = document.getElementById('galleryGrid');
             if (!grid) return;
             grid.innerHTML = '';
+
             items.forEach((item) => {
                 const card = document.createElement('div');
-                card.className = 'group relative overflow-hidden rounded-lg border border-white/10 bg-cardBg cursor-pointer aspect-[4/5] shadow-lg';
+                card.className = 'gallery-card group relative overflow-hidden rounded-[22px] border border-[#d4af67]/15 bg-[#0d0d0d] cursor-pointer shadow-lg';
                 card.onclick = () => openLightbox(item.img, item.title, item.category, item.location);
                 card.innerHTML = `
-                    <img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 right-0 p-3">
-                        <p class="text-[10px] uppercase tracking-[0.2em] text-gray-300">${item.category}</p>
-                        <h4 class="font-serif text-sm uppercase mt-1 truncate">${item.title}</h4>
+                    <img src="${item.img}" alt="${item.title}" class="w-full h-[280px] object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-4">
+                        <p class="text-[9px] uppercase tracking-[0.18em] text-[#f5d79a]">${item.category}</p>
+                        <h4 class="font-serif text-base uppercase mt-1 text-white">${item.title}</h4>
                     </div>
                 `;
                 grid.appendChild(card);
@@ -363,11 +466,14 @@
         function filterGallery(category, button) {
             const buttons = document.querySelectorAll('.filter-btn');
             buttons.forEach((btn) => {
-                btn.classList.remove('active', 'bg-white', 'text-black');
-                btn.classList.add('text-gray-400', 'border-white/10');
+                btn.classList.remove('active');
+                btn.classList.remove('bg-[#d4af67]', 'text-black');
+                btn.classList.add('text-[#c8c3bb]', 'border-white/10');
             });
-            button.classList.add('active', 'bg-white', 'text-black');
-            button.classList.remove('text-gray-400', 'border-white/10');
+
+            button.classList.add('active');
+            button.classList.remove('text-[#c8c3bb]', 'border-white/10');
+            button.classList.add('bg-[#d4af67]', 'text-black');
 
             const filtered = category === 'all' ? galleryData : galleryData.filter(item => item.category === category);
             renderGallery(filtered);
@@ -411,7 +517,7 @@
         function scrollShowcase(direction) {
             const track = document.getElementById('showcaseTrack');
             if (!track) return;
-            const scrollAmount = direction === 'left' ? -320 : 320;
+            const scrollAmount = direction === 'left' ? -360 : 360;
             track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
         }
 
@@ -440,7 +546,7 @@
             if (!ctx) return;
 
             const particles = [];
-            const count = 45;
+            const count = 34;
 
             function resizeCanvas() {
                 canvas.width = window.innerWidth;
@@ -454,7 +560,7 @@
                     r: Math.random() * 2 + 1,
                     dx: (Math.random() - 0.5) * 0.3,
                     dy: (Math.random() - 0.5) * 0.3,
-                    a: Math.random() * 0.8 + 0.2
+                    a: Math.random() * 0.8 + 0.15
                 });
             }
 
@@ -468,7 +574,7 @@
 
                     ctx.beginPath();
                     ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(255,255,255,${p.a})`;
+                    ctx.fillStyle = `rgba(212,175,103,${p.a})`;
                     ctx.fill();
                 });
                 requestAnimationFrame(draw);
