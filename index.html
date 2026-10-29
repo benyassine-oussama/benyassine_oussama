@@ -33,8 +33,9 @@
     <style>
         :root {
             --bg: #04070d;
+            --bg-strong: #02070e;
             --panel: #0b1220;
-            --panel-soft: rgba(13, 22, 40, 0.9);
+            --panel-soft: rgba(13, 22, 40, 0.92);
             --accent: #7ea5ff;
             --accent-soft: #c9d9ff;
             --text: #edf5ff;
@@ -49,19 +50,17 @@
 
         body {
             background:
-                radial-gradient(circle at top, rgba(126, 165, 255, 0.18), transparent 28%),
-                linear-gradient(180deg, #04070d 0%, #070d18 100%);
+                radial-gradient(circle at 15% 10%, rgba(126, 165, 255, 0.22), transparent 24%),
+                radial-gradient(circle at 80% 20%, rgba(67, 104, 183, 0.15), transparent 28%),
+                radial-gradient(circle at 50% 80%, rgba(10, 18, 33, 0.8), transparent 50%),
+                linear-gradient(180deg, var(--bg-strong) 0%, #050b15 100%);
             color: var(--text);
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
         }
 
-        .gold-text {
+        .blue-text {
             color: var(--accent-soft);
-        }
-
-        .gold-border {
-            border-color: var(--line);
         }
 
         #ambientCanvas {
@@ -77,17 +76,18 @@
         }
 
         .section-shell {
-            background: linear-gradient(180deg, rgba(11, 18, 32, 0.84), rgba(7, 13, 24, 0.82));
+            background: linear-gradient(180deg, rgba(11, 18, 32, 0.9), rgba(7, 13, 24, 0.82));
             border: 1px solid var(--line);
             box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+            backdrop-filter: blur(10px);
         }
 
-        .gold-line {
+        .blue-line {
             height: 1px;
-            width: 80px;
+            width: 100px;
             background: linear-gradient(90deg, transparent, var(--accent), transparent);
             display: block;
-            margin: 0.75rem auto 0;
+            margin: 0.8rem auto 0;
         }
 
         .hero-copy h1 {
@@ -114,7 +114,7 @@
 
         .showcase-card img,
         .gallery-card img {
-            transition: transform 0.6s ease, filter 0.5s ease;
+            transition: transform 0.7s ease, filter 0.6s ease;
         }
 
         .showcase-card:hover img,
@@ -149,8 +149,27 @@
             outline: none;
         }
 
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .lightbox-image-wrap {
+            transition: transform 0.4s ease, opacity 0.4s ease;
+        }
+
+        .lightbox-image-wrap.swiping {
+            transition: none;
+        }
     </style>
 </head>
 <body class="relative min-h-screen selection:bg-[#7ea5ff] selection:text-black">
@@ -196,7 +215,7 @@
                 </div>
 
                 <div class="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-[1.25fr_0.75fr] gap-10 items-center">
-                    <div class="hero-copy">
+                    <div class="hero-copy reveal">
                         <div class="inline-flex items-center gap-2 px-4 py-2 border border-[#7ea5ff]/30 rounded-full bg-[#7ea5ff]/5 text-[10px] tracking-[0.28em] uppercase text-[#c9d9ff]">
                             <span class="relative flex h-2 w-2 mr-1">
                                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#7ea5ff] opacity-75"></span>
@@ -207,10 +226,10 @@
 
                         <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl uppercase mt-6 leading-none tracking-[0.08em]">
                             BENYASSINE<br>
-                            <span class="gold-text">OUSSAMA</span>
+                            <span class="blue-text">OUSSAMA</span>
                         </h1>
 
-                        <div class="gold-line my-6"></div>
+                        <div class="blue-line my-6"></div>
 
                         <p class="max-w-xl text-sm sm:text-base text-[#d8e2f7] tracking-[0.2em] uppercase leading-relaxed">
                             Visual Artist — Turning decisive moments into timeless imagery.
@@ -222,22 +241,22 @@
                         </div>
                     </div>
 
-                    <div class="glass-card rounded-[28px] p-5 sm:p-6 border border-[#7ea5ff]/20 shadow-2xl">
+                    <div class="glass-card rounded-[28px] p-5 sm:p-6 border border-[#7ea5ff]/20 shadow-2xl reveal">
                         <div class="rounded-[22px] overflow-hidden border border-[#7ea5ff]/20 bg-black/40">
                             <img src="showcase1.jpg" alt="Featured artwork" class="w-full h-[420px] sm:h-[480px] object-cover object-center">
                         </div>
 
                         <div class="mt-5 grid grid-cols-3 gap-3 text-center">
                             <div class="border border-[#7ea5ff]/20 bg-white/5 rounded-2xl p-3">
-                                <div class="text-xl font-serif gold-text">06</div>
-                                <div class="mt-1 text-[9px] uppercase tracking-[0.22em] text-[#c6cfdf]">Featured works</div>
+                                <div class="text-xl font-serif blue-text">03</div>
+                                <div class="mt-1 text-[9px] uppercase tracking-[0.22em] text-[#c6cfdf]">Years</div>
                             </div>
                             <div class="border border-[#7ea5ff]/20 bg-white/5 rounded-2xl p-3">
-                                <div class="text-xl font-serif gold-text">10+</div>
+                                <div class="text-xl font-serif blue-text">10+</div>
                                 <div class="mt-1 text-[9px] uppercase tracking-[0.22em] text-[#c6cfdf]">Events covered</div>
                             </div>
                             <div class="border border-[#7ea5ff]/20 bg-white/5 rounded-2xl p-3">
-                                <div class="text-xl font-serif gold-text">Rabat</div>
+                                <div class="text-xl font-serif blue-text">Rabat</div>
                                 <div class="mt-1 text-[9px] uppercase tracking-[0.22em] text-[#c6cfdf]">Based in</div>
                             </div>
                         </div>
@@ -245,7 +264,7 @@
                 </div>
             </section>
 
-            <section id="showcase" class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+            <section id="showcase" class="max-w-7xl mx-auto px-4 sm:px-6 py-16 reveal">
                 <div class="mb-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
                     <div>
                         <p class="text-[10px] uppercase tracking-[0.28em] text-[#7ea5ff]">Exhibition</p>
@@ -266,7 +285,7 @@
                 </div>
             </section>
 
-            <section id="gallery" class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+            <section id="gallery" class="max-w-7xl mx-auto px-4 sm:px-6 py-16 reveal">
                 <div class="section-shell rounded-[30px] p-5 sm:p-8">
                     <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-8">
                         <div>
@@ -289,7 +308,7 @@
                 </div>
             </section>
 
-            <section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+            <section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 py-16 reveal">
                 <div class="grid lg:grid-cols-[0.8fr_1.2fr] gap-8 items-center">
                     <div class="rounded-[30px] overflow-hidden border border-[#7ea5ff]/20 bg-black/30 shadow-2xl">
                         <img src="showcase5.jpg" alt="Portrait" class="w-full h-full object-cover min-h-[420px]">
@@ -298,21 +317,21 @@
                     <div class="section-shell rounded-[30px] p-6 sm:p-8">
                         <p class="text-[10px] uppercase tracking-[0.28em] text-[#7ea5ff]">About</p>
                         <h2 class="font-serif text-3xl md:text-4xl uppercase mt-2">The artist behind the lens</h2>
-                        <div class="gold-line my-5"></div>
+                        <div class="blue-line my-5"></div>
                         <p class="text-[#d8e2f7] text-base md:text-lg leading-relaxed">
                             Based in Rabat, Morocco, BENYASSINE OUSSAMA specializes in visual storytelling for high-stakes environments — from diplomatic ceremonies and royal engagements to concerts, keynotes, and editorial portraiture. Each frame is designed to carry atmosphere, emotion, and intention.
                         </p>
                         <div class="mt-6 grid sm:grid-cols-3 gap-3">
                             <div class="glass-card rounded-2xl p-4 text-center border border-[#7ea5ff]/15">
-                                <div class="text-xl font-serif gold-text">8 yrs</div>
-                                <div class="mt-2 text-[9px] uppercase tracking-[0.22em] text-[#c8d1e6]">Experience</div>
+                                <div class="text-xl font-serif blue-text">03</div>
+                                <div class="mt-2 text-[9px] uppercase tracking-[0.22em] text-[#c8d1e6]">Years</div>
                             </div>
                             <div class="glass-card rounded-2xl p-4 text-center border border-[#7ea5ff]/15">
-                                <div class="text-xl font-serif gold-text">Elite</div>
+                                <div class="text-xl font-serif blue-text">Elite</div>
                                 <div class="mt-2 text-[9px] uppercase tracking-[0.22em] text-[#c8d1e6]">Events</div>
                             </div>
                             <div class="glass-card rounded-2xl p-4 text-center border border-[#7ea5ff]/15">
-                                <div class="text-xl font-serif gold-text">Global</div>
+                                <div class="text-xl font-serif blue-text">Global</div>
                                 <div class="mt-2 text-[9px] uppercase tracking-[0.22em] text-[#c8d1e6]">Storytelling</div>
                             </div>
                         </div>
@@ -320,7 +339,7 @@
                 </div>
             </section>
 
-            <section id="contact" class="max-w-5xl mx-auto px-4 sm:px-6 py-16">
+            <section id="contact" class="max-w-5xl mx-auto px-4 sm:px-6 py-16 reveal">
                 <div class="section-shell rounded-[30px] p-6 sm:p-8 md:p-10">
                     <div class="text-center mb-8">
                         <p class="text-[10px] uppercase tracking-[0.28em] text-[#7ea5ff]">Inquire</p>
@@ -375,9 +394,17 @@
             <i class="fa-solid fa-xmark"></i>
         </button>
 
+        <button id="prevBtn" class="absolute left-5 sm:left-10 top-1/2 -translate-y-1/2 text-white/80 hover:text-white text-3xl p-3 z-50 bg-black/40 rounded-full border border-white/10 backdrop-blur-sm">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+        <button id="nextBtn" class="absolute right-5 sm:right-10 top-1/2 -translate-y-1/2 text-white/80 hover:text-white text-3xl p-3 z-50 bg-black/40 rounded-full border border-white/10 backdrop-blur-sm">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+
         <div class="relative max-w-5xl w-full flex flex-col items-center justify-center">
-            <div class="relative max-h-[80vh] flex justify-center items-center overflow-hidden rounded-2xl border border-[#7ea5ff]/20 shadow-[0_30px_80px_rgba(0,0,0,0.7)]">
-                <img id="lightboxImg" src="" alt="" class="max-h-[80vh] w-auto object-contain">
+            <div class="lightbox-image-wrap relative max-h-[78vh] flex justify-center items-center overflow-hidden rounded-2xl border border-[#7ea5ff]/20 shadow-[0_30px_80px_rgba(0,0,0,0.7)]">
+                <img id="lightboxImg" src="" alt="" class="max-h-[78vh] w-auto object-contain">
             </div>
 
             <div class="w-full max-w-xl mt-4 bg-black/60 backdrop-blur-lg border border-[#7ea5ff]/15 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
@@ -411,11 +438,16 @@
             { id: 6, title: 'Symphonic Stage Solo', category: 'concert', location: 'Rabat, Morocco', img: 'showcase6.jpg' }
         ];
 
+        let currentLightboxIndex = 0;
+        let currentLightboxList = [];
+
         function initApp() {
             initAmbientCanvas();
             renderShowcase();
             renderGallery(galleryData);
             setupTouchEvents();
+            initRevealOnScroll();
+            initLightboxNavigation();
         }
 
         function renderShowcase() {
@@ -426,7 +458,7 @@
             showcaseData.forEach((item) => {
                 const el = document.createElement('div');
                 el.className = 'showcase-card flex-none w-72 sm:w-80 md:w-[24rem] snap-center rounded-[24px] overflow-hidden border border-[#7ea5ff]/20 bg-[#0b1220] shadow-[0_25px_60px_rgba(0,0,0,0.35)] cursor-pointer';
-                el.onclick = () => openLightbox(item.img, item.title, item.category, item.location);
+                el.onclick = () => openLightbox(item.img, item.title, item.category, item.location, item.id, showcaseData);
 
                 el.innerHTML = `
                     <div class="relative">
@@ -450,7 +482,7 @@
             items.forEach((item) => {
                 const card = document.createElement('div');
                 card.className = 'gallery-card group relative overflow-hidden rounded-[22px] border border-[#7ea5ff]/15 bg-[#0b1220] cursor-pointer shadow-lg';
-                card.onclick = () => openLightbox(item.img, item.title, item.category, item.location);
+                card.onclick = () => openLightbox(item.img, item.title, item.category, item.location, item.id, items);
                 card.innerHTML = `
                     <img src="${item.img}" alt="${item.title}" class="w-full h-[280px] object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
@@ -461,6 +493,18 @@
                 `;
                 grid.appendChild(card);
             });
+        }
+
+        function initRevealOnScroll() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.18 });
+
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         }
 
         function filterGallery(category, button) {
@@ -479,20 +523,63 @@
             renderGallery(filtered);
         }
 
-        function openLightbox(src, title, category, location) {
+        function initLightboxNavigation() {
+            document.getElementById('prevBtn').addEventListener('click', () => {
+                changeLightbox(-1);
+            });
+
+            document.getElementById('nextBtn').addEventListener('click', () => {
+                changeLightbox(1);
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (document.getElementById('lightbox').classList.contains('hidden')) return;
+                if (event.key === 'ArrowLeft') changeLightbox(-1);
+                if (event.key === 'ArrowRight') changeLightbox(1);
+                if (event.key === 'Escape') closeLightbox();
+            });
+        }
+
+        function openLightbox(src, title, category, location, itemId, list) {
+            currentLightboxList = list;
+            currentLightboxIndex = currentLightboxList.findIndex(item => item.img === src || item.id === itemId);
+            if (currentLightboxIndex < 0) currentLightboxIndex = 0;
+
+            updateLightbox(currentLightboxIndex);
             const lightbox = document.getElementById('lightbox');
-            const img = document.getElementById('lightboxImg');
+            lightbox.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function updateLightbox(index) {
+            const item = currentLightboxList[index];
+            const lightboxImg = document.getElementById('lightboxImg');
             const tag = document.getElementById('lightboxTag');
             const titleEl = document.getElementById('lightboxTitle');
             const locText = document.getElementById('lightboxLocText');
-            if (!lightbox || !img || !tag || !titleEl || !locText) return;
+            const wrap = document.querySelector('.lightbox-image-wrap');
 
-            img.src = src;
-            titleEl.textContent = title;
-            tag.textContent = category;
-            locText.textContent = location;
-            lightbox.classList.remove('hidden');
-            document.body.classList.add('overflow-hidden');
+            if (!item || !lightboxImg || !tag || !titleEl || !locText || !wrap) return;
+
+            wrap.classList.add('swiping');
+            wrap.style.opacity = '0.3';
+            wrap.style.transform = 'translateX(20px) scale(0.98)';
+
+            setTimeout(() => {
+                lightboxImg.src = item.img;
+                titleEl.textContent = item.title;
+                tag.textContent = item.category;
+                locText.textContent = item.location;
+                wrap.style.opacity = '1';
+                wrap.style.transform = 'translateX(0) scale(1)';
+                setTimeout(() => wrap.classList.remove('swiping'), 220);
+            }, 130);
+        }
+
+        function changeLightbox(step) {
+            if (!currentLightboxList.length) return;
+            currentLightboxIndex = (currentLightboxIndex + step + currentLightboxList.length) % currentLightboxList.length;
+            updateLightbox(currentLightboxIndex);
         }
 
         function closeLightbox() {
