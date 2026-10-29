@@ -53,49 +53,6 @@
             opacity: 0.35;
         }
 
-        /* 3D Coverflow Carousel Container */
-        .coverflow-wrapper {
-            perspective: 1000px;
-            overflow: hidden;
-            padding: 40px 0;
-            position: relative;
-        }
-
-        .coverflow-track {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transform-style: preserve-3d;
-            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-            user-select: none;
-            cursor: grab;
-        }
-
-        .coverflow-track:active {
-            cursor: grabbing;
-        }
-
-        .coverflow-item {
-            position: relative;
-            width: 280px;
-            height: 420px;
-            flex-shrink: 0;
-            margin: 0 -40px;
-            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-            transform-origin: center center;
-        }
-
-        @media (min-width: 768px) {
-            .coverflow-item {
-                width: 340px;
-                height: 510px;
-                margin: 0 -60px;
-            }
-        }
-
         /* Scroll reveal pop-up animations */
         .reveal-card {
             opacity: 0;
@@ -109,7 +66,16 @@
             transform: translateY(0) scale(1);
         }
 
-        /* Custom Scrollbar */
+        /* Hide scrollbars for single line slider */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Custom Scrollbar for Main Page */
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -170,9 +136,9 @@
 
         <!-- Hero Section with Blurry Background Image -->
         <section class="relative pt-36 pb-16 px-6 text-center max-w-7xl mx-auto overflow-hidden">
-            <!-- Background Image (hero-bg.jpg at 50% opacity) -->
+            <!-- Background Image -->
             <div class="absolute inset-0 z-0 pointer-events-none">
-                <img src="hero-bg.jpg" alt="BENYASSINE OUSSAMA" class="w-full h-full object-cover object-top opacity-50 blur-sm filter grayscale">
+                <img src="hero-bg.jpg" alt="BENYASSINE OUSSAMA" class="w-full h-full object-cover object-top opacity-50 blur-sm filter grayscale" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80';">
                 <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-[#080808]"></div>
             </div>
 
@@ -206,27 +172,26 @@
             </div>
         </section>
 
-        <!-- 3D Swipable Exhibition Showcase (Auto-swiping every 2 seconds) -->
+        <!-- Horizontal Swipable Line Showcase Section -->
         <section id="showcase" class="py-12 border-y border-white/5 bg-black/30 backdrop-blur-sm">
-            <div class="max-w-7xl mx-auto px-6 mb-4 flex items-center justify-between">
+            <div class="max-w-7xl mx-auto px-6 mb-6 flex items-center justify-between">
                 <div>
-                    <h2 class="font-serif text-xl md:text-2xl tracking-wider uppercase">3D Exhibition Showcase</h2>
-                    <p class="text-xs text-gray-500 uppercase tracking-widest mt-1">Auto-swiping • Click or swipe to jump</p>
+                    <h2 class="font-serif text-xl md:text-2xl tracking-wider uppercase">Exhibition Showcase</h2>
+                    <p class="text-xs text-gray-500 uppercase tracking-widest mt-1">Swipe horizontally to explore</p>
                 </div>
                 <div class="flex items-center space-x-2">
-                    <button onclick="prevCover()" class="p-3 border border-white/10 rounded-full hover:bg-white hover:text-black transition-all">
+                    <button onclick="scrollShowcase('left')" class="p-3 border border-white/10 rounded-full hover:bg-white hover:text-black transition-all">
                         <i class="fa-solid fa-chevron-left text-xs"></i>
                     </button>
-                    <button onclick="nextCover()" class="p-3 border border-white/10 rounded-full hover:bg-white hover:text-black transition-all">
+                    <button onclick="scrollShowcase('right')" class="p-3 border border-white/10 rounded-full hover:bg-white hover:text-black transition-all">
                         <i class="fa-solid fa-chevron-right text-xs"></i>
                     </button>
                 </div>
             </div>
 
-            <div class="coverflow-wrapper" onmouseenter="stopAutoSwipe()" onmouseleave="startAutoSwipe()">
-                <div id="coverflowTrack" class="coverflow-track">
-                    <!-- 6 Featured Items rendered dynamically -->
-                </div>
+            <!-- Single Horizontal Swipable Row -->
+            <div id="showcaseTrack" class="flex overflow-x-auto snap-x snap-mandatory gap-6 px-6 no-scrollbar scroll-smooth pb-4">
+                <!-- Swipable Showcase Items Rendered Dynamically -->
             </div>
         </section>
 
@@ -347,16 +312,18 @@
 
     <!-- Site Scripts -->
     <script>
-        // Exact uploaded filenames in your GitHub repository
+        // Showcase Images Array
         const showcaseData = [
-            { id: 's1', title: 'Diplomatic Gala', category: 'embassy', location: 'Rabat, Morocco', img: 'showcase1.jpg' },
-            { id: 's2', title: 'Royal Summit', category: 'embassy', location: 'Rabat, Morocco', img: 'showcase2.jpg' },
-            { id: 's3', title: 'Keynote Address', category: 'conference', location: 'Rabat, Morocco', img: 'showcase3.jpg' },
-            { id: 's4', title: 'Stage Spotlight', category: 'concert', location: 'Rabat, Morocco', img: 'showcase4.jpg' },
-            { id: 's5', title: 'Monochrome Portrait', category: 'portrait', location: 'Rabat, Morocco', img: 'showcase5.jpg' },
-            { id: 's6', title: 'Bilateral Delegation', category: 'embassy', location: 'Rabat, Morocco', img: 'showcase6.jpg' }
+            { id: 's1', title: 'Diplomatic Gala', category: 'embassy', location: 'Rabat, Morocco', img: 'showcase1.jpg', fallback: 'https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=800&q=80' },
+            { id: 's2', title: 'Royal Summit', category: 'embassy', location: 'Rabat, Morocco', img: 'showcase2.jpg', fallback: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80' },
+            { id: 's3', title: 'Keynote Address', category: 'conference', location: 'Rabat, Morocco', img: 'showcase3.jpg', fallback: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=80' },
+            { id: 's4', title: 'Stage Spotlight', category: 'concert', location: 'Rabat, Morocco', img: 'showcase4.jpg', fallback: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80' },
+            { id: 's5', title: 'Monochrome Portrait', category: 'portrait', location: 'Rabat, Morocco', img: 'showcase5.jpg', fallback: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80' },
+            { id: 's6', title: 'Bilateral Delegation', category: 'embassy', location: 'Rabat, Morocco', img: 'showcase6.jpg', fallback: 'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=800&q=80' }
         ];
 
         const galleryData = [
             { id: 1, title: 'Embassy Gala Keynote', category: 'embassy', location: 'Rabat, Morocco', img: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80' },
-            { id: 2, title: 'Royal Escort Detail', category: 'embassy', location: 'Rabat, Morocco', img: 'https://images.unsplash.com/photo-1508847154043-be5407fcaa5a?auto=format&fit=crop&w=
+            { id: 2, title: 'Royal Escort Detail', category: 'embassy', location: 'Rabat, Morocco', img: 'https://images.unsplash.com/photo-1508847154043-be5407fcaa5a?auto=format&fit=crop&w=800&q=80' },
+            { id: 3, title: 'Bilateral Press Briefing', category: 'embassy', location: 'Rabat, Morocco', img: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=800&q=80' },
+          
