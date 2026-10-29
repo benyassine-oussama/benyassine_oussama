@@ -118,13 +118,13 @@
         <!-- Hero Section with Blurry Background Image -->
         <section class="relative pt-36 pb-16 px-6 text-center max-w-7xl mx-auto overflow-hidden">
             <div class="absolute inset-0 z-0 pointer-events-none">
-                <img src="hero-bg.jpg" alt="BENYASSINE OUSSAMA" class="w-full h-full object-cover object-top opacity-50 blur-sm filter grayscale" onerror="this.onerror=null; this.src='showcase1.jpg';">
+                <img src="hero-bg.jpg" alt="BENYASSINE OUSSAMA" class="w-full h-full object-cover object-top opacity-50 blur-sm filter grayscale" onerror="this.onerror=null; this.src='showcase1.jpg'">
                 <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-[#080808]"></div>
             </div>
 
             <div class="relative z-10 max-w-4xl mx-auto">
                 <!-- Blinking Green Status Dot & Location Badge -->
-                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 border border-emerald-500/20 rounded-full bg-emerald-500/10 backdrop-blur-sm text-[11px] tracking-widest uppercase text-gray-200">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 border border-emerald-500/20 rounded-full bg-emerald-500/10 backdrop-blur-sm text-[11px] tracking-widest uppercase text-gray-300">
                     <span class="relative flex h-2 w-2 mr-0.5">
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
@@ -185,11 +185,11 @@
 
                 <!-- Filter Tabs -->
                 <div class="flex flex-wrap gap-2 mt-6 md:mt-0" id="filterContainer">
-                    <button onclick="filterGallery('all', this)" class="filter-btn active px-3.5 py-1.5 border border-white text-xs tracking-widest uppercase bg-white text-black transition-all">All Works</button>
-                    <button onclick="filterGallery('embassy', this)" class="filter-btn px-3.5 py-1.5 border border-white/10 text-xs tracking-widest uppercase text-gray-400 hover:border-white hover:text-white transition-all">Embassies & State</button>
-                    <button onclick="filterGallery('conference', this)" class="filter-btn px-3.5 py-1.5 border border-white/10 text-xs tracking-widest uppercase text-gray-400 hover:border-white hover:text-white transition-all">Conferences</button>
-                    <button onclick="filterGallery('concert', this)" class="filter-btn px-3.5 py-1.5 border border-white/10 text-xs tracking-widest uppercase text-gray-400 hover:border-white hover:text-white transition-all">Concerts & Stage</button>
-                    <button onclick="filterGallery('portrait', this)" class="filter-btn px-3.5 py-1.5 border border-white/10 text-xs tracking-widest uppercase text-gray-400 hover:border-white hover:text-white transition-all">Portraits</button>
+                    <button onclick="filterGallery('all', this)" class="filter-btn active px-3.5 py-1.5 border border-white text-xs tracking-widest uppercase bg-white text-black transition-all">All</button>
+                    <button onclick="filterGallery('embassy', this)" class="filter-btn px-3.5 py-1.5 border border-white/10 text-xs tracking-widest uppercase text-gray-400 hover:border-white hover:text-white transition-all">Embassy</button>
+                    <button onclick="filterGallery('conference', this)" class="filter-btn px-3.5 py-1.5 border border-white/10 text-xs tracking-widest uppercase text-gray-400 hover:border-white hover:text-white transition-all">Conference</button>
+                    <button onclick="filterGallery('concert', this)" class="filter-btn px-3.5 py-1.5 border border-white/10 text-xs tracking-widest uppercase text-gray-400 hover:border-white hover:text-white transition-all">Concert</button>
+                    <button onclick="filterGallery('portrait', this)" class="filter-btn px-3.5 py-1.5 border border-white/10 text-xs tracking-widest uppercase text-gray-400 hover:border-white hover:text-white transition-all">Portrait</button>
                 </div>
             </div>
 
@@ -204,7 +204,7 @@
             <div class="max-w-4xl mx-auto px-6 text-center">
                 <h2 class="font-serif text-2xl md:text-3xl tracking-wider uppercase mb-6">About The Artist</h2>
                 <p id="aboutText" class="text-gray-300 font-light text-base md:text-lg leading-relaxed mb-10 max-w-3xl mx-auto">
-                    Based in Rabat, Morocco, BENYASSINE OUSSAMA specializes in high-stakes visual storytelling. From diplomatic embassy engagements and royal summits to keynotes, stage performances, and editorial portraiture, every frame is designed with a timeless luxury monochrome aesthetic.
+                    Based in Rabat, Morocco, BENYASSINE OUSSAMA specializes in high-stakes visual storytelling. From diplomatic embassy engagements and royal summits to keynotes, stage performances, and intimate portraits, his work turns emotion, atmosphere, and presence into compelling imagery.
                 </p>
 
                 <!-- Social Links -->
@@ -254,7 +254,7 @@
                 </div>
                 <div>
                     <label class="block text-xs uppercase tracking-widest text-gray-400 mb-2">Message</label>
-                    <textarea name="Message" rows="5" required class="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-sm focus:outline-none focus:border-white text-white" placeholder="Provide details regarding date, location in Morocco, and scope..."></textarea>
+                    <textarea name="Message" rows="5" required class="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-sm focus:outline-none focus:border-white text-white" placeholder="Tell me about your event, vision, or project."></textarea>
                 </div>
                 <button type="submit" class="w-full py-4 bg-white text-black font-semibold text-xs tracking-widest uppercase hover:bg-gray-200 transition-colors rounded">
                     Send Inquiry
@@ -294,8 +294,8 @@
     <!-- Site Scripts -->
     <script>
         const showcaseData = [
-            { id: 's1', title: 'Royal Procession Detail', category: 'embassy', location: 'Rabat, Morocco', img: 'showcase1.JPG' },
-            { id: 's2', title: 'Parliamentary Assembly', category: 'embassy', location: 'Rabat, Morocco', img: 'showcase2.jpeg' },
+            { id: 's1', title: 'Royal Procession Detail', category: 'embassy', location: 'Rabat, Morocco', img: 'showcase1.jpg' },
+            { id: 's2', title: 'Parliamentary Assembly', category: 'embassy', location: 'Rabat, Morocco', img: 'showcase2.jpg' },
             { id: 's3', title: 'State Escort Gathering', category: 'embassy', location: 'Rabat, Morocco', img: 'showcase3.jpg' },
             { id: 's4', title: 'Media & Press Broadcast', category: 'conference', location: 'Rabat, Morocco', img: 'showcase4.jpg' },
             { id: 's5', title: 'Live Orchestra Performance', category: 'concert', location: 'Rabat, Morocco', img: 'showcase5.jpg' },
@@ -329,4 +329,157 @@
                 el.onclick = () => openLightbox(item.img, item.title, item.category, item.location);
 
                 el.innerHTML = `
-                    <img src="${item.img}" class="w-full h-full object-cover filter grayscal
+                    <img src="${item.img}" class="w-full h-full object-cover filter grayscale group-hover:scale-105 transition-transform duration-500" alt="${item.title}">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-4">
+                        <p class="text-[10px] uppercase tracking-[0.25em] text-gray-300">${item.category}</p>
+                        <h3 class="font-serif text-lg uppercase mt-2">${item.title}</h3>
+                    </div>
+                `;
+                track.appendChild(el);
+            });
+        }
+
+        function renderGallery(items) {
+            const grid = document.getElementById('galleryGrid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            items.forEach((item) => {
+                const card = document.createElement('div');
+                card.className = 'group relative overflow-hidden rounded-lg border border-white/10 bg-cardBg cursor-pointer aspect-[4/5] shadow-lg';
+                card.onclick = () => openLightbox(item.img, item.title, item.category, item.location);
+                card.innerHTML = `
+                    <img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-3">
+                        <p class="text-[10px] uppercase tracking-[0.2em] text-gray-300">${item.category}</p>
+                        <h4 class="font-serif text-sm uppercase mt-1 truncate">${item.title}</h4>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterGallery(category, button) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach((btn) => {
+                btn.classList.remove('active', 'bg-white', 'text-black');
+                btn.classList.add('text-gray-400', 'border-white/10');
+            });
+            button.classList.add('active', 'bg-white', 'text-black');
+            button.classList.remove('text-gray-400', 'border-white/10');
+
+            const filtered = category === 'all' ? galleryData : galleryData.filter(item => item.category === category);
+            renderGallery(filtered);
+        }
+
+        function openLightbox(src, title, category, location) {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightboxImg');
+            const tag = document.getElementById('lightboxTag');
+            const titleEl = document.getElementById('lightboxTitle');
+            const locText = document.getElementById('lightboxLocText');
+            if (!lightbox || !img || !tag || !titleEl || !locText) return;
+
+            img.src = src;
+            titleEl.textContent = title;
+            tag.textContent = category;
+            locText.textContent = location;
+            lightbox.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            if (!lightbox) return;
+            lightbox.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        function handleBackdropClick(event) {
+            if (event.target === event.currentTarget) {
+                closeLightbox();
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            if (!menu) return;
+            menu.classList.toggle('hidden');
+        }
+
+        function scrollShowcase(direction) {
+            const track = document.getElementById('showcaseTrack');
+            if (!track) return;
+            const scrollAmount = direction === 'left' ? -320 : 320;
+            track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+
+        function setupTouchEvents() {
+            const track = document.getElementById('showcaseTrack');
+            if (!track) return;
+            let startX = 0;
+            let scrollLeft = 0;
+
+            track.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                scrollLeft = track.scrollLeft;
+            }, { passive: true });
+
+            track.addEventListener('touchmove', (e) => {
+                if (!startX) return;
+                const delta = e.touches[0].clientX - startX;
+                track.scrollLeft = scrollLeft - delta;
+            }, { passive: true });
+        }
+
+        function initAmbientCanvas() {
+            const canvas = document.getElementById('ambientCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            if (!ctx) return;
+
+            const particles = [];
+            const count = 45;
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+
+            for (let i = 0; i < count; i++) {
+                particles.push({
+                    x: Math.random() * window.innerWidth,
+                    y: Math.random() * window.innerHeight,
+                    r: Math.random() * 2 + 1,
+                    dx: (Math.random() - 0.5) * 0.3,
+                    dy: (Math.random() - 0.5) * 0.3,
+                    a: Math.random() * 0.8 + 0.2
+                });
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach((p) => {
+                    p.x += p.dx;
+                    p.y += p.dy;
+                    if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+                    if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255,255,255,${p.a})`;
+                    ctx.fill();
+                });
+                requestAnimationFrame(draw);
+            }
+
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+            draw();
+        }
+
+        document.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
+</html>
