@@ -602,7 +602,7 @@
                         </a>
                     </div>
 
-                    <form id="bookingForm" action="https://formsubmit.co/ajax/benyassineoussama1@gmail.com" method="POST" class="space-y-6">
+                    <form action="https://formsubmit.co/benyassineoussama1@gmail.com" method="POST" class="space-y-6">
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_subject" value="New Portfolio Inquiry - BENYASSINE OUSSAMA">
                         <input type="hidden" name="_template" value="table">
@@ -637,8 +637,6 @@
                             Send inquiry
                         </button>
                     </form>
-
-                    <p id="formMessage" aria-live="polite" class="mt-4 hidden text-sm font-medium"></p>
                 </div>
             </section>
         </main>
@@ -709,52 +707,6 @@
             initRevealOnScroll();
             initLightboxNavigation();
             initHeroSlider();
-            initBookingForm();
-        }
-
-        function initBookingForm() {
-            const bookingForm = document.getElementById('bookingForm');
-            const formMessage = document.getElementById('formMessage');
-
-            if (!bookingForm || !formMessage) return;
-
-            bookingForm.addEventListener('submit', async function (event) {
-                event.preventDefault();
-
-                const submitButton = bookingForm.querySelector('button[type="submit"]');
-                formMessage.classList.remove('hidden');
-                formMessage.textContent = 'Sending...';
-                formMessage.style.color = '#dfe9ff';
-                submitButton.disabled = true;
-
-                try {
-                    const formData = new FormData(bookingForm);
-                    const payload = Object.fromEntries(formData.entries());
-
-                    const response = await fetch(bookingForm.action, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Accept': 'application/json'
-                        },
-                        body: JSON.stringify(payload)
-                    });
-
-                    if (!response.ok) {
-                        throw new Error('Server error');
-                    }
-
-                    formMessage.textContent = 'Your session request was sent successfully.';
-                    formMessage.style.color = '#4ade80';
-                    bookingForm.reset();
-                } catch (error) {
-                    console.error('Booking failed:', error);
-                    formMessage.textContent = 'The server is currently down. Please try again later or contact us directly.';
-                    formMessage.style.color = '#f87171';
-                } finally {
-                    submitButton.disabled = false;
-                }
-            });
         }
 
         function initHeroSlider() {
