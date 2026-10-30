@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BENYASSINE OUSSAMA — Visual Artist</title>
+    <title>BENYASSINE OUSSAMA — Visual Artist & Event Photographer</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -26,23 +27,26 @@
             }
         }
     </script>
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         :root {
-            --bg: #000000;
+            --bg: #04070d;
             --bg-strong: #020406;
             --bg-soft: #0a0f16;
-            --panel: #0a0d12;
-            --panel-soft: rgba(11, 14, 18, 0.84);
+            --panel: #0b1220;
+            --panel-soft: rgba(11, 18, 32, 0.85);
             --accent: #1d2d43;
             --accent-soft: #8192b3;
             --accent-strong: #2a3d59;
             --text: #edf5ff;
             --muted: #a4afc3;
-            --line: rgba(42, 61, 89, 0.26);
+            --line: rgba(42, 61, 89, 0.35);
             --shadow: rgba(0, 0, 0, 0.7);
             --green: #22c55e;
         }
@@ -51,16 +55,14 @@
 
         body {
             background:
-                radial-gradient(circle at 18% 8%, rgba(67, 90, 122, 0.08), transparent 18%),
-                radial-gradient(circle at 72% 18%, rgba(35, 55, 80, 0.08), transparent 22%),
-                radial-gradient(circle at 50% 78%, rgba(11, 14, 18, 0.9), transparent 42%),
+                radial-gradient(circle at 18% 8%, rgba(67, 90, 122, 0.12), transparent 22%),
+                radial-gradient(circle at 72% 18%, rgba(35, 55, 80, 0.12), transparent 28%),
+                radial-gradient(circle at 50% 78%, rgba(11, 14, 18, 0.95), transparent 48%),
                 linear-gradient(180deg, var(--bg-strong) 0%, #05080d 35%, #090d13 100%);
             color: var(--text);
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
         }
-
-        .blue-text { color: var(--accent-soft); }
 
         #ambientCanvas {
             position: fixed;
@@ -70,115 +72,130 @@
             height: 100vh;
             z-index: 0;
             pointer-events: none;
-            opacity: 0.26;
-            filter: blur(0.8px);
+            opacity: 0.35;
+            filter: blur(0.5px);
         }
 
         .section-shell {
-            background: linear-gradient(180deg, rgba(10, 12, 16, 0.9), rgba(6, 9, 13, 0.9));
+            background: linear-gradient(180deg, rgba(11, 18, 32, 0.88), rgba(6, 9, 13, 0.92));
             border: 1px solid var(--line);
-            box-shadow: 0 28px 60px rgba(0,0,0,0.28);
-            backdrop-filter: blur(10px);
-        }
-
-        .blue-line {
-            height: 1px;
-            width: 100px;
-            background: linear-gradient(90deg, transparent, var(--accent) 40%, transparent);
-            display: block;
-            margin: 0.8rem auto 0;
+            box-shadow: 0 28px 60px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(12px);
         }
 
         .luxury-kicker {
             letter-spacing: 0.3em;
             text-transform: uppercase;
-            font-size: 10px;
-            color: var(--muted);
+            font-size: 11px;
+            color: var(--accent-soft);
+            font-weight: 600;
         }
 
-        .hero-copy h1 { text-shadow: 0 10px 30px rgba(0,0,0,0.38); }
-
-        .cta-primary {
+        /* Buttons & CTAs */
+        .cta-main, .cta-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             background: linear-gradient(135deg, #101922 0%, #1d2d43 100%);
             color: #edf5ff;
-            box-shadow: 0 12px 30px rgba(29, 45, 67, 0.18);
+            border: 1px solid rgba(129, 146, 179, 0.3);
+            box-shadow: 0 12px 30px rgba(29, 45, 67, 0.25);
+            transition: all 0.35s ease;
+            cursor: pointer;
         }
 
-        .cta-primary:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 14px 36px rgba(29, 45, 67, 0.25);
+        .cta-main:hover, .cta-primary:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #182535 0%, #2a3d59 100%);
+            box-shadow: 0 16px 38px rgba(29, 45, 67, 0.4);
+            border-color: rgba(129, 146, 179, 0.6);
         }
 
-        .cta-secondary {
-            border: 1px solid rgba(60, 78, 108, 0.5);
+        .cta-alt, .cta-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(129, 146, 179, 0.4);
             color: var(--text);
-            background: rgba(255,255,255,0.02);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(8px);
+            transition: all 0.35s ease;
+            cursor: pointer;
+        }
+
+        .cta-alt:hover, .cta-secondary:hover {
+            transform: translateY(-2px);
+            background: rgba(29, 45, 67, 0.3);
+            border-color: rgba(201, 217, 255, 0.6);
+            color: #ffffff;
         }
 
         .glass-card {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(29,45,67,0.18);
-            backdrop-filter: blur(10px);
-        }
-
-        .showcase-card,
-        .gallery-card,
-        .glass-card,
-        .section-shell,
-        .cta-primary,
-        .cta-secondary {
+            background: rgba(11, 18, 32, 0.6);
+            border: 1px solid rgba(29, 45, 67, 0.3);
+            backdrop-filter: blur(12px);
             transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
         }
 
-        .showcase-card:hover,
-        .gallery-card:hover,
-        .glass-card:hover,
-        .section-shell:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 24px 50px rgba(0, 0, 0, 0.28);
+        .glass-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(129, 146, 179, 0.5);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
         }
 
-        .showcase-card img,
-        .gallery-card img {
-            transition: transform 0.7s ease, filter 0.6s ease;
+        /* Showcase & Gallery Cards */
+        .showcase-card, .gallery-card {
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
         }
 
-        .showcase-card:hover img,
-        .gallery-card:hover img {
-            transform: scale(1.06);
-            filter: saturate(1.05) contrast(1.02);
+        .showcase-card:hover, .gallery-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 24px 50px rgba(0, 0, 0, 0.5);
+            border-color: rgba(129, 146, 179, 0.5);
         }
 
+        .showcase-card img, .gallery-card img {
+            transition: transform 0.7s cubic-bezier(0.2, 1, 0.22, 1), filter 0.6s ease;
+        }
+
+        .showcase-card:hover img, .gallery-card:hover img {
+            transform: scale(1.07);
+            filter: saturate(1.1) contrast(1.05);
+        }
+
+        /* Filter buttons */
         .filter-btn {
-            transition: all 0.25s ease;
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .filter-btn.active {
             background: linear-gradient(135deg, #101922 0%, #1d2d43 100%);
             color: #edf5ff;
-            border-color: transparent;
+            border-color: rgba(129, 146, 179, 0.6);
+            box-shadow: 0 6px 20px rgba(29, 45, 67, 0.3);
         }
 
-        .form-input,
-        .form-textarea,
-        .form-select {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(29,45,67,0.18);
+        /* Forms */
+        .form-input, .form-textarea, .form-select {
+            background: rgba(11, 18, 32, 0.7);
+            border: 1px solid rgba(29, 45, 67, 0.4);
             color: white;
+            transition: all 0.3s ease;
         }
 
-        .form-input:focus,
-        .form-textarea:focus,
-        .form-select:focus {
-            border-color: rgba(162, 176, 202, 0.8);
-            box-shadow: 0 0 0 1px rgba(162, 176, 202, 0.4);
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            border-color: rgba(129, 146, 179, 0.9);
+            box-shadow: 0 0 15px rgba(29, 45, 67, 0.5);
             outline: none;
+            background: rgba(15, 23, 42, 0.85);
         }
 
+        /* Scroll reveal animations */
         .reveal {
             opacity: 0;
-            transform: translateY(28px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.2, 1, 0.22, 1), transform 0.8s cubic-bezier(0.2, 1, 0.22, 1);
         }
 
         .reveal.visible {
@@ -189,19 +206,12 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        .lightbox-image-wrap {
-            transition: transform 0.42s ease, opacity 0.42s ease;
-        }
-
-        .lightbox-image-wrap.swiping {
-            transition: none;
-        }
-
+        /* Hero section styling */
         .hero-bg-blur {
             position: absolute;
             inset: 0;
             background: url('hero-bg.jpg') center/cover no-repeat;
-            filter: blur(12px) brightness(0.2) saturate(0.35);
+            filter: blur(14px) brightness(0.2) saturate(0.4);
             transform: scale(1.08);
             opacity: 0.8;
             z-index: 0;
@@ -212,29 +222,26 @@
             z-index: 1;
             max-width: 1180px;
             margin: 0 auto;
-            padding-top: 4px;
-            padding-bottom: 10px;
+            text-align: center;
         }
 
         .hero-name-row {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.6rem;
             margin-top: 18px;
             margin-bottom: 20px;
-            text-align: center;
         }
 
         .hero-name-text {
             font-family: 'Cinzel', serif;
-            font-size: clamp(2rem, 4vw, 4.8rem);
+            font-size: clamp(2.2rem, 5.5vw, 4.8rem);
             letter-spacing: 0.14em;
             text-transform: uppercase;
-            color: #f2eeee;
-            line-height: 1.02;
-            text-align: center;
-            white-space: nowrap;
+            color: #edf5ff;
+            line-height: 1.05;
+            font-weight: 700;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
         }
 
         .booking-pill {
@@ -243,16 +250,17 @@
             align-items: center;
             justify-content: center;
             gap: 0.7rem;
-            padding: 0.8rem 1.5rem;
+            padding: 0.65rem 1.4rem;
             border-radius: 999px;
-            border: 1px solid rgba(50, 72, 98, 0.45);
-            background: rgba(12, 16, 22, 0.72);
+            border: 1px solid rgba(34, 197, 94, 0.35);
+            background: rgba(11, 18, 32, 0.85);
             color: var(--text);
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            font-size: 10px;
-            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
-            animation: bookingBlink 1.3s ease-in-out infinite;
+            font-size: 11px;
+            font-weight: 500;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: bookingBlink 2.5s ease-in-out infinite;
         }
 
         .booking-pill .status-dot {
@@ -260,20 +268,20 @@
             height: 8px;
             border-radius: 50%;
             background: var(--green);
-            box-shadow: 0 0 16px rgba(34,197,94,0.9);
-            display: inline-block;
+            box-shadow: 0 0 12px var(--green);
         }
 
         @keyframes bookingBlink {
-            0%, 100% { box-shadow: 0 0 0 rgba(29,45,67,0), 0 14px 32px rgba(0,0,0,0.18); opacity: 1; }
-            50% { box-shadow: 0 0 18px rgba(29,45,67,0.18), 0 14px 32px rgba(0,0,0,0.18); opacity: 0.9; }
+            0%, 100% { border-color: rgba(34, 197, 94, 0.35); box-shadow: 0 0 0 rgba(34, 197, 94, 0); }
+            50% { border-color: rgba(34, 197, 94, 0.7); box-shadow: 0 0 15px rgba(34, 197, 94, 0.25); }
         }
 
+        /* 3D Hero Stage Carousel */
         .hero-stage {
             position: relative;
-            margin-top: 18px;
-            height: 450px;
-            perspective: 1600px;
+            margin-top: 30px;
+            height: 420px;
+            perspective: 1400px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -281,7 +289,7 @@
 
         .stage-rail {
             position: relative;
-            width: min(860px, 86vw);
+            width: min(880px, 92vw);
             height: 100%;
             display: flex;
             align-items: center;
@@ -292,192 +300,220 @@
         .hero-card {
             position: absolute;
             overflow: hidden;
-            border-radius: 26px;
-            border: 1px solid rgba(29,45,67,0.2);
-            box-shadow: 0 30px 70px rgba(0,0,0,0.5);
-            background: rgba(11, 18, 32, 0.9);
-            transition: transform 1s cubic-bezier(.22,1,.36,1), opacity 1s ease, filter 1s ease, box-shadow 1s ease;
+            border-radius: 22px;
+            border: 1px solid rgba(129, 146, 179, 0.25);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+            background: rgba(11, 18, 32, 0.95);
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.3, 1);
             user-select: none;
-            transform-style: preserve-3d;
+            cursor: pointer;
         }
 
-        .hero-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .hero-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
 
         .hero-card.left {
-            width: 28%;
-            height: 62%;
-            left: 5%;
-            transform: translateX(-18%) rotateY(44deg) rotateX(2deg) translateZ(20px) scale(0.9);
-            opacity: 0.86;
-            filter: saturate(0.8) brightness(0.78);
+            width: 32%;
+            height: 72%;
+            left: 2%;
+            transform: translateX(-10%) rotateY(32deg) translateZ(-50px) scale(0.88);
+            opacity: 0.65;
+            filter: saturate(0.7) brightness(0.7);
             z-index: 1;
         }
 
         .hero-card.center {
-            width: 60%;
+            width: 58%;
             height: 100%;
-            transform: translateZ(90px) scale(1.02);
+            transform: translateZ(80px) scale(1);
             opacity: 1;
             z-index: 3;
+            border-color: rgba(129, 146, 179, 0.6);
+            box-shadow: 0 35px 80px rgba(0, 0, 0, 0.7);
         }
 
         .hero-card.right {
-            width: 28%;
-            height: 62%;
-            right: 5%;
-            transform: translateX(18%) rotateY(-44deg) rotateX(2deg) translateZ(20px) scale(0.9);
-            opacity: 0.86;
-            filter: saturate(0.8) brightness(0.78);
+            width: 32%;
+            height: 72%;
+            right: 2%;
+            transform: translateX(10%) rotateY(-32deg) translateZ(-50px) scale(0.88);
+            opacity: 0.65;
+            filter: saturate(0.7) brightness(0.7);
             z-index: 1;
-        }
-
-        .hero-card.left.swipe {
-            transform: translateX(-38%) rotateY(52deg) rotateX(10deg) scale(0.82);
-            opacity: 0.35;
-            filter: blur(1px) brightness(0.6);
-        }
-
-        .hero-card.center.swipe {
-            transform: translateZ(120px) rotateX(4deg) rotateY(2deg) scale(1.08);
-        }
-
-        .hero-card.right.swipe {
-            transform: translateX(38%) rotateY(-52deg) rotateX(10deg) scale(0.82);
-            opacity: 0.35;
-            filter: blur(1px) brightness(0.6);
         }
 
         .hero-cta-row {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 1rem;
+            gap: 1.25rem;
             flex-wrap: wrap;
-            margin-top: 18px;
+            margin-top: 30px;
         }
 
-        .cta-main,
-        .cta-alt {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem 2.25rem;
+        .cta-main, .cta-alt {
+            padding: 0.95rem 2.25rem;
             border-radius: 999px;
-            min-width: 270px;
-            letter-spacing: 0.26em;
+            min-width: 220px;
+            letter-spacing: 0.22em;
             text-transform: uppercase;
-            font-size: 12px;
+            font-size: 11px;
+            font-weight: 600;
         }
 
         .stats-grid {
-            margin-top: 18px;
+            margin-top: 35px;
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 0.9rem;
+            gap: 1rem;
         }
 
         .stat {
-            border-radius: 1.15rem;
-            border: 1px solid rgba(29,45,67,0.2);
-            background: rgba(255,255,255,0.02);
+            border-radius: 1.25rem;
+            border: 1px solid rgba(29, 45, 67, 0.4);
+            background: rgba(11, 18, 32, 0.5);
+            backdrop-filter: blur(10px);
             padding: 1.25rem 0.8rem;
             text-align: center;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .stat:hover {
+            transform: translateY(-2px);
+            border-color: rgba(129, 146, 179, 0.4);
         }
 
         .stat-number {
-            font-size: clamp(1.3rem, 3vw, 2.1rem);
+            font-size: clamp(1.4rem, 3.2vw, 2.2rem);
             font-family: 'Cinzel', serif;
             color: var(--accent-soft);
-            letter-spacing: 0.08em;
+            letter-spacing: 0.05em;
             line-height: 1.1;
+            font-weight: 700;
         }
 
         .stat-label {
-            margin-top: 0.5rem;
+            margin-top: 0.4rem;
             font-size: 10px;
-            letter-spacing: 0.28em;
+            letter-spacing: 0.24em;
             text-transform: uppercase;
-            color: #d8c6c6;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        /* Lightbox Modal */
+        #lightboxModal {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
         }
 
         @media (max-width: 640px) {
-            .luxury-kicker { letter-spacing: 0.22em; }
-            .hero-name-text { letter-spacing: 0.08em; }
-            .hero-stage { height: 330px; }
-            .cta-main, .cta-alt { min-width: 220px; letter-spacing: 0.16em; }
-            .booking-pill { letter-spacing: 0.12em; padding: 0.7rem 1rem; }
+            .hero-stage { height: 280px; }
+            .hero-card.left { width: 38%; height: 70%; left: -5%; }
+            .hero-card.center { width: 72%; height: 95%; }
+            .hero-card.right { width: 38%; height: 70%; right: -5%; }
+            .cta-main, .cta-alt { width: 100%; min-width: 0; }
         }
     </style>
 </head>
 <body class="relative min-h-screen selection:bg-[#1d2d43] selection:text-white">
+    <!-- Background Ambient Particle Canvas -->
     <canvas id="ambientCanvas"></canvas>
 
     <div class="relative z-10">
-        <header class="fixed top-0 left-0 right-0 z-40 backdrop-blur-md bg-black/60 border-b border-[#1d2d43]/30 transition-all duration-300">
+        <!-- Fixed Header Navigation -->
+        <header class="fixed top-0 left-0 right-0 z-40 backdrop-blur-xl bg-black/70 border-b border-[#1d2d43]/40 transition-all duration-300">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
-                <a href="#top" class="font-serif tracking-[0.38em] text-[0.7rem] md:text-[0.8rem] uppercase text-[#edf5ff] hover:text-[#c9d9ff] transition-colors">
+                <a href="#top" class="font-serif tracking-[0.35em] text-xs sm:text-sm font-bold uppercase text-[#edf5ff] hover:text-[#8192b3] transition-colors flex items-center gap-2">
+                    <span class="inline-block w-2 h-2 rounded-full bg-[#8192b3]"></span>
                     BENYASSINE OUSSAMA
                 </a>
 
-                <nav class="hidden md:flex items-center space-x-8 text-[10px] tracking-[0.28em] uppercase text-[#d0d9ea] font-medium">
-                    <a href="#showcase" class="hover:text-[#c9d9ff] transition-colors">Showcase</a>
-                    <a href="#gallery" class="hover:text-[#c9d9ff] transition-colors">Portfolio</a>
-                    <a href="#about" class="hover:text-[#c9d9ff] transition-colors">About</a>
-                    <a href="#contact" class="hover:text-[#c9d9ff] transition-colors">Contact</a>
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-9 text-[11px] tracking-[0.25em] uppercase text-[#a4afc3] font-medium">
+                    <a href="#showcase" class="hover:text-[#edf5ff] transition-colors">Exhibition</a>
+                    <a href="#gallery" class="hover:text-[#edf5ff] transition-colors">Portfolio</a>
+                    <a href="#about" class="hover:text-[#edf5ff] transition-colors">About</a>
+                    <a href="#contact" class="hover:text-[#edf5ff] transition-colors">Contact</a>
                 </nav>
 
-                <div class="flex items-center space-x-3">
-                    <a href="#contact" class="hidden sm:inline-flex px-4 py-2 border border-[#1d2d43]/40 bg-[#1d2d43]/10 text-[#c9d9ff] text-[10px] tracking-[0.22em] uppercase rounded-full hover:bg-[#1d2d43]/20 transition-colors">
+                <!-- Header Actions -->
+                <div class="flex items-center space-x-4">
+                    <a href="#contact" class="hidden sm:inline-flex px-5 py-2.5 border border-[#1d2d43] bg-[#1d2d43]/30 text-[#edf5ff] text-[10px] tracking-[0.22em] font-semibold uppercase rounded-full hover:bg-[#1d2d43] hover:border-[#8192b3]/50 transition-all shadow-lg">
                         Book Event
                     </a>
-                    <button id="menuBtn" onclick="toggleMobileMenu()" class="md:hidden text-white p-2 rounded-full border border-white/10 bg-white/5">
-                        <i class="fa-solid fa-bars text-lg"></i>
+                    <button id="menuBtn" onclick="toggleMobileMenu()" aria-label="Toggle Navigation Menu" class="md:hidden text-white p-2.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-colors">
+                        <i id="menuIcon" class="fa-solid fa-bars text-base"></i>
                     </button>
                 </div>
             </div>
 
-            <div id="mobileMenu" class="hidden md:hidden bg-black/95 border-b border-[#1d2d43]/20 px-6 py-6 space-y-4 text-[10px] tracking-[0.24em] uppercase text-[#d0d9ea]">
-                <a href="#showcase" onclick="toggleMobileMenu()" class="block py-2 hover:text-[#c9d9ff]">Showcase</a>
-                <a href="#gallery" onclick="toggleMobileMenu()" class="block py-2 hover:text-[#c9d9ff]">Portfolio</a>
-                <a href="#about" onclick="toggleMobileMenu()" class="block py-2 hover:text-[#c9d9ff]">About</a>
-                <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 hover:text-[#c9d9ff]">Contact</a>
+            <!-- Mobile Drawer Menu -->
+            <div id="mobileMenu" class="hidden md:hidden bg-[#070b12]/98 border-b border-[#1d2d43]/40 px-6 py-6 space-y-4 text-xs tracking-[0.24em] uppercase text-[#a4afc3]">
+                <a href="#showcase" onclick="toggleMobileMenu()" class="block py-2.5 border-b border-white/5 hover:text-[#edf5ff]">Exhibition</a>
+                <a href="#gallery" onclick="toggleMobileMenu()" class="block py-2.5 border-b border-white/5 hover:text-[#edf5ff]">Portfolio</a>
+                <a href="#about" onclick="toggleMobileMenu()" class="block py-2.5 border-b border-white/5 hover:text-[#edf5ff]">About</a>
+                <a href="#contact" onclick="toggleMobileMenu()" class="block py-2.5 hover:text-[#edf5ff]">Contact</a>
+                <div class="pt-2">
+                    <a href="#contact" onclick="toggleMobileMenu()" class="w-full text-center block py-3 cta-primary rounded-full text-[10px]">
+                        Book Event
+                    </a>
+                </div>
             </div>
         </header>
 
+        <!-- Main Content -->
         <main id="top">
-            <section class="relative pt-24 pb-20 px-4 sm:px-6 min-h-[100vh] overflow-hidden">
+            <!-- HERO SECTION -->
+            <section class="relative pt-28 pb-20 px-4 sm:px-6 min-h-[92vh] flex flex-col justify-center overflow-hidden">
                 <div class="hero-bg-blur"></div>
 
                 <div class="hero-content-shell reveal">
+                    <!-- Status Badge -->
                     <div class="booking-pill">
                         <span class="status-dot"></span>
                         Available for bookings
                     </div>
 
+                    <!-- Artist Name Title -->
                     <div class="hero-name-row">
-                        <span class="hero-name-text">BENYASSINE OUSSAMA</span>
+                        <h1 class="hero-name-text">BENYASSINE OUSSAMA</h1>
                     </div>
 
+                    <p class="text-xs sm:text-sm uppercase tracking-[0.35em] text-[#8192b3] max-w-2xl mx-auto -mt-2 font-medium">
+                        Visual Artist & High-End Event Photographer
+                    </p>
+
+                    <!-- CTA Buttons -->
                     <div class="hero-cta-row">
-                        <a href="#gallery" class="cta-main">View Portfolio</a>
-                        <a href="#contact" class="cta-alt">Book a Session</a>
+                        <a href="#gallery" class="cta-main cta-primary">
+                            <i class="fa-solid fa-[#fa-border-all] mr-2 text-xs"></i> View Portfolio
+                        </a>
+                        <a href="#contact" class="cta-alt cta-secondary">
+                            <i class="fa-regular fa-envelope mr-2 text-xs"></i> Book a Session
+                        </a>
                     </div>
 
+                    <!-- 3D Stage Carousel Using Local Images -->
                     <div class="hero-stage" aria-label="Portfolio image carousel">
                         <div class="stage-rail" id="heroStage">
-                            <div class="hero-card left" data-index="0">
-                                <img src="showcase2.jpg" alt="Image 1">
+                            <div class="hero-card left" onclick="rotateHeroStage('left')" data-index="0">
+                                <img src="showcase2.jpg" alt="Showcase Image 2" onerror="this.src='https://placehold.co/1000x700/0b1220/8192b3?text=showcase2.jpg'">
                             </div>
-                            <div class="hero-card center" data-index="1">
-                                <img src="showcase1.jpg" alt="Image 2">
+                            <div class="hero-card center" onclick="openLightbox('showcase1.jpg', 'Featured Exhibition', 'Showcase')" data-index="1">
+                                <img src="showcase1.jpg" alt="Showcase Image 1" onerror="this.src='https://placehold.co/1000x700/0b1220/8192b3?text=showcase1.jpg'">
                             </div>
-                            <div class="hero-card right" data-index="2">
-                                <img src="showcase3.jpg" alt="Image 3">
+                            <div class="hero-card right" onclick="rotateHeroStage('right')" data-index="2">
+                                <img src="showcase3.jpg" alt="Showcase Image 3" onerror="this.src='https://placehold.co/1000x700/0b1220/8192b3?text=showcase3.jpg'">
                             </div>
                         </div>
                     </div>
 
-                    <div class="stats-grid">
+                    <!-- Stats Bar -->
+                    <div class="stats-grid max-w-3xl mx-auto">
                         <div class="stat">
                             <div class="stat-number">03</div>
                             <div class="stat-label">Years</div>
@@ -485,511 +521,4 @@
                         <div class="stat">
                             <div class="stat-number">10+</div>
                             <div class="stat-label">Events</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">Rabat</div>
-                            <div class="stat-label">Based</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="showcase" class="max-w-7xl mx-auto px-4 sm:px-6 py-20 reveal">
-                <div class="mb-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-                    <div>
-                        <p class="luxury-kicker">Exhibition</p>
-                        <h2 class="font-serif text-3xl md:text-4xl uppercase mt-2">Showcase</h2>
-                    </div>
-                    <div class="flex items-center space-x-2">
-                        <button onclick="scrollShowcase('left')" class="p-3 border border-[#1d2d43]/20 rounded-full hover:bg-[#1d2d43] hover:text-white transition-all text-[#c9d9ff]">
-                            <i class="fa-solid fa-chevron-left text-xs"></i>
-                        </button>
-                        <button onclick="scrollShowcase('right')" class="p-3 border border-[#1d2d43]/20 rounded-full hover:bg-[#1d2d43] hover:text-white transition-all text-[#c9d9ff]">
-                            <i class="fa-solid fa-chevron-right text-xs"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <div id="showcaseTrack" class="flex overflow-x-auto no-scrollbar gap-6 pb-4 scroll-smooth">
-                    <!-- Showcase items populated by JS -->
-                </div>
-            </section>
-
-            <section id="gallery" class="max-w-7xl mx-auto px-4 sm:px-6 py-20 reveal">
-                <div class="section-shell rounded-[30px] p-5 sm:p-8">
-                    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-8">
-                        <div>
-                            <p class="luxury-kicker">Selected Works</p>
-                            <h2 class="font-serif text-3xl md:text-4xl uppercase mt-2">Portfolio</h2>
-                        </div>
-
-                        <div class="flex flex-wrap gap-2" id="filterContainer">
-                            <button onclick="filterGallery('all', this)" class="filter-btn active px-3.5 py-2 border border-[#1d2d43]/35 rounded-full text-[10px] tracking-[0.2em] uppercase">All</button>
-                            <button onclick="filterGallery('embassy', this)" class="filter-btn px-3.5 py-2 border border-white/10 rounded-full text-[10px] tracking-[0.2em] uppercase text-[#c8d1e6]">Embassy</button>
-                            <button onclick="filterGallery('conference', this)" class="filter-btn px-3.5 py-2 border border-white/10 rounded-full text-[10px] tracking-[0.2em] uppercase text-[#c8d1e6]">Conference</button>
-                            <button onclick="filterGallery('concert', this)" class="filter-btn px-3.5 py-2 border border-white/10 rounded-full text-[10px] tracking-[0.2em] uppercase text-[#c8d1e6]">Concert</button>
-                            <button onclick="filterGallery('portrait', this)" class="filter-btn px-3.5 py-2 border border-white/10 rounded-full text-[10px] tracking-[0.2em] uppercase text-[#c8d1e6]">Portrait</button>
-                        </div>
-                    </div>
-
-                    <div id="galleryGrid" class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 min-h-[240px]">
-                        <!-- Gallery cards loaded dynamically -->
-                    </div>
-                </div>
-            </section>
-
-            <section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 py-20 reveal">
-                <div class="grid lg:grid-cols-[0.8fr_1.2fr] gap-8 items-center">
-                    <div class="rounded-[30px] overflow-hidden border border-[#1d2d43]/20 bg-black/30 shadow-2xl">
-                        <img src="showcase5.jpg" alt="Portrait" class="w-full h-full object-cover min-h-[420px]">
-                    </div>
-
-                    <div class="section-shell rounded-[30px] p-6 sm:p-8">
-                        <p class="luxury-kicker">About</p>
-                        <h2 class="font-serif text-3xl md:text-4xl uppercase mt-2">The artist behind the lens</h2>
-                        <div class="blue-line my-5"></div>
-                        <p class="text-[#d8e2f7] text-base md:text-lg leading-relaxed">
-                            Based in Rabat, Morocco, BENYASSINE OUSSAMA specializes in visual storytelling for high-stakes environments — from diplomatic ceremonies and royal engagements to contemporary cultural events. His work blends precision, atmosphere, and editorial elegance to capture the emotion and authority of every moment.
-                        </p>
-                        <div class="mt-6 grid sm:grid-cols-3 gap-3">
-                            <div class="glass-card rounded-2xl p-4 text-center border border-[#1d2d43]/15">
-                                <div class="text-xl font-serif blue-text">03</div>
-                                <div class="mt-2 text-[9px] uppercase tracking-[0.22em] text-[#c8d1e6]">Years</div>
-                            </div>
-                            <div class="glass-card rounded-2xl p-4 text-center border border-[#1d2d43]/15">
-                                <div class="text-xl font-serif blue-text">Elite</div>
-                                <div class="mt-2 text-[9px] uppercase tracking-[0.22em] text-[#c8d1e6]">Events</div>
-                            </div>
-                            <div class="glass-card rounded-2xl p-4 text-center border border-[#1d2d43]/15">
-                                <div class="text-xl font-serif blue-text">Global</div>
-                                <div class="mt-2 text-[9px] uppercase tracking-[0.22em] text-[#c8d1e6]">Storytelling</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="contact" class="max-w-5xl mx-auto px-4 sm:px-6 py-20 reveal">
-                <div class="section-shell rounded-[30px] p-6 sm:p-8 md:p-10">
-                    <div class="text-center mb-8">
-                        <p class="luxury-kicker">Inquire</p>
-                        <h2 class="font-serif text-3xl md:text-4xl uppercase mt-2">Book a session</h2>
-                    </div>
-
-                    <div class="grid md:grid-cols-3 gap-4 mb-8">
-                        <a href="mailto:benyassineoussama1@gmail.com" class="glass-card rounded-2xl p-4 flex items-center gap-4 border border-[#1d2d43]/15 hover:border-[#1d2d43]/40 transition-all">
-                            <div class="w-12 h-12 rounded-xl bg-[#1d2d43]/10 flex items-center justify-center text-[#c9d9ff] text-xl"><i class="fa-solid fa-envelope"></i></div>
-                            <div class="min-w-0">
-                                <div class="text-[9px] uppercase tracking-[0.2em] text-[#c8d1e6] mb-1">Email</div>
-                                <div class="text-sm text-white truncate">benyassineoussama1@gmail.com</div>
-                            </div>
-                        </a>
-
-                        <a href="https://wa.me/212619107960" target="_blank" rel="noreferrer" class="glass-card rounded-2xl p-4 flex items-center gap-4 border border-[#1d2d43]/15 hover:border-[#1d2d43]/40 transition-all">
-                            <div class="w-12 h-12 rounded-xl bg-[#1d2d43]/10 flex items-center justify-center text-[#c9d9ff] text-xl"><i class="fa-brands fa-whatsapp"></i></div>
-                            <div class="min-w-0">
-                                <div class="text-[9px] uppercase tracking-[0.2em] text-[#c8d1e6] mb-1">WhatsApp</div>
-                                <div class="text-sm text-white">+212619107960</div>
-                            </div>
-                        </a>
-
-                        <a href="https://instagram.com/benyassine_oussama" target="_blank" rel="noreferrer" class="glass-card rounded-2xl p-4 flex items-center gap-4 border border-[#1d2d43]/15 hover:border-[#1d2d43]/40 transition-all">
-                            <div class="w-12 h-12 rounded-xl bg-[#1d2d43]/10 flex items-center justify-center text-[#c9d9ff] text-xl"><i class="fa-brands fa-instagram"></i></div>
-                            <div class="min-w-0">
-                                <div class="text-[9px] uppercase tracking-[0.2em] text-[#c8d1e6] mb-1">Instagram</div>
-                                <div class="text-sm text-white">@benyassine_oussama</div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <form action="https://formsubmit.co/benyassineoussama1@gmail.com" method="POST" class="space-y-6">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_subject" value="New Portfolio Inquiry - BENYASSINE OUSSAMA">
-                        <input type="hidden" name="_template" value="table">
-                        <input type="hidden" name="_next" value="https://benyassine-oussama.github.io/benyassine_oussama/thank-you.html">
-
-                        <div class="grid md:grid-cols-2 gap-5">
-                            <div>
-                                <label class="block mb-2 text-[10px] uppercase tracking-[0.22em] text-[#dfe9ff]">Name</label>
-                                <input type="text" name="Name" required class="form-input w-full rounded-2xl px-4 py-3">
-                            </div>
-                            <div>
-                                <label class="block mb-2 text-[10px] uppercase tracking-[0.22em] text-[#dfe9ff]">Email</label>
-                                <input type="email" name="Email" required class="form-input w-full rounded-2xl px-4 py-3">
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="block mb-2 text-[10px] uppercase tracking-[0.22em] text-[#dfe9ff]">Event Type</label>
-                            <select name="Event Type" class="form-select w-full rounded-2xl px-4 py-3">
-                                <option>Diplomatic / Embassy Event</option>
-                                <option>Corporate Summit / Conference</option>
-                                <option>Concert / Stage Performance</option>
-                                <option>Editorial Portrait Session</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <label class="block mb-2 text-[10px] uppercase tracking-[0.22em] text-[#dfe9ff]">Message</label>
-                            <textarea name="Message" rows="5" required class="form-textarea w-full rounded-2xl px-4 py-3" placeholder="Tell me about your event, vision, or project."></textarea>
-                        </div>
-
-                        <button type="submit" class="cta-primary w-full py-4 rounded-full text-[10px] tracking-[0.24em] uppercase font-semibold">
-                            Send inquiry
-                        </button>
-                    </form>
-                </div>
-            </section>
-        </main>
-
-        <footer class="border-t border-[#1d2d43]/15 py-8 text-center text-[10px] uppercase tracking-[0.22em] text-[#becae6]">
-            © 2026 BENYASSINE OUSSAMA — Rabat, Morocco
-        </footer>
-    </div>
-
-    <div id="lightbox" onclick="handleBackdropClick(event)" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex flex-col items-center justify-center p-4 sm:p-8 transition-all duration-300">
-        <button onclick="closeLightbox()" class="absolute top-5 right-5 text-white/80 hover:text-white text-2xl p-3 z-50 bg-black/40 rounded-full border border-white/10 backdrop-blur-sm">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-
-        <button id="prevBtn" class="absolute left-5 sm:left-10 top-1/2 -translate-y-1/2 text-white/80 hover:text-white text-3xl p-3 z-50 bg-black/40 rounded-full border border-white/10 backdrop-blur-sm">
-            <i class="fa-solid fa-chevron-left"></i>
-        </button>
-
-        <button id="nextBtn" class="absolute right-5 sm:right-10 top-1/2 -translate-y-1/2 text-white/80 hover:text-white text-3xl p-3 z-50 bg-black/40 rounded-full border border-white/10 backdrop-blur-sm">
-            <i class="fa-solid fa-chevron-right"></i>
-        </button>
-
-        <div class="relative max-w-5xl w-full flex flex-col items-center justify-center">
-            <div class="lightbox-image-wrap relative max-h-[78vh] flex justify-center items-center overflow-hidden rounded-2xl border border-[#1d2d43]/20 shadow-[0_30px_80px_rgba(0,0,0,0.7)]">
-                <img id="lightboxImg" src="" alt="" class="max-h-[78vh] w-auto object-contain">
-            </div>
-
-            <div class="w-full max-w-xl mt-4 bg-black/60 backdrop-blur-lg border border-[#1d2d43]/15 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
-                <div class="flex items-center gap-3">
-                    <span id="lightboxTag" class="px-2.5 py-1 border border-[#1d2d43]/20 text-[10px] uppercase tracking-widest rounded text-[#c9d9ff] bg-[#1d2d43]/5"></span>
-                    <h3 id="lightboxTitle" class="font-serif text-lg tracking-wider uppercase text-white font-medium"></h3>
-                </div>
-                <p id="lightboxLocation" class="text-[10px] uppercase tracking-[0.2em] text-[#d3ddea] flex items-center gap-1">
-                    <i class="fa-solid fa-location-dot text-[#1d2d43]"></i><span id="lightboxLocText"></span>
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const showcaseData = [
-            { id: 's1', title: 'Royal Procession Detail', category: 'embassy', location: 'Rabat, Morocco', img: 'showcase1.jpg' },
-            { id: 's2', title: 'Parliamentary Assembly', category: 'embassy', location: 'Rabat, Morocco', img: 'showcase2.jpg' },
-            { id: 's3', title: 'State Escort Gathering', category: 'embassy', location: 'Rabat, Morocco', img: 'showcase3.jpg' },
-            { id: 's4', title: 'Media & Press Broadcast', category: 'conference', location: 'Rabat, Morocco', img: 'showcase4.jpg' },
-            { id: 's5', title: 'Live Orchestra Performance', category: 'concert', location: 'Rabat, Morocco', img: 'showcase5.jpg' },
-            { id: 's6', title: 'Symphonic Stage Solo', category: 'concert', location: 'Rabat, Morocco', img: 'showcase6.jpg' }
-        ];
-
-        const galleryData = [
-            { id: 1, title: 'Royal Procession Detail', category: 'embassy', location: 'Rabat, Morocco', img: 'showcase1.jpg' },
-            { id: 2, title: 'Parliamentary Assembly', category: 'embassy', location: 'Rabat, Morocco', img: 'showcase2.jpg' },
-            { id: 3, title: 'State Escort Gathering', category: 'embassy', location: 'Rabat, Morocco', img: 'showcase3.jpg' },
-            { id: 4, title: 'Media & Press Broadcast', category: 'conference', location: 'Rabat, Morocco', img: 'showcase4.jpg' },
-            { id: 5, title: 'Live Orchestra Performance', category: 'concert', location: 'Rabat, Morocco', img: 'showcase5.jpg' },
-            { id: 6, title: 'Symphonic Stage Solo', category: 'concert', location: 'Rabat, Morocco', img: 'showcase6.jpg' }
-        ];
-
-        let currentLightboxIndex = 0;
-        let currentLightboxList = [];
-        let heroIndex = 1;
-
-        function initApp() {
-            initAmbientCanvas();
-            renderShowcase();
-            renderGallery(galleryData);
-            setupTouchEvents();
-            initRevealOnScroll();
-            initLightboxNavigation();
-            initHeroSlider();
-        }
-
-        function initHeroSlider() {
-            const cards = [
-                document.querySelector('.hero-card.left'),
-                document.querySelector('.hero-card.center'),
-                document.querySelector('.hero-card.right')
-            ];
-
-            if (!cards[0] || !cards[1] || !cards[2]) return;
-
-            const images = ['showcase2.jpg', 'showcase1.jpg', 'showcase3.jpg'];
-            const setCardOrder = (index) => {
-                const order = [
-                    { src: images[(index + 0) % 3] },
-                    { src: images[(index + 1) % 3] },
-                    { src: images[(index + 2) % 3] }
-                ];
-
-                cards[0].querySelector('img').src = order[0].src;
-                cards[1].querySelector('img').src = order[1].src;
-                cards[2].querySelector('img').src = order[2].src;
-
-                cards.forEach((card) => card.classList.remove('swipe'));
-                cards[0].classList.add('swipe');
-                cards[1].classList.add('swipe');
-                cards[2].classList.add('swipe');
-
-                setTimeout(() => {
-                    cards.forEach((card) => card.classList.remove('swipe'));
-                }, 260);
-            };
-
-            setCardOrder(heroIndex);
-            setInterval(() => {
-                heroIndex = (heroIndex + 1) % 3;
-                setCardOrder(heroIndex);
-            }, 1500);
-        }
-
-        function renderShowcase() {
-            const track = document.getElementById('showcaseTrack');
-            if (!track) return;
-            track.innerHTML = '';
-
-            showcaseData.forEach((item) => {
-                const el = document.createElement('div');
-                el.className = 'showcase-card flex-none w-72 sm:w-80 md:w-[24rem] snap-center rounded-[24px] overflow-hidden border border-[#1d2d43]/20 bg-[#0b1220] shadow-[0_25px_60px_rgba(0,0,0,0.45)]';
-                el.onclick = () => openLightbox(item.img, item.title, item.category, item.location, item.id, showcaseData);
-
-                el.innerHTML = `
-                    <div class="relative">
-                        <img src="${item.img}" class="w-full h-[420px] object-cover" alt="${item.title}">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
-                        <div class="absolute bottom-0 left-0 right-0 p-5">
-                            <p class="text-[9px] uppercase tracking-[0.22em] text-[#c9d9ff]">${item.category}</p>
-                            <h3 class="font-serif text-xl uppercase mt-2 text-white">${item.title}</h3>
-                        </div>
-                    </div>
-                `;
-                track.appendChild(el);
-            });
-        }
-
-        function renderGallery(items) {
-            const grid = document.getElementById('galleryGrid');
-            if (!grid) return;
-            grid.innerHTML = '';
-
-            items.forEach((item) => {
-                const card = document.createElement('div');
-                card.className = 'gallery-card group relative overflow-hidden rounded-[22px] border border-[#1d2d43]/15 bg-[#0b1220] cursor-pointer shadow-lg';
-                card.onclick = () => openLightbox(item.img, item.title, item.category, item.location, item.id, items);
-                card.innerHTML = `
-                    <img src="${item.img}" alt="${item.title}" class="w-full h-[280px] object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 right-0 p-4">
-                        <p class="text-[9px] uppercase tracking-[0.18em] text-[#c9d9ff]">${item.category}</p>
-                        <h4 class="font-serif text-base uppercase mt-1 text-white">${item.title}</h4>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        function initRevealOnScroll() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) { entry.target.classList.add('visible'); }
-                });
-            }, { threshold: 0.18 });
-
-            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-        }
-
-        function filterGallery(category, button) {
-            const buttons = document.querySelectorAll('.filter-btn');
-            buttons.forEach((btn) => {
-                btn.classList.remove('active');
-                btn.classList.remove('bg-[#1d2d43]', 'text-black');
-                btn.classList.add('text-[#c8d1e6]', 'border-white/10');
-            });
-
-            button.classList.add('active');
-            button.classList.remove('text-[#c8d1e6]', 'border-white/10');
-            button.classList.add('bg-[#1d2d43]', 'text-white');
-
-            const filtered = category === 'all' ? galleryData : galleryData.filter(item => item.category === category);
-            renderGallery(filtered);
-        }
-
-        function initLightboxNavigation() {
-            document.getElementById('prevBtn').addEventListener('click', () => changeLightbox(-1));
-            document.getElementById('nextBtn').addEventListener('click', () => changeLightbox(1));
-
-            document.addEventListener('keydown', (event) => {
-                if (document.getElementById('lightbox').classList.contains('hidden')) return;
-                if (event.key === 'ArrowLeft') changeLightbox(-1);
-                if (event.key === 'ArrowRight') changeLightbox(1);
-                if (event.key === 'Escape') closeLightbox();
-            });
-        }
-
-        function openLightbox(src, title, category, location, itemId, list) {
-            currentLightboxList = list;
-            currentLightboxIndex = currentLightboxList.findIndex(item => item.img === src || item.id === itemId);
-            if (currentLightboxIndex < 0) currentLightboxIndex = 0;
-
-            updateLightbox(currentLightboxIndex);
-            const lightbox = document.getElementById('lightbox');
-            lightbox.classList.remove('hidden');
-            document.body.classList.add('overflow-hidden');
-        }
-
-        function updateLightbox(index) {
-            const item = currentLightboxList[index];
-            const lightboxImg = document.getElementById('lightboxImg');
-            const tag = document.getElementById('lightboxTag');
-            const titleEl = document.getElementById('lightboxTitle');
-            const locText = document.getElementById('lightboxLocText');
-            const wrap = document.querySelector('.lightbox-image-wrap');
-
-            if (!item || !lightboxImg || !tag || !titleEl || !locText || !wrap) return;
-
-            wrap.classList.add('swiping');
-            wrap.style.opacity = '0.3';
-            wrap.style.transform = 'translateX(20px) scale(0.98)';
-
-            setTimeout(() => {
-                lightboxImg.src = item.img;
-                titleEl.textContent = item.title;
-                tag.textContent = item.category;
-                locText.textContent = item.location;
-                wrap.style.opacity = '1';
-                wrap.style.transform = 'translateX(0) scale(1)';
-                setTimeout(() => wrap.classList.remove('swiping'), 220);
-            }, 130);
-        }
-
-        function changeLightbox(step) {
-            if (!currentLightboxList.length) return;
-            currentLightboxIndex = (currentLightboxIndex + step + currentLightboxList.length) % currentLightboxList.length;
-            updateLightbox(currentLightboxIndex);
-        }
-
-        function closeLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            if (!lightbox) return;
-            lightbox.classList.add('hidden');
-            document.body.classList.remove('overflow-hidden');
-        }
-
-        function handleBackdropClick(event) {
-            if (event.target === event.currentTarget) closeLightbox();
-        }
-
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            if (!menu) return;
-            menu.classList.toggle('hidden');
-        }
-
-        function scrollShowcase(direction) {
-            const track = document.getElementById('showcaseTrack');
-            if (!track) return;
-            const scrollAmount = direction === 'left' ? -360 : 360;
-            track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-        }
-
-        function setupTouchEvents() {
-            const track = document.getElementById('showcaseTrack');
-            if (!track) return;
-            let startX = 0;
-            let scrollLeft = 0;
-
-            track.addEventListener('touchstart', (e) => {
-                startX = e.touches[0].clientX;
-                scrollLeft = track.scrollLeft;
-            }, { passive: true });
-
-            track.addEventListener('touchmove', (e) => {
-                if (!startX) return;
-                const delta = e.touches[0].clientX - startX;
-                track.scrollLeft = scrollLeft - delta;
-            }, { passive: true });
-        }
-
-        function initAmbientCanvas() {
-            const canvas = document.getElementById('ambientCanvas');
-            if (!canvas) return;
-            const ctx = canvas.getContext('2d');
-            if (!ctx) return;
-
-            const particles = [];
-            const count = 22;
-
-            function resizeCanvas() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            }
-
-            for (let i = 0; i < count; i++) {
-                const isSmoke = Math.random() > 0.54;
-                const drift = isSmoke ? 0.32 + Math.random() * 0.5 : 0.7 + Math.random() * 0.7;
-                particles.push({
-                    x: Math.random() * window.innerWidth,
-                    y: Math.random() * window.innerHeight,
-                    r: isSmoke ? Math.random() * 38 + 26 : Math.random() * 2.5 + 1.2,
-                    dx: (Math.random() - 0.5) * drift,
-                    dy: -(Math.random() * 0.14 + 0.05),
-                    a: isSmoke ? Math.random() * 0.16 + 0.06 : Math.random() * 0.6 + 0.20,
-                    alphaPulse: Math.random() * Math.PI * 2,
-                    drift: drift,
-                    kind: isSmoke ? 'smoke' : 'spark',
-                    hue: isSmoke ? 214 + Math.random() * 14 : 200 + Math.random() * 32
-                });
-            }
-
-            function draw() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-                particles.forEach((p) => {
-                    p.x += p.dx * 0.7;
-                    p.y += p.dy;
-                    p.alphaPulse += 0.014;
-
-                    if (p.x < -90 || p.x > canvas.width + 90) p.x = Math.random() * canvas.width;
-                    if (p.y < -110 || p.y > canvas.height + 110) {
-                        p.y = canvas.height + 24;
-                        p.x = Math.random() * canvas.width;
-                    }
-
-                    const alpha = p.a * (0.68 + Math.sin(p.alphaPulse) * 0.42);
-
-                    if (p.kind === 'smoke') {
-                        ctx.beginPath();
-                        ctx.fillStyle = `hsla(${p.hue}, 30%, 72%, ${alpha})`;
-                        ctx.shadowBlur = 18;
-                        ctx.shadowColor = `hsla(${p.hue}, 60%, 68%, ${alpha * 1.2})`;
-                        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                        ctx.fill();
-                        ctx.shadowBlur = 0;
-                    } else {
-                        ctx.beginPath();
-                        ctx.fillStyle = `hsla(${p.hue}, 90%, 82%, ${alpha})`;
-                        ctx.shadowBlur = 14;
-                        ctx.shadowColor = `hsla(${p.hue}, 90%, 72%, ${alpha})`;
-                        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                        ctx.fill();
-                        ctx.shadowBlur = 0;
-                    }
-                });
-
-                requestAnimationFrame(draw);
-            }
-
-            resizeCanvas();
-            window.addEventListener('resize', resizeCanvas);
-            draw();
-        }
-
-        document.addEventListener('DOMContentLoaded', initApp);
-    </script>
-</body>
-</html>
+          
