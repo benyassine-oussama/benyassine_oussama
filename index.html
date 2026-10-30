@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BENYASSINE OUSSAMA — Visual Artist & Event Photographer</title>
-    <!-- Tailwind CSS CDN -->
+    <title>BENYASSINE OUSSAMA — Visual Artist</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -27,26 +26,23 @@
             }
         }
     </script>
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
         :root {
-            --bg: #04070d;
+            --bg: #000000;
             --bg-strong: #020406;
             --bg-soft: #0a0f16;
-            --panel: #0b1220;
-            --panel-soft: rgba(11, 18, 32, 0.85);
+            --panel: #0a0d12;
+            --panel-soft: rgba(11, 14, 18, 0.84);
             --accent: #1d2d43;
             --accent-soft: #8192b3;
             --accent-strong: #2a3d59;
             --text: #edf5ff;
             --muted: #a4afc3;
-            --line: rgba(42, 61, 89, 0.35);
+            --line: rgba(42, 61, 89, 0.26);
             --shadow: rgba(0, 0, 0, 0.7);
             --green: #22c55e;
         }
@@ -55,14 +51,16 @@
 
         body {
             background:
-                radial-gradient(circle at 18% 8%, rgba(67, 90, 122, 0.12), transparent 22%),
-                radial-gradient(circle at 72% 18%, rgba(35, 55, 80, 0.12), transparent 28%),
-                radial-gradient(circle at 50% 78%, rgba(11, 14, 18, 0.95), transparent 48%),
+                radial-gradient(circle at 18% 8%, rgba(67, 90, 122, 0.08), transparent 18%),
+                radial-gradient(circle at 72% 18%, rgba(35, 55, 80, 0.08), transparent 22%),
+                radial-gradient(circle at 50% 78%, rgba(11, 14, 18, 0.9), transparent 42%),
                 linear-gradient(180deg, var(--bg-strong) 0%, #05080d 35%, #090d13 100%);
             color: var(--text);
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
         }
+
+        .blue-text { color: var(--accent-soft); }
 
         #ambientCanvas {
             position: fixed;
@@ -72,130 +70,115 @@
             height: 100vh;
             z-index: 0;
             pointer-events: none;
-            opacity: 0.35;
-            filter: blur(0.5px);
+            opacity: 0.26;
+            filter: blur(0.8px);
         }
 
         .section-shell {
-            background: linear-gradient(180deg, rgba(11, 18, 32, 0.88), rgba(6, 9, 13, 0.92));
+            background: linear-gradient(180deg, rgba(10, 12, 16, 0.9), rgba(6, 9, 13, 0.9));
             border: 1px solid var(--line);
-            box-shadow: 0 28px 60px rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(12px);
+            box-shadow: 0 28px 60px rgba(0,0,0,0.28);
+            backdrop-filter: blur(10px);
+        }
+
+        .blue-line {
+            height: 1px;
+            width: 100px;
+            background: linear-gradient(90deg, transparent, var(--accent) 40%, transparent);
+            display: block;
+            margin: 0.8rem auto 0;
         }
 
         .luxury-kicker {
             letter-spacing: 0.3em;
             text-transform: uppercase;
-            font-size: 11px;
-            color: var(--accent-soft);
-            font-weight: 600;
+            font-size: 10px;
+            color: var(--muted);
         }
 
-        /* Buttons & CTAs */
-        .cta-main, .cta-primary {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+        .hero-copy h1 { text-shadow: 0 10px 30px rgba(0,0,0,0.38); }
+
+        .cta-primary {
             background: linear-gradient(135deg, #101922 0%, #1d2d43 100%);
             color: #edf5ff;
-            border: 1px solid rgba(129, 146, 179, 0.3);
-            box-shadow: 0 12px 30px rgba(29, 45, 67, 0.25);
-            transition: all 0.35s ease;
-            cursor: pointer;
+            box-shadow: 0 12px 30px rgba(29, 45, 67, 0.18);
         }
 
-        .cta-main:hover, .cta-primary:hover {
-            transform: translateY(-2px);
-            background: linear-gradient(135deg, #182535 0%, #2a3d59 100%);
-            box-shadow: 0 16px 38px rgba(29, 45, 67, 0.4);
-            border-color: rgba(129, 146, 179, 0.6);
+        .cta-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 14px 36px rgba(29, 45, 67, 0.25);
         }
 
-        .cta-alt, .cta-secondary {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(129, 146, 179, 0.4);
+        .cta-secondary {
+            border: 1px solid rgba(60, 78, 108, 0.5);
             color: var(--text);
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(8px);
-            transition: all 0.35s ease;
-            cursor: pointer;
-        }
-
-        .cta-alt:hover, .cta-secondary:hover {
-            transform: translateY(-2px);
-            background: rgba(29, 45, 67, 0.3);
-            border-color: rgba(201, 217, 255, 0.6);
-            color: #ffffff;
+            background: rgba(255,255,255,0.02);
         }
 
         .glass-card {
-            background: rgba(11, 18, 32, 0.6);
-            border: 1px solid rgba(29, 45, 67, 0.3);
-            backdrop-filter: blur(12px);
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(29,45,67,0.18);
+            backdrop-filter: blur(10px);
+        }
+
+        .showcase-card,
+        .gallery-card,
+        .glass-card,
+        .section-shell,
+        .cta-primary,
+        .cta-secondary {
             transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
         }
 
-        .glass-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(129, 146, 179, 0.5);
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+        .showcase-card:hover,
+        .gallery-card:hover,
+        .glass-card:hover,
+        .section-shell:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 24px 50px rgba(0, 0, 0, 0.28);
         }
 
-        /* Showcase & Gallery Cards */
-        .showcase-card, .gallery-card {
-            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+        .showcase-card img,
+        .gallery-card img {
+            transition: transform 0.7s ease, filter 0.6s ease;
         }
 
-        .showcase-card:hover, .gallery-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 24px 50px rgba(0, 0, 0, 0.5);
-            border-color: rgba(129, 146, 179, 0.5);
+        .showcase-card:hover img,
+        .gallery-card:hover img {
+            transform: scale(1.06);
+            filter: saturate(1.05) contrast(1.02);
         }
 
-        .showcase-card img, .gallery-card img {
-            transition: transform 0.7s cubic-bezier(0.2, 1, 0.22, 1), filter 0.6s ease;
-        }
-
-        .showcase-card:hover img, .gallery-card:hover img {
-            transform: scale(1.07);
-            filter: saturate(1.1) contrast(1.05);
-        }
-
-        /* Filter buttons */
         .filter-btn {
-            transition: all 0.3s ease;
-            cursor: pointer;
+            transition: all 0.25s ease;
         }
 
         .filter-btn.active {
             background: linear-gradient(135deg, #101922 0%, #1d2d43 100%);
             color: #edf5ff;
-            border-color: rgba(129, 146, 179, 0.6);
-            box-shadow: 0 6px 20px rgba(29, 45, 67, 0.3);
+            border-color: transparent;
         }
 
-        /* Forms */
-        .form-input, .form-textarea, .form-select {
-            background: rgba(11, 18, 32, 0.7);
-            border: 1px solid rgba(29, 45, 67, 0.4);
+        .form-input,
+        .form-textarea,
+        .form-select {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(29,45,67,0.18);
             color: white;
-            transition: all 0.3s ease;
         }
 
-        .form-input:focus, .form-textarea:focus, .form-select:focus {
-            border-color: rgba(129, 146, 179, 0.9);
-            box-shadow: 0 0 15px rgba(29, 45, 67, 0.5);
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            border-color: rgba(162, 176, 202, 0.8);
+            box-shadow: 0 0 0 1px rgba(162, 176, 202, 0.4);
             outline: none;
-            background: rgba(15, 23, 42, 0.85);
         }
 
-        /* Scroll reveal animations */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s cubic-bezier(0.2, 1, 0.22, 1), transform 0.8s cubic-bezier(0.2, 1, 0.22, 1);
+            transform: translateY(28px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
         .reveal.visible {
@@ -206,12 +189,19 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* Hero section styling */
+        .lightbox-image-wrap {
+            transition: transform 0.42s ease, opacity 0.42s ease;
+        }
+
+        .lightbox-image-wrap.swiping {
+            transition: none;
+        }
+
         .hero-bg-blur {
             position: absolute;
             inset: 0;
             background: url('hero-bg.jpg') center/cover no-repeat;
-            filter: blur(14px) brightness(0.2) saturate(0.4);
+            filter: blur(12px) brightness(0.2) saturate(0.35);
             transform: scale(1.08);
             opacity: 0.8;
             z-index: 0;
@@ -222,26 +212,29 @@
             z-index: 1;
             max-width: 1180px;
             margin: 0 auto;
-            text-align: center;
+            padding-top: 4px;
+            padding-bottom: 10px;
         }
 
         .hero-name-row {
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 0.6rem;
             margin-top: 18px;
             margin-bottom: 20px;
+            text-align: center;
         }
 
         .hero-name-text {
             font-family: 'Cinzel', serif;
-            font-size: clamp(2.2rem, 5.5vw, 4.8rem);
+            font-size: clamp(2rem, 4vw, 4.8rem);
             letter-spacing: 0.14em;
             text-transform: uppercase;
-            color: #edf5ff;
-            line-height: 1.05;
-            font-weight: 700;
-            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            color: #f2eeee;
+            line-height: 1.02;
+            text-align: center;
+            white-space: nowrap;
         }
 
         .booking-pill {
@@ -250,17 +243,16 @@
             align-items: center;
             justify-content: center;
             gap: 0.7rem;
-            padding: 0.65rem 1.4rem;
+            padding: 0.8rem 1.5rem;
             border-radius: 999px;
-            border: 1px solid rgba(34, 197, 94, 0.35);
-            background: rgba(11, 18, 32, 0.85);
+            border: 1px solid rgba(50, 72, 98, 0.45);
+            background: rgba(12, 16, 22, 0.72);
             color: var(--text);
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            font-size: 11px;
-            font-weight: 500;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            animation: bookingBlink 2.5s ease-in-out infinite;
+            font-size: 10px;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+            animation: bookingBlink 1.3s ease-in-out infinite;
         }
 
         .booking-pill .status-dot {
@@ -268,20 +260,20 @@
             height: 8px;
             border-radius: 50%;
             background: var(--green);
-            box-shadow: 0 0 12px var(--green);
+            box-shadow: 0 0 16px rgba(34,197,94,0.9);
+            display: inline-block;
         }
 
         @keyframes bookingBlink {
-            0%, 100% { border-color: rgba(34, 197, 94, 0.35); box-shadow: 0 0 0 rgba(34, 197, 94, 0); }
-            50% { border-color: rgba(34, 197, 94, 0.7); box-shadow: 0 0 15px rgba(34, 197, 94, 0.25); }
+            0%, 100% { box-shadow: 0 0 0 rgba(29,45,67,0), 0 14px 32px rgba(0,0,0,0.18); opacity: 1; }
+            50% { box-shadow: 0 0 18px rgba(29,45,67,0.18), 0 14px 32px rgba(0,0,0,0.18); opacity: 0.9; }
         }
 
-        /* 3D Hero Stage Carousel */
         .hero-stage {
             position: relative;
-            margin-top: 30px;
-            height: 420px;
-            perspective: 1400px;
+            margin-top: 18px;
+            height: 450px;
+            perspective: 1600px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -289,7 +281,7 @@
 
         .stage-rail {
             position: relative;
-            width: min(880px, 92vw);
+            width: min(860px, 86vw);
             height: 100%;
             display: flex;
             align-items: center;
@@ -300,220 +292,192 @@
         .hero-card {
             position: absolute;
             overflow: hidden;
-            border-radius: 22px;
-            border: 1px solid rgba(129, 146, 179, 0.25);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-            background: rgba(11, 18, 32, 0.95);
-            transition: all 0.8s cubic-bezier(0.25, 1, 0.3, 1);
+            border-radius: 26px;
+            border: 1px solid rgba(29,45,67,0.2);
+            box-shadow: 0 30px 70px rgba(0,0,0,0.5);
+            background: rgba(11, 18, 32, 0.9);
+            transition: transform 1s cubic-bezier(.22,1,.36,1), opacity 1s ease, filter 1s ease, box-shadow 1s ease;
             user-select: none;
-            cursor: pointer;
+            transform-style: preserve-3d;
         }
 
-        .hero-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
+        .hero-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
         .hero-card.left {
-            width: 32%;
-            height: 72%;
-            left: 2%;
-            transform: translateX(-10%) rotateY(32deg) translateZ(-50px) scale(0.88);
-            opacity: 0.65;
-            filter: saturate(0.7) brightness(0.7);
+            width: 28%;
+            height: 62%;
+            left: 5%;
+            transform: translateX(-18%) rotateY(44deg) rotateX(2deg) translateZ(20px) scale(0.9);
+            opacity: 0.86;
+            filter: saturate(0.8) brightness(0.78);
             z-index: 1;
         }
 
         .hero-card.center {
-            width: 58%;
+            width: 60%;
             height: 100%;
-            transform: translateZ(80px) scale(1);
+            transform: translateZ(90px) scale(1.02);
             opacity: 1;
             z-index: 3;
-            border-color: rgba(129, 146, 179, 0.6);
-            box-shadow: 0 35px 80px rgba(0, 0, 0, 0.7);
         }
 
         .hero-card.right {
-            width: 32%;
-            height: 72%;
-            right: 2%;
-            transform: translateX(10%) rotateY(-32deg) translateZ(-50px) scale(0.88);
-            opacity: 0.65;
-            filter: saturate(0.7) brightness(0.7);
+            width: 28%;
+            height: 62%;
+            right: 5%;
+            transform: translateX(18%) rotateY(-44deg) rotateX(2deg) translateZ(20px) scale(0.9);
+            opacity: 0.86;
+            filter: saturate(0.8) brightness(0.78);
             z-index: 1;
+        }
+
+        .hero-card.left.swipe {
+            transform: translateX(-38%) rotateY(52deg) rotateX(10deg) scale(0.82);
+            opacity: 0.35;
+            filter: blur(1px) brightness(0.6);
+        }
+
+        .hero-card.center.swipe {
+            transform: translateZ(120px) rotateX(4deg) rotateY(2deg) scale(1.08);
+        }
+
+        .hero-card.right.swipe {
+            transform: translateX(38%) rotateY(-52deg) rotateX(10deg) scale(0.82);
+            opacity: 0.35;
+            filter: blur(1px) brightness(0.6);
         }
 
         .hero-cta-row {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 1.25rem;
+            gap: 1rem;
             flex-wrap: wrap;
-            margin-top: 30px;
+            margin-top: 18px;
         }
 
-        .cta-main, .cta-alt {
-            padding: 0.95rem 2.25rem;
+        .cta-main,
+        .cta-alt {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2.25rem;
             border-radius: 999px;
-            min-width: 220px;
-            letter-spacing: 0.22em;
+            min-width: 270px;
+            letter-spacing: 0.26em;
             text-transform: uppercase;
-            font-size: 11px;
-            font-weight: 600;
+            font-size: 12px;
         }
 
         .stats-grid {
-            margin-top: 35px;
+            margin-top: 18px;
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 1rem;
+            gap: 0.9rem;
         }
 
         .stat {
-            border-radius: 1.25rem;
-            border: 1px solid rgba(29, 45, 67, 0.4);
-            background: rgba(11, 18, 32, 0.5);
-            backdrop-filter: blur(10px);
+            border-radius: 1.15rem;
+            border: 1px solid rgba(29,45,67,0.2);
+            background: rgba(255,255,255,0.02);
             padding: 1.25rem 0.8rem;
             text-align: center;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .stat:hover {
-            transform: translateY(-2px);
-            border-color: rgba(129, 146, 179, 0.4);
         }
 
         .stat-number {
-            font-size: clamp(1.4rem, 3.2vw, 2.2rem);
+            font-size: clamp(1.3rem, 3vw, 2.1rem);
             font-family: 'Cinzel', serif;
             color: var(--accent-soft);
-            letter-spacing: 0.05em;
+            letter-spacing: 0.08em;
             line-height: 1.1;
-            font-weight: 700;
         }
 
         .stat-label {
-            margin-top: 0.4rem;
+            margin-top: 0.5rem;
             font-size: 10px;
-            letter-spacing: 0.24em;
+            letter-spacing: 0.28em;
             text-transform: uppercase;
-            color: var(--muted);
-            font-weight: 500;
-        }
-
-        /* Lightbox Modal */
-        #lightboxModal {
-            transition: opacity 0.3s ease, visibility 0.3s ease;
+            color: #d8c6c6;
         }
 
         @media (max-width: 640px) {
-            .hero-stage { height: 280px; }
-            .hero-card.left { width: 38%; height: 70%; left: -5%; }
-            .hero-card.center { width: 72%; height: 95%; }
-            .hero-card.right { width: 38%; height: 70%; right: -5%; }
-            .cta-main, .cta-alt { width: 100%; min-width: 0; }
+            .luxury-kicker { letter-spacing: 0.22em; }
+            .hero-name-text { letter-spacing: 0.08em; }
+            .hero-stage { height: 330px; }
+            .cta-main, .cta-alt { min-width: 220px; letter-spacing: 0.16em; }
+            .booking-pill { letter-spacing: 0.12em; padding: 0.7rem 1rem; }
         }
     </style>
 </head>
 <body class="relative min-h-screen selection:bg-[#1d2d43] selection:text-white">
-    <!-- Background Ambient Particle Canvas -->
     <canvas id="ambientCanvas"></canvas>
 
     <div class="relative z-10">
-        <!-- Fixed Header Navigation -->
-        <header class="fixed top-0 left-0 right-0 z-40 backdrop-blur-xl bg-black/70 border-b border-[#1d2d43]/40 transition-all duration-300">
+        <header class="fixed top-0 left-0 right-0 z-40 backdrop-blur-md bg-black/60 border-b border-[#1d2d43]/30 transition-all duration-300">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
-                <a href="#top" class="font-serif tracking-[0.35em] text-xs sm:text-sm font-bold uppercase text-[#edf5ff] hover:text-[#8192b3] transition-colors flex items-center gap-2">
-                    <span class="inline-block w-2 h-2 rounded-full bg-[#8192b3]"></span>
+                <a href="#top" class="font-serif tracking-[0.38em] text-[0.7rem] md:text-[0.8rem] uppercase text-[#edf5ff] hover:text-[#c9d9ff] transition-colors">
                     BENYASSINE OUSSAMA
                 </a>
 
-                <!-- Desktop Navigation -->
-                <nav class="hidden md:flex items-center space-x-9 text-[11px] tracking-[0.25em] uppercase text-[#a4afc3] font-medium">
-                    <a href="#showcase" class="hover:text-[#edf5ff] transition-colors">Exhibition</a>
-                    <a href="#gallery" class="hover:text-[#edf5ff] transition-colors">Portfolio</a>
-                    <a href="#about" class="hover:text-[#edf5ff] transition-colors">About</a>
-                    <a href="#contact" class="hover:text-[#edf5ff] transition-colors">Contact</a>
+                <nav class="hidden md:flex items-center space-x-8 text-[10px] tracking-[0.28em] uppercase text-[#d0d9ea] font-medium">
+                    <a href="#showcase" class="hover:text-[#c9d9ff] transition-colors">Showcase</a>
+                    <a href="#gallery" class="hover:text-[#c9d9ff] transition-colors">Portfolio</a>
+                    <a href="#about" class="hover:text-[#c9d9ff] transition-colors">About</a>
+                    <a href="#contact" class="hover:text-[#c9d9ff] transition-colors">Contact</a>
                 </nav>
 
-                <!-- Header Actions -->
-                <div class="flex items-center space-x-4">
-                    <a href="#contact" class="hidden sm:inline-flex px-5 py-2.5 border border-[#1d2d43] bg-[#1d2d43]/30 text-[#edf5ff] text-[10px] tracking-[0.22em] font-semibold uppercase rounded-full hover:bg-[#1d2d43] hover:border-[#8192b3]/50 transition-all shadow-lg">
+                <div class="flex items-center space-x-3">
+                    <a href="#contact" class="hidden sm:inline-flex px-4 py-2 border border-[#1d2d43]/40 bg-[#1d2d43]/10 text-[#c9d9ff] text-[10px] tracking-[0.22em] uppercase rounded-full hover:bg-[#1d2d43]/20 transition-colors">
                         Book Event
                     </a>
-                    <button id="menuBtn" onclick="toggleMobileMenu()" aria-label="Toggle Navigation Menu" class="md:hidden text-white p-2.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-colors">
-                        <i id="menuIcon" class="fa-solid fa-bars text-base"></i>
+                    <button id="menuBtn" onclick="toggleMobileMenu()" class="md:hidden text-white p-2 rounded-full border border-white/10 bg-white/5">
+                        <i class="fa-solid fa-bars text-lg"></i>
                     </button>
                 </div>
             </div>
 
-            <!-- Mobile Drawer Menu -->
-            <div id="mobileMenu" class="hidden md:hidden bg-[#070b12]/98 border-b border-[#1d2d43]/40 px-6 py-6 space-y-4 text-xs tracking-[0.24em] uppercase text-[#a4afc3]">
-                <a href="#showcase" onclick="toggleMobileMenu()" class="block py-2.5 border-b border-white/5 hover:text-[#edf5ff]">Exhibition</a>
-                <a href="#gallery" onclick="toggleMobileMenu()" class="block py-2.5 border-b border-white/5 hover:text-[#edf5ff]">Portfolio</a>
-                <a href="#about" onclick="toggleMobileMenu()" class="block py-2.5 border-b border-white/5 hover:text-[#edf5ff]">About</a>
-                <a href="#contact" onclick="toggleMobileMenu()" class="block py-2.5 hover:text-[#edf5ff]">Contact</a>
-                <div class="pt-2">
-                    <a href="#contact" onclick="toggleMobileMenu()" class="w-full text-center block py-3 cta-primary rounded-full text-[10px]">
-                        Book Event
-                    </a>
-                </div>
+            <div id="mobileMenu" class="hidden md:hidden bg-black/95 border-b border-[#1d2d43]/20 px-6 py-6 space-y-4 text-[10px] tracking-[0.24em] uppercase text-[#d0d9ea]">
+                <a href="#showcase" onclick="toggleMobileMenu()" class="block py-2 hover:text-[#c9d9ff]">Showcase</a>
+                <a href="#gallery" onclick="toggleMobileMenu()" class="block py-2 hover:text-[#c9d9ff]">Portfolio</a>
+                <a href="#about" onclick="toggleMobileMenu()" class="block py-2 hover:text-[#c9d9ff]">About</a>
+                <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 hover:text-[#c9d9ff]">Contact</a>
             </div>
         </header>
 
-        <!-- Main Content -->
         <main id="top">
-            <!-- HERO SECTION -->
-            <section class="relative pt-28 pb-20 px-4 sm:px-6 min-h-[92vh] flex flex-col justify-center overflow-hidden">
+            <section class="relative pt-24 pb-20 px-4 sm:px-6 min-h-[100vh] overflow-hidden">
                 <div class="hero-bg-blur"></div>
 
                 <div class="hero-content-shell reveal">
-                    <!-- Status Badge -->
                     <div class="booking-pill">
                         <span class="status-dot"></span>
                         Available for bookings
                     </div>
 
-                    <!-- Artist Name Title -->
                     <div class="hero-name-row">
-                        <h1 class="hero-name-text">BENYASSINE OUSSAMA</h1>
+                        <span class="hero-name-text">BENYASSINE OUSSAMA</span>
                     </div>
 
-                    <p class="text-xs sm:text-sm uppercase tracking-[0.35em] text-[#8192b3] max-w-2xl mx-auto -mt-2 font-medium">
-                        Visual Artist & High-End Event Photographer
-                    </p>
-
-                    <!-- CTA Buttons -->
                     <div class="hero-cta-row">
-                        <a href="#gallery" class="cta-main cta-primary">
-                            <i class="fa-solid fa-[#fa-border-all] mr-2 text-xs"></i> View Portfolio
-                        </a>
-                        <a href="#contact" class="cta-alt cta-secondary">
-                            <i class="fa-regular fa-envelope mr-2 text-xs"></i> Book a Session
-                        </a>
+                        <a href="#gallery" class="cta-main">View Portfolio</a>
+                        <a href="#contact" class="cta-alt">Book a Session</a>
                     </div>
 
-                    <!-- 3D Stage Carousel Using Local Images -->
                     <div class="hero-stage" aria-label="Portfolio image carousel">
                         <div class="stage-rail" id="heroStage">
-                            <div class="hero-card left" onclick="rotateHeroStage('left')" data-index="0">
-                                <img src="showcase2.jpg" alt="Showcase Image 2" onerror="this.src='https://placehold.co/1000x700/0b1220/8192b3?text=showcase2.jpg'">
+                            <div class="hero-card left" data-index="0">
+                                <img src="showcase2.jpg" alt="Image 1">
                             </div>
-                            <div class="hero-card center" onclick="openLightbox('showcase1.jpg', 'Featured Exhibition', 'Showcase')" data-index="1">
-                                <img src="showcase1.jpg" alt="Showcase Image 1" onerror="this.src='https://placehold.co/1000x700/0b1220/8192b3?text=showcase1.jpg'">
+                            <div class="hero-card center" data-index="1">
+                                <img src="showcase1.jpg" alt="Image 2">
                             </div>
-                            <div class="hero-card right" onclick="rotateHeroStage('right')" data-index="2">
-                                <img src="showcase3.jpg" alt="Showcase Image 3" onerror="this.src='https://placehold.co/1000x700/0b1220/8192b3?text=showcase3.jpg'">
+                            <div class="hero-card right" data-index="2">
+                                <img src="showcase3.jpg" alt="Image 3">
                             </div>
                         </div>
                     </div>
 
-                    <!-- Stats Bar -->
-                    <div class="stats-grid max-w-3xl mx-auto">
+                    <div class="stats-grid">
                         <div class="stat">
                             <div class="stat-number">03</div>
                             <div class="stat-label">Years</div>
@@ -521,4 +485,46 @@
                         <div class="stat">
                             <div class="stat-number">10+</div>
                             <div class="stat-label">Events</div>
-          
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">Rabat</div>
+                            <div class="stat-label">Based</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="showcase" class="max-w-7xl mx-auto px-4 sm:px-6 py-20 reveal">
+                <div class="mb-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+                    <div>
+                        <p class="luxury-kicker">Exhibition</p>
+                        <h2 class="font-serif text-3xl md:text-4xl uppercase mt-2">Showcase</h2>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <button onclick="scrollShowcase('left')" class="p-3 border border-[#1d2d43]/20 rounded-full hover:bg-[#1d2d43] hover:text-white transition-all text-[#c9d9ff]">
+                            <i class="fa-solid fa-chevron-left text-xs"></i>
+                        </button>
+                        <button onclick="scrollShowcase('right')" class="p-3 border border-[#1d2d43]/20 rounded-full hover:bg-[#1d2d43] hover:text-white transition-all text-[#c9d9ff]">
+                            <i class="fa-solid fa-chevron-right text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="showcaseTrack" class="flex overflow-x-auto no-scrollbar gap-6 pb-4 scroll-smooth">
+                    <!-- Showcase items populated by JS -->
+                </div>
+            </section>
+
+            <section id="gallery" class="max-w-7xl mx-auto px-4 sm:px-6 py-20 reveal">
+                <div class="section-shell rounded-[30px] p-5 sm:p-8">
+                    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-8">
+                        <div>
+                            <p class="luxury-kicker">Selected Works</p>
+                            <h2 class="font-serif text-3xl md:text-4xl uppercase mt-2">Portfolio</h2>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2" id="filterContainer">
+                            <button onclick="filterGallery('all', this)" class="filter-btn active px-3.5 py-2 border border-[#1d2d43]/35 rounded-full text-[10px] tracking-[0.2em] uppercase">All</button>
+                            <button onclick="filterGallery('embassy', this)" class="filter-btn px-3.5 py-2 border border-white/10 rounded-full text-[10px] tracking-[0.2em] uppercase text-[#c8d1e6]">Embassy</button>
+                            <button onclick="filterGallery('conference', this)" class="filter-btn px-3.5 py-2 border border-white/10 rounded-full text-[10px] tracking-[0.2em] uppercase text-[#c8d1e6]">Conference</button>
+                            <button onclick="filterGallery('concert', this)" cl
