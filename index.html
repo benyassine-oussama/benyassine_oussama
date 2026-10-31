@@ -527,4 +527,468 @@
                             <button onclick="filterGallery('all', this)" class="filter-btn active px-3.5 py-2 border border-[#1d2d43]/35 rounded-full text-[10px] tracking-[0.2em] uppercase">All</button>
                             <button onclick="filterGallery('embassy', this)" class="filter-btn px-3.5 py-2 border border-white/10 rounded-full text-[10px] tracking-[0.2em] uppercase text-[#c8d1e6]">Embassy</button>
                             <button onclick="filterGallery('conference', this)" class="filter-btn px-3.5 py-2 border border-white/10 rounded-full text-[10px] tracking-[0.2em] uppercase text-[#c8d1e6]">Conference</button>
-                            <button onclick="filterGallery('concert', this)" cl
+                            <button onclick="filterGallery('concert', this)" class="filter-btn px-3.5 py-2 border border-white/10 rounded-full text-[10px] tracking-[0.2em] uppercase text-[#c8d1e6]">Concert</button>
+                            <button onclick="filterGallery('portrait', this)" class="filter-btn px-3.5 py-2 border border-white/10 rounded-full text-[10px] tracking-[0.2em] uppercase text-[#c8d1e6]">Portrait</button>
+                        </div>
+                    </div>
+
+                    <div id="galleryGrid" class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 min-h-[240px]">
+                        <!-- Gallery cards loaded dynamically -->
+                    </div>
+                </div>
+            </section>
+
+            <section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 py-20 reveal">
+                <div class="grid lg:grid-cols-[0.8fr_1.2fr] gap-8 items-center">
+                    <div class="rounded-[30px] overflow-hidden border border-[#1d2d43]/20 bg-black/30 shadow-2xl">
+                        <img src="showcase5.jpg" alt="Portrait" class="w-full h-full object-cover min-h-[420px]">
+                    </div>
+
+                    <div class="section-shell rounded-[30px] p-6 sm:p-8">
+                        <p class="luxury-kicker">About</p>
+                        <h2 class="font-serif text-3xl md:text-4xl uppercase mt-2">The artist behind the lens</h2>
+                        <div class="blue-line my-5"></div>
+                        <p class="text-[#d8e2f7] text-base md:text-lg leading-relaxed">
+                            Based in Rabat, Morocco, BENYASSINE OUSSAMA specializes in visual storytelling for high-stakes environments — from diplomatic ceremonies and royal engagements to contemporary cultural events. His work blends precision, atmosphere, and editorial elegance to capture the emotion and authority of every moment.
+                        </p>
+                        <div class="mt-6 grid sm:grid-cols-3 gap-3">
+                            <div class="glass-card rounded-2xl p-4 text-center border border-[#1d2d43]/15">
+                                <div class="text-xl font-serif blue-text">03</div>
+                                <div class="mt-2 text-[9px] uppercase tracking-[0.22em] text-[#c8d1e6]">Years</div>
+                            </div>
+                            <div class="glass-card rounded-2xl p-4 text-center border border-[#1d2d43]/15">
+                                <div class="text-xl font-serif blue-text">Elite</div>
+                                <div class="mt-2 text-[9px] uppercase tracking-[0.22em] text-[#c8d1e6]">Events</div>
+                            </div>
+                            <div class="glass-card rounded-2xl p-4 text-center border border-[#1d2d43]/15">
+                                <div class="text-xl font-serif blue-text">Global</div>
+                                <div class="mt-2 text-[9px] uppercase tracking-[0.22em] text-[#c8d1e6]">Storytelling</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="max-w-5xl mx-auto px-4 sm:px-6 py-20 reveal">
+                <div class="section-shell rounded-[30px] p-6 sm:p-8 md:p-10">
+                    <div class="text-center mb-8">
+                        <p class="luxury-kicker">Inquire</p>
+                        <h2 class="font-serif text-3xl md:text-4xl uppercase mt-2">Book a session</h2>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-4 mb-8">
+                        <a href="mailto:benyassineoussama1@gmail.com" class="glass-card rounded-2xl p-4 flex items-center gap-4 border border-[#1d2d43]/15 hover:border-[#1d2d43]/40 transition-all">
+                            <div class="w-12 h-12 rounded-xl bg-[#1d2d43]/10 flex items-center justify-center text-[#c9d9ff] text-xl"><i class="fa-solid fa-envelope"></i></div>
+                            <div class="min-w-0">
+                                <div class="text-[9px] uppercase tracking-[0.2em] text-[#c8d1e6] mb-1">Email</div>
+                                <div class="text-sm text-white truncate">benyassineoussama1@gmail.com</div>
+                            </div>
+                        </a>
+
+                        <a href="https://wa.me/212619107960" target="_blank" rel="noreferrer" class="glass-card rounded-2xl p-4 flex items-center gap-4 border border-[#1d2d43]/15 hover:border-[#1d2d43]/40 transition-all">
+                            <div class="w-12 h-12 rounded-xl bg-[#1d2d43]/10 flex items-center justify-center text-[#c9d9ff] text-xl"><i class="fa-brands fa-whatsapp"></i></div>
+                            <div class="min-w-0">
+                                <div class="text-[9px] uppercase tracking-[0.2em] text-[#c8d1e6] mb-1">WhatsApp</div>
+                                <div class="text-sm text-white">+212619107960</div>
+                            </div>
+                        </a>
+
+                        <a href="https://instagram.com/benyassine_oussama" target="_blank" rel="noreferrer" class="glass-card rounded-2xl p-4 flex items-center gap-4 border border-[#1d2d43]/15 hover:border-[#1d2d43]/40 transition-all">
+                            <div class="w-12 h-12 rounded-xl bg-[#1d2d43]/10 flex items-center justify-center text-[#c9d9ff] text-xl"><i class="fa-brands fa-instagram"></i></div>
+                            <div class="min-w-0">
+                                <div class="text-[9px] uppercase tracking-[0.2em] text-[#c8d1e6] mb-1">Instagram</div>
+                                <div class="text-sm text-white">@benyassine_oussama</div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <form action="https://formsubmit.co/benyassineoussama1@gmail.com" method="POST" class="space-y-6">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_subject" value="New Portfolio Inquiry - BENYASSINE OUSSAMA">
+                        <input type="hidden" name="_template" value="table">
+
+                        <div class="grid md:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block mb-2 text-[10px] uppercase tracking-[0.22em] text-[#dfe9ff]">Name</label>
+                                <input type="text" name="Name" required class="form-input w-full rounded-2xl px-4 py-3">
+                            </div>
+                            <div>
+                                <label class="block mb-2 text-[10px] uppercase tracking-[0.22em] text-[#dfe9ff]">Email</label>
+                                <input type="email" name="Email" required class="form-input w-full rounded-2xl px-4 py-3">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block mb-2 text-[10px] uppercase tracking-[0.22em] text-[#dfe9ff]">Event Type</label>
+                            <select name="Event Type" class="form-select w-full rounded-2xl px-4 py-3">
+                                <option>Diplomatic / Embassy Event</option>
+                                <option>Corporate Summit / Conference</option>
+                                <option>Concert / Stage Performance</option>
+                                <option>Editorial Portrait Session</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block mb-2 text-[10px] uppercase tracking-[0.22em] text-[#dfe9ff]">Message</label>
+                            <textarea name="Message" rows="5" required class="form-textarea w-full rounded-2xl px-4 py-3" placeholder="Tell me about your event, vision, or project."></textarea>
+                        </div>
+
+                        <button type="submit" class="cta-primary w-full py-4 rounded-full text-[10px] tracking-[0.24em] uppercase font-semibold">
+                            Send inquiry
+                        </button>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <footer class="border-t border-[#1d2d43]/15 py-8 text-center text-[10px] uppercase tracking-[0.22em] text-[#becae6]">
+            © 2026 BENYASSINE OUSSAMA — Rabat, Morocco
+        </footer>
+    </div>
+
+    <div id="lightbox" onclick="handleBackdropClick(event)" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex flex-col items-center justify-center p-4 sm:p-8 transition-all duration-300">
+        <button onclick="closeLightbox()" class="absolute top-5 right-5 text-white/80 hover:text-white text-2xl p-3 z-50 bg-black/40 rounded-full border border-white/10 backdrop-blur-sm">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <button id="prevBtn" class="absolute left-5 sm:left-10 top-1/2 -translate-y-1/2 text-white/80 hover:text-white text-3xl p-3 z-50 bg-black/40 rounded-full border border-white/10 backdrop-blur-sm">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+        <button id="nextBtn" class="absolute right-5 sm:right-10 top-1/2 -translate-y-1/2 text-white/80 hover:text-white text-3xl p-3 z-50 bg-black/40 rounded-full border border-white/10 backdrop-blur-sm">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+
+        <div class="relative max-w-5xl w-full flex flex-col items-center justify-center">
+            <div class="lightbox-image-wrap relative max-h-[78vh] flex justify-center items-center overflow-hidden rounded-2xl border border-[#1d2d43]/20 shadow-[0_30px_80px_rgba(0,0,0,0.7)]">
+                <img id="lightboxImg" src="" alt="" class="max-h-[78vh] w-auto object-contain">
+            </div>
+
+            <div class="w-full max-w-xl mt-4 bg-black/60 backdrop-blur-lg border border-[#1d2d43]/15 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+                <div class="flex items-center gap-3">
+                    <span id="lightboxTag" class="px-2.5 py-1 border border-[#1d2d43]/20 text-[10px] uppercase tracking-widest rounded text-[#c9d9ff] bg-[#1d2d43]/5"></span>
+                    <h3 id="lightboxTitle" class="font-serif text-lg tracking-wider uppercase text-white font-medium"></h3>
+                </div>
+                <p id="lightboxLocation" class="text-[10px] uppercase tracking-[0.2em] text-[#d3ddea] flex items-center gap-1">
+                    <i class="fa-solid fa-location-dot text-[#1d2d43]"></i><span id="lightboxLocText"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const showcaseData = [
+            { id: 's1', title: 'Royal Procession Detail', category: 'embassy', location: 'Rabat, Morocco', img: 'showcase1.jpg' },
+            { id: 's2', title: 'Parliamentary Assembly', category: 'embassy', location: 'Rabat, Morocco', img: 'showcase2.jpg' },
+            { id: 's3', title: 'State Escort Gathering', category: 'embassy', location: 'Rabat, Morocco', img: 'showcase3.jpg' },
+            { id: 's4', title: 'Media & Press Broadcast', category: 'conference', location: 'Rabat, Morocco', img: 'showcase4.jpg' },
+            { id: 's5', title: 'Live Orchestra Performance', category: 'concert', location: 'Rabat, Morocco', img: 'showcase5.jpg' },
+            { id: 's6', title: 'Symphonic Stage Solo', category: 'concert', location: 'Rabat, Morocco', img: 'showcase6.jpg' }
+        ];
+
+        const galleryData = [
+            { id: 1, title: 'Royal Procession Detail', category: 'embassy', location: 'Rabat, Morocco', img: 'showcase1.jpg' },
+            { id: 2, title: 'Parliamentary Assembly', category: 'embassy', location: 'Rabat, Morocco', img: 'showcase2.jpg' },
+            { id: 3, title: 'State Escort Gathering', category: 'embassy', location: 'Rabat, Morocco', img: 'showcase3.jpg' },
+            { id: 4, title: 'Media & Press Broadcast', category: 'conference', location: 'Rabat, Morocco', img: 'showcase4.jpg' },
+            { id: 5, title: 'Live Orchestra Performance', category: 'concert', location: 'Rabat, Morocco', img: 'showcase5.jpg' },
+            { id: 6, title: 'Symphonic Stage Solo', category: 'concert', location: 'Rabat, Morocco', img: 'showcase6.jpg' }
+        ];
+
+        let currentLightboxIndex = 0;
+        let currentLightboxList = [];
+        let heroIndex = 1;
+
+        function initApp() {
+            initAmbientCanvas();
+            renderShowcase();
+            renderGallery(galleryData);
+            setupTouchEvents();
+            initRevealOnScroll();
+            initLightboxNavigation();
+            initHeroSlider();
+        }
+
+        function initHeroSlider() {
+            const cards = [
+                document.querySelector('.hero-card.left'),
+                document.querySelector('.hero-card.center'),
+                document.querySelector('.hero-card.right')
+            ];
+
+            if (!cards[0] || !cards[1] || !cards[2]) return;
+
+            const images = ['showcase2.jpg', 'showcase1.jpg', 'showcase3.jpg'];
+            const setCardOrder = (index) => {
+                const order = [
+                    { src: images[(index + 0) % 3] },
+                    { src: images[(index + 1) % 3] },
+                    { src: images[(index + 2) % 3] }
+                ];
+
+                cards[0].querySelector('img').src = order[0].src;
+                cards[1].querySelector('img').src = order[1].src;
+                cards[2].querySelector('img').src = order[2].src;
+
+                cards.forEach((card) => card.classList.remove('swipe'));
+                cards[0].classList.add('swipe');
+                cards[1].classList.add('swipe');
+                cards[2].classList.add('swipe');
+
+                setTimeout(() => {
+                    cards.forEach((card) => card.classList.remove('swipe'));
+                }, 260);
+            };
+
+            setCardOrder(heroIndex);
+            setInterval(() => {
+                heroIndex = (heroIndex + 1) % 3;
+                setCardOrder(heroIndex);
+            }, 1500);
+        }
+
+        function renderShowcase() {
+            const track = document.getElementById('showcaseTrack');
+            if (!track) return;
+            track.innerHTML = '';
+
+            showcaseData.forEach((item) => {
+                const el = document.createElement('div');
+                el.className = 'showcase-card flex-none w-72 sm:w-80 md:w-[24rem] snap-center rounded-[24px] overflow-hidden border border-[#1d2d43]/20 bg-[#0b1220] shadow-[0_25px_60px_rgba(0,0,0,0.45)]';
+                el.onclick = () => openLightbox(item.img, item.title, item.category, item.location, item.id, showcaseData);
+
+                el.innerHTML = `
+                    <div class="relative">
+                        <img src="${item.img}" class="w-full h-[420px] object-cover" alt="${item.title}">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-5">
+                            <p class="text-[9px] uppercase tracking-[0.22em] text-[#c9d9ff]">${item.category}</p>
+                            <h3 class="font-serif text-xl uppercase mt-2 text-white">${item.title}</h3>
+                        </div>
+                    </div>
+                `;
+                track.appendChild(el);
+            });
+        }
+
+        function renderGallery(items) {
+            const grid = document.getElementById('galleryGrid');
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            items.forEach((item) => {
+                const card = document.createElement('div');
+                card.className = 'gallery-card group relative overflow-hidden rounded-[22px] border border-[#1d2d43]/15 bg-[#0b1220] cursor-pointer shadow-lg';
+                card.onclick = () => openLightbox(item.img, item.title, item.category, item.location, item.id, items);
+                card.innerHTML = `
+                    <img src="${item.img}" alt="${item.title}" class="w-full h-[280px] object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-4">
+                        <p class="text-[9px] uppercase tracking-[0.18em] text-[#c9d9ff]">${item.category}</p>
+                        <h4 class="font-serif text-base uppercase mt-1 text-white">${item.title}</h4>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function initRevealOnScroll() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) { entry.target.classList.add('visible'); }
+                });
+            }, { threshold: 0.18 });
+
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }
+
+        function filterGallery(category, button) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach((btn) => {
+                btn.classList.remove('active');
+                btn.classList.remove('bg-[#1d2d43]', 'text-black');
+                btn.classList.add('text-[#c8d1e6]', 'border-white/10');
+            });
+
+            button.classList.add('active');
+            button.classList.remove('text-[#c8d1e6]', 'border-white/10');
+            button.classList.add('bg-[#1d2d43]', 'text-white');
+
+            const filtered = category === 'all' ? galleryData : galleryData.filter(item => item.category === category);
+            renderGallery(filtered);
+        }
+
+        function initLightboxNavigation() {
+            document.getElementById('prevBtn').addEventListener('click', () => changeLightbox(-1));
+            document.getElementById('nextBtn').addEventListener('click', () => changeLightbox(1));
+
+            document.addEventListener('keydown', (event) => {
+                if (document.getElementById('lightbox').classList.contains('hidden')) return;
+                if (event.key === 'ArrowLeft') changeLightbox(-1);
+                if (event.key === 'ArrowRight') changeLightbox(1);
+                if (event.key === 'Escape') closeLightbox();
+            });
+        }
+
+        function openLightbox(src, title, category, location, itemId, list) {
+            currentLightboxList = list;
+            currentLightboxIndex = currentLightboxList.findIndex(item => item.img === src || item.id === itemId);
+            if (currentLightboxIndex < 0) currentLightboxIndex = 0;
+
+            updateLightbox(currentLightboxIndex);
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function updateLightbox(index) {
+            const item = currentLightboxList[index];
+            const lightboxImg = document.getElementById('lightboxImg');
+            const tag = document.getElementById('lightboxTag');
+            const titleEl = document.getElementById('lightboxTitle');
+            const locText = document.getElementById('lightboxLocText');
+            const wrap = document.querySelector('.lightbox-image-wrap');
+
+            if (!item || !lightboxImg || !tag || !titleEl || !locText || !wrap) return;
+
+            wrap.classList.add('swiping');
+            wrap.style.opacity = '0.3';
+            wrap.style.transform = 'translateX(20px) scale(0.98)';
+
+            setTimeout(() => {
+                lightboxImg.src = item.img;
+                titleEl.textContent = item.title;
+                tag.textContent = item.category;
+                locText.textContent = item.location;
+                wrap.style.opacity = '1';
+                wrap.style.transform = 'translateX(0) scale(1)';
+                setTimeout(() => wrap.classList.remove('swiping'), 220);
+            }, 130);
+        }
+
+        function changeLightbox(step) {
+            if (!currentLightboxList.length) return;
+            currentLightboxIndex = (currentLightboxIndex + step + currentLightboxList.length) % currentLightboxList.length;
+            updateLightbox(currentLightboxIndex);
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            if (!lightbox) return;
+            lightbox.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        function handleBackdropClick(event) {
+            if (event.target === event.currentTarget) closeLightbox();
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            if (!menu) return;
+            menu.classList.toggle('hidden');
+        }
+
+        function scrollShowcase(direction) {
+            const track = document.getElementById('showcaseTrack');
+            if (!track) return;
+            const scrollAmount = direction === 'left' ? -360 : 360;
+            track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+
+        function setupTouchEvents() {
+            const track = document.getElementById('showcaseTrack');
+            if (!track) return;
+            let startX = 0;
+            let scrollLeft = 0;
+
+            track.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                scrollLeft = track.scrollLeft;
+            }, { passive: true });
+
+            track.addEventListener('touchmove', (e) => {
+                if (!startX) return;
+                const delta = e.touches[0].clientX - startX;
+                track.scrollLeft = scrollLeft - delta;
+            }, { passive: true });
+        }
+
+        function initAmbientCanvas() {
+            const canvas = document.getElementById('ambientCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            if (!ctx) return;
+
+            const particles = [];
+            const count = 22;
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+
+            for (let i = 0; i < count; i++) {
+                const isSmoke = Math.random() > 0.54;
+                const drift = isSmoke ? 0.32 + Math.random() * 0.5 : 0.7 + Math.random() * 0.7;
+                particles.push({
+                    x: Math.random() * window.innerWidth,
+                    y: Math.random() * window.innerHeight,
+                    r: isSmoke ? Math.random() * 38 + 26 : Math.random() * 2.5 + 1.2,
+                    dx: (Math.random() - 0.5) * drift,
+                    dy: -(Math.random() * 0.14 + 0.05),
+                    a: isSmoke ? Math.random() * 0.16 + 0.06 : Math.random() * 0.6 + 0.20,
+                    alphaPulse: Math.random() * Math.PI * 2,
+                    drift: drift,
+                    kind: isSmoke ? 'smoke' : 'spark',
+                    hue: isSmoke ? 214 + Math.random() * 14 : 200 + Math.random() * 32
+                });
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                particles.forEach((p) => {
+                    p.x += p.dx * 0.7;
+                    p.y += p.dy;
+                    p.alphaPulse += 0.014;
+
+                    if (p.x < -90 || p.x > canvas.width + 90) p.x = Math.random() * canvas.width;
+                    if (p.y < -110 || p.y > canvas.height + 110) {
+                        p.y = canvas.height + 24;
+                        p.x = Math.random() * canvas.width;
+                    }
+
+                    const alpha = p.a * (0.68 + Math.sin(p.alphaPulse) * 0.42);
+
+                    if (p.kind === 'smoke') {
+                        ctx.beginPath();
+                        ctx.fillStyle = `hsla(${p.hue}, 30%, 72%, ${alpha})`;
+                        ctx.shadowBlur = 18;
+                        ctx.shadowColor = `hsla(${p.hue}, 60%, 68%, ${alpha * 1.2})`;
+                        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                        ctx.fill();
+                        ctx.shadowBlur = 0;
+                    } else {
+                        ctx.beginPath();
+                        ctx.fillStyle = `hsla(${p.hue}, 90%, 82%, ${alpha})`;
+                        ctx.shadowBlur = 14;
+                        ctx.shadowColor = `hsla(${p.hue}, 90%, 72%, ${alpha})`;
+                        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                        ctx.fill();
+                        ctx.shadowBlur = 0;
+                    }
+                });
+
+                requestAnimationFrame(draw);
+            }
+
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+            draw();
+        }
+
+        document.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
+</html>
