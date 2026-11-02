@@ -400,6 +400,93 @@
             color: #d8c6c6;
         }
 
+        .mobile-menu-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(2, 6, 10, 0.62);
+            backdrop-filter: blur(7px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+            z-index: 40;
+        }
+
+        .mobile-menu-overlay.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .mobile-menu-panel {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(0.96);
+            width: min(86vw, 360px);
+            z-index: 45;
+            background: radial-gradient(circle at top, rgba(29,45,67,0.4), rgba(7,11,17,0.96) 48%);
+            border: 1px solid rgba(129, 146, 179, 0.45);
+            border-radius: 30px;
+            box-shadow: 0 0 0 1px rgba(129, 146, 179, 0.16), 0 28px 70px rgba(0,0,0,0.58), 0 0 24px rgba(129, 146, 179, 0.3);
+            padding: 1.2rem 1rem 1rem;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+
+        .mobile-menu-panel:not(.hidden) {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .mobile-menu-panel.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding: 0.35rem 0.25rem 0.75rem;
+            border-bottom: 1px solid rgba(129, 146, 179, 0.2);
+        }
+
+        .mobile-menu-title {
+            font-size: 10px;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: #dfe9ff;
+        }
+
+        .mobile-menu-close {
+            width: 2.2rem;
+            height: 2.2rem;
+            border-radius: 999px;
+            border: 1px solid rgba(129,146,179,0.3);
+            background: rgba(255,255,255,0.03);
+            color: #edf5ff;
+        }
+
+        .mobile-menu-link {
+            display: block;
+            padding: 0.95rem 1rem;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(129,146,179,0.12);
+            color: #dfe9ff;
+            font-size: 10px;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .mobile-menu-link:hover {
+            background: rgba(29,45,67,0.26);
+            border-color: rgba(129,146,179,0.3);
+            box-shadow: 0 0 18px rgba(29,45,67,0.3);
+            transform: translateY(-1px);
+        }
+
         @media (max-width: 640px) {
             .luxury-kicker { letter-spacing: 0.22em; }
             .hero-name-text { letter-spacing: 0.08em; }
@@ -430,19 +517,29 @@
                     <a href="#contact" class="hidden sm:inline-flex px-4 py-2 border border-[#1d2d43]/40 bg-[#1d2d43]/10 text-[#c9d9ff] text-[10px] tracking-[0.22em] uppercase rounded-full hover:bg-[#1d2d43]/20 transition-colors">
                         Book Event
                     </a>
-                    <button id="menuBtn" onclick="toggleMobileMenu()" class="md:hidden text-white p-2 rounded-full border border-white/10 bg-white/5">
+                    <button id="menuBtn" aria-label="Open mobile menu" onclick="toggleMobileMenu()" class="md:hidden text-white p-2 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-colors">
                         <i class="fa-solid fa-bars text-lg"></i>
                     </button>
                 </div>
             </div>
-
-            <div id="mobileMenu" class="hidden md:hidden bg-black/95 border-b border-[#1d2d43]/20 px-6 py-6 space-y-4 text-[10px] tracking-[0.24em] uppercase text-[#d0d9ea]">
-                <a href="#showcase" onclick="toggleMobileMenu()" class="block py-2 hover:text-[#c9d9ff]">Showcase</a>
-                <a href="#gallery" onclick="toggleMobileMenu()" class="block py-2 hover:text-[#c9d9ff]">Portfolio</a>
-                <a href="#about" onclick="toggleMobileMenu()" class="block py-2 hover:text-[#c9d9ff]">About</a>
-                <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 hover:text-[#c9d9ff]">Contact</a>
-            </div>
         </header>
+
+        <div id="mobileMenuOverlay" class="mobile-menu-overlay md:hidden" onclick="closeMobileMenu()"></div>
+
+        <div id="mobileMenu" class="mobile-menu-panel hidden md:hidden" role="dialog" aria-modal="true" aria-label="Mobile navigation menu">
+            <div class="mobile-menu-header">
+                <span class="mobile-menu-title">Menu</span>
+                <button type="button" aria-label="Close menu" class="mobile-menu-close" onclick="closeMobileMenu()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="space-y-3">
+                <a href="#showcase" onclick="closeMobileMenu();" class="mobile-menu-link">Showcase</a>
+                <a href="#gallery" onclick="closeMobileMenu();" class="mobile-menu-link">Portfolio</a>
+                <a href="#about" onclick="closeMobileMenu();" class="mobile-menu-link">About</a>
+                <a href="#contact" onclick="closeMobileMenu();" class="mobile-menu-link">Contact</a>
+            </div>
+        </div>
 
         <main id="top">
             <section class="relative pt-24 pb-20 px-4 sm:px-6 min-h-[100vh] overflow-hidden">
@@ -549,7 +646,7 @@
                         <h2 class="font-serif text-3xl md:text-4xl uppercase mt-2">The artist behind the lens</h2>
                         <div class="blue-line my-5"></div>
                         <p class="text-[#d8e2f7] text-base md:text-lg leading-relaxed">
-                            Based in Rabat, Morocco, BENYASSINE OUSSAMA specializes in visual storytelling for high-stakes environments — from diplomatic ceremonies and royal engagements to contemporary cultural events. His work blends precision, atmosphere, and editorial elegance to capture the emotion and authority of every moment.
+                            Based in Rabat, Morocco, BENYASSINE OUSSAMA specializes in visual storytelling for high-stakes environments — from diplomatic ceremonies and royal engagements to concerts, editorial portraits, and cultural events that demand both sensitivity and precision.
                         </p>
                         <div class="mt-6 grid sm:grid-cols-3 gap-3">
                             <div class="glass-card rounded-2xl p-4 text-center border border-[#1d2d43]/15">
@@ -754,7 +851,7 @@
 
             showcaseData.forEach((item) => {
                 const el = document.createElement('div');
-                el.className = 'showcase-card flex-none w-72 sm:w-80 md:w-[24rem] snap-center rounded-[24px] overflow-hidden border border-[#1d2d43]/20 bg-[#0b1220] shadow-[0_25px_60px_rgba(0,0,0,0.45)]';
+                el.className = 'showcase-card flex-none w-72 sm:w-80 md:w-[24rem] snap-center rounded-[24px] overflow-hidden border border-[#1d2d43]/20 bg-[#0b1220] shadow-[0_25px_60px_rgba(0,0,0,0.22)] cursor-pointer';
                 el.onclick = () => openLightbox(item.img, item.title, item.category, item.location, item.id, showcaseData);
 
                 el.innerHTML = `
@@ -885,8 +982,22 @@
 
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu');
-            if (!menu) return;
+            const overlay = document.getElementById('mobileMenuOverlay');
+            if (!menu || !overlay) return;
+
+            const isOpen = !menu.classList.contains('hidden');
             menu.classList.toggle('hidden');
+            overlay.classList.toggle('visible', !isOpen);
+            document.body.classList.toggle('overflow-hidden', !isOpen);
+        }
+
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('mobileMenuOverlay');
+            if (!menu || !overlay) return;
+            menu.classList.add('hidden');
+            overlay.classList.remove('visible');
+            document.body.classList.remove('overflow-hidden');
         }
 
         function scrollShowcase(direction) {
