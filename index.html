@@ -279,72 +279,44 @@
             justify-content: center;
         }
 
-        .stage-rail {
+        .hero-slideshow {
             position: relative;
             width: min(860px, 86vw);
             height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transform-style: preserve-3d;
-        }
-
-        .hero-card {
-            position: absolute;
+            border-radius: 28px;
             overflow: hidden;
-            border-radius: 26px;
-            border: 1px solid rgba(29,45,67,0.2);
-            box-shadow: 0 30px 70px rgba(0,0,0,0.5);
-            background: rgba(11, 18, 32, 0.9);
-            transition: transform 1s cubic-bezier(.22,1,.36,1), opacity 1s ease, filter 1s ease, box-shadow 1s ease;
-            user-select: none;
-            transform-style: preserve-3d;
+            border: 1px solid rgba(129, 146, 179, 0.2);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45), 0 0 40px rgba(29,45,67,0.18);
+            background: rgba(10, 14, 20, 0.9);
         }
 
-        .hero-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-        .hero-card.left {
-            width: 28%;
-            height: 62%;
-            left: 5%;
-            transform: translateX(-18%) rotateY(44deg) rotateX(2deg) translateZ(20px) scale(0.9);
-            opacity: 0.86;
-            filter: saturate(0.8) brightness(0.78);
-            z-index: 1;
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transform: scale(1.06) translateX(38px);
+            transition: opacity 1.2s ease, transform 1.8s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
-        .hero-card.center {
-            width: 60%;
-            height: 100%;
-            transform: translateZ(90px) scale(1.02);
+        .hero-slide.active {
             opacity: 1;
-            z-index: 3;
+            transform: scale(1) translateX(0);
+            z-index: 2;
         }
 
-        .hero-card.right {
-            width: 28%;
-            height: 62%;
-            right: 5%;
-            transform: translateX(18%) rotateY(-44deg) rotateX(2deg) translateZ(20px) scale(0.9);
-            opacity: 0.86;
-            filter: saturate(0.8) brightness(0.78);
-            z-index: 1;
+        .hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: saturate(1.08) contrast(1.04);
         }
 
-        .hero-card.left.swipe {
-            transform: translateX(-38%) rotateY(52deg) rotateX(10deg) scale(0.82);
-            opacity: 0.35;
-            filter: blur(1px) brightness(0.6);
-        }
-
-        .hero-card.center.swipe {
-            transform: translateZ(120px) rotateX(4deg) rotateY(2deg) scale(1.08);
-        }
-
-        .hero-card.right.swipe {
-            transform: translateX(38%) rotateY(-52deg) rotateX(10deg) scale(0.82);
-            opacity: 0.35;
-            filter: blur(1px) brightness(0.6);
+        .hero-slide::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(3, 6, 11, 0.4), rgba(3, 6, 11, 0.06) 35%, rgba(3, 6, 11, 0.28));
         }
 
         .hero-cta-row {
@@ -564,16 +536,11 @@
                     </div>
 
                     <div class="hero-stage" aria-label="Portfolio image carousel">
-                        <div class="stage-rail" id="heroStage">
-                            <div class="hero-card left" data-index="0">
-                                <img src="showcase2.jpg" alt="Image 1">
-                            </div>
-                            <div class="hero-card center" data-index="1">
-                                <img src="showcase1.jpg" alt="Image 2">
-                            </div>
-                            <div class="hero-card right" data-index="2">
-                                <img src="showcase3.jpg" alt="Image 3">
-                            </div>
+                        <div class="hero-slideshow" id="heroSlideshow">
+                            <div class="hero-slide active"><img src="showcase1.jpg" alt="Portfolio slide 1"></div>
+                            <div class="hero-slide"><img src="showcase2.jpg" alt="Portfolio slide 2"></div>
+                            <div class="hero-slide"><img src="showcase3.jpg" alt="Portfolio slide 3"></div>
+                            <div class="hero-slide"><img src="showcase4.jpg" alt="Portfolio slide 4"></div>
                         </div>
                     </div>
 
@@ -797,7 +764,7 @@
 
         let currentLightboxIndex = 0;
         let currentLightboxList = [];
-        let heroIndex = 1;
+        let heroIndex = 0;
 
         function initApp() {
             initAmbientCanvas();
@@ -810,41 +777,22 @@
         }
 
         function initHeroSlider() {
-            const cards = [
-                document.querySelector('.hero-card.left'),
-                document.querySelector('.hero-card.center'),
-                document.querySelector('.hero-card.right')
-            ];
+            const slides = Array.from(document.querySelectorAll('.hero-slide'));
+            if (!slides.length) return;
 
-            if (!cards[0] || !cards[1] || !cards[2]) return;
-
-            const images = ['showcase2.jpg', 'showcase1.jpg', 'showcase3.jpg'];
-            const setCardOrder = (index) => {
-                const order = [
-                    { src: images[(index + 0) % 3] },
-                    { src: images[(index + 1) % 3] },
-                    { src: images[(index + 2) % 3] }
-                ];
-
-                cards[0].querySelector('img').src = order[0].src;
-                cards[1].querySelector('img').src = order[1].src;
-                cards[2].querySelector('img').src = order[2].src;
-
-                cards.forEach((card) => card.classList.remove('swipe'));
-                cards[0].classList.add('swipe');
-                cards[1].classList.add('swipe');
-                cards[2].classList.add('swipe');
-
-                setTimeout(() => {
-                    cards.forEach((card) => card.classList.remove('swipe'));
-                }, 260);
+            const showSlide = (index) => {
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === index);
+                });
+                heroIndex = index;
             };
 
-            setCardOrder(heroIndex);
+            showSlide(heroIndex);
+
             setInterval(() => {
-                heroIndex = (heroIndex + 1) % 3;
-                setCardOrder(heroIndex);
-            }, 1500);
+                const nextIndex = (heroIndex + 1) % slides.length;
+                showSlide(nextIndex);
+            }, 3200);
         }
 
         function renderShowcase() {
